@@ -16,6 +16,16 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
+      - name: 💾 Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/vcpkg
+            ${{ github.workspace }}/build/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('**/vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
       - name: ⚙️ Set up Ninja
         uses: seanmiddleditch/gha-setup-ninja@v3
 
@@ -23,6 +33,7 @@ jobs:
         uses: jwlawson/actions-setup-cmake@v1
 
       - name: 📦 Set up vcpkg
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           git clone https://github.com/microsoft/vcpkg.git vcpkg
           .\vcpkg\bootstrap-vcpkg.bat
@@ -33,7 +44,8 @@ jobs:
           cmake -S . -B build -G "Ninja" `
             -DCMAKE_BUILD_TYPE=Release `
             -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\vcpkg\scripts\buildsystems\vcpkg.cmake `
-            -DVCPKG_FEATURE_FLAGS=manifests
+            -DVCPKG_FEATURE_FLAGS=manifests `
+            -DCMAKE_CXX_FLAGS="/MP"
 
       - name: 🚀 Build project
-        run: cmake --build build --config Release
+        run: cmake --build build --config Release --parallel
