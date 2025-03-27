@@ -1,32 +1,33 @@
-name: Build ZitApp (Windows)
+name: 🔧 Build ZitApp (Windows)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   build:
+    name: 🏗️ Build on Windows (CMake + Ninja + vcpkg)
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Ninja
+      - name: ⚙️ Set up Ninja
         uses: seanmiddleditch/gha-setup-ninja@v3
 
-      - name: Setup CMake
+      - name: 🛠️ Set up CMake
         uses: jwlawson/actions-setup-cmake@v1
 
-      - name: Setup vcpkg (local mode)
+      - name: 📦 Set up vcpkg (local mode)
         run: |
           git clone https://github.com/microsoft/vcpkg.git e:/dev/vcpkg
           .\e:/dev/vcpkg/bootstrap-vcpkg.bat
 
-      - name: Configure with CMake
+      - name: ⚒️ Configure with CMake
         run: >
           cmake -S . -B build -G "Ninja"
           -DCMAKE_BUILD_TYPE=Release
@@ -35,5 +36,5 @@ jobs:
           -DCMAKE_CXX_FLAGS_RELEASE="/O2 /DNDEBUG /GL /Gy /Zc:inline"
           -DCMAKE_EXE_LINKER_FLAGS_RELEASE="/LTCG /INCREMENTAL:NO /OPT:REF /OPT:ICF"
 
-      - name: Build
+      - name: 🚀 Build project
         run: cmake --build build --config Release
