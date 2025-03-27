@@ -23,9 +23,10 @@ jobs:
         uses: jwlawson/actions-setup-cmake@v1
 
       - name: 📦 Set up vcpkg (local mode)
+        shell: cmd
         run: |
-          git clone https://github.com/microsoft/vcpkg.git e:/dev/vcpkg
-          .\e:/dev/vcpkg/bootstrap-vcpkg.bat
+          git clone https://github.com/microsoft/vcpkg.git e:\dev\vcpkg
+          e:\dev\vcpkg\bootstrap-vcpkg.bat
 
       - name: ⚒️ Configure with CMake
         run: >
