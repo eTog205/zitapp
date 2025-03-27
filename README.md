@@ -1,2 +1,1 @@
 [![Build on Push](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml/badge.svg?event=push)](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml)
-[![Build on PR](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml/badge.svg?event=pull_request)](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml)
