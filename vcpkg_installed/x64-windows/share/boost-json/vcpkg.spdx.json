@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-json-x64-windows-1.87.0#1-a1c96998-d95a-40f2-9496-8e61d6b96a64",
+  "name": "boost-json:x64-windows@1.87.0#1 1ab509cd81d69755e6fa654ad6590c5ba3c52ab262ef82ccbcd10ce18f1ecb8d",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
+    ],
+    "created": "2025-03-26T21:43:37Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "boost-json",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "1.87.0#1",
+      "downloadLocation": "NOASSERTION",
+      "homepage": "https://www.boost.org/libs/json",
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "Boost json module",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "boost-json:x64-windows",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "1ab509cd81d69755e6fa654ad6590c5ba3c52ab262ef82ccbcd10ce18f1ecb8d",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "BSL-1.0",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-0",
+      "name": "boostorg/json",
+      "downloadLocation": "git+https://github.com/boostorg/json@boost-1.87.0",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "9eea8a9191afab5ca0842232f579a90c9ff9dc994a66669e7fc7b4171fe0bf3104cbcf1be7a11df3da9f404842314327673fcb693cefae56f3f734975f90d71b"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "boost-json-arm32-57d42f07158b8ea4a713378c90d22b28ca4787f8.patch",
+      "packageFileName": "boost-json-arm32-57d42f07158b8ea4a713378c90d22b28ca4787f8.patch",
+      "downloadLocation": "https://github.com/boostorg/json/commit/57d42f07158b8ea4a713378c90d22b28ca4787f8.patch?full_index=1",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "d74a43dfc08fb34ba270a4d7de00a4307728567fbb2949f40f649c0e1c63b690d48aacfbc888e4b8075ff55262048700ab6ef669aa4277d6e9bebbbbd5e9473f"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./E:/dev/vcpkg/ports/boost-json/portfile.cmake",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3bd798d4a8fe6711260e2c7f99f5e85316410740022f2051275218ed383a07cd"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./E:/dev/vcpkg/ports/boost-json/vcpkg.json",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bfe745c040d8e12b487cbc9730535beaaa15405eb729525c73d8032c5236d231"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

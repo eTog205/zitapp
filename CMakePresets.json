@@ -1,0 +1,46 @@
+﻿{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "toolchainFile": "E:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_COLOR_DIAGNOSTICS": "ON",
+        "CMAKE_SYSTEM_VERSION": "10.0.22621.0"
+      }
+    },
+    {
+      "name": "x64-debug",
+      "inherits": "base",
+      "hidden": true,
+      "description": "Build debug bằng Ninja + MSVC",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi /RTC1 /MDd",
+        "CMAKE_EXE_LINKER_FLAGS_DEBUG": "/DEBUG:FULL /INCREMENTAL /OPT:NOREF",
+        "CMAKE_SYSTEM_VERSION": "10.0.22621.0",
+        "CMAKE_WINDOWS_KIT_ROOT": "C:/Program Files (x86)/Windows Kits/10/"
+      }
+    },
+    {
+      "name": "x64-release",
+      "inherits": "base",
+      "description": "Build release tối ưu",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS_RELEASE": "/O2 /DNDEBUG /GL /Gy /Zc:inline",
+        "CMAKE_EXE_LINKER_FLAGS_RELEASE": "/LTCG /INCREMENTAL:NO /OPT:REF /OPT:ICF"
+      }
+    }
+  ]
+}

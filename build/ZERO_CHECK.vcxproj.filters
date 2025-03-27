@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\source\zitapp\build\CMakeFiles\13ae941ee9041b4f6adcd5b071173931\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{3433EA84-0EF7-38C1-A965-34D5892D592C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+{
+  "name": "zitapp",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "imgui",
+      "features": [ "glfw-binding", "opengl3-binding" ]
+    },
+    "glfw3",
+    "boost-json",
+    "boost-asio",
+    "boost-beast",
+    "boost-unordered",
+    "boost-process",
+    "boost-dll",
+    "boost-interprocess",
+    "boost-property-tree",
+    "sqlite3",
+    "openssl",
+    "spdlog"
+  ]
+}
