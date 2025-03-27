@@ -43,9 +43,9 @@ jobs:
           if (Test-Path build) { Remove-Item -Recurse -Force build }
           cmake -S . -B build -G "Ninja" `
             -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_GENERATOR_PLATFORM=x64
             -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\vcpkg\scripts\buildsystems\vcpkg.cmake `
             -DVCPKG_FEATURE_FLAGS=manifests `
-            -DCMAKE_GENERATOR_PLATFORM=x64
 
       - name: 🚀 Build project
         run: cmake --build build --config Release --parallel
