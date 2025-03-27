@@ -1,1 +1,2 @@
-[![Build ZitApp (Windows)](https://github.com/eTog205/zitapp/actions/workflows/build-zitapp.yml/badge.svg)](https://github.com/eTog205/zitapp/actions/workflows/build-zitapp.yml)
+[![Build on Push](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml/badge.svg?event=push)](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml)
+[![Build on PR](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml/badge.svg?event=pull_request)](https://github.com/eTog205/zitapp/actions/workflows/cmake-single-platform.yml)
