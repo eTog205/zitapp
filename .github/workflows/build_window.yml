@@ -25,14 +25,14 @@ jobs:
       - name: 📦 Set up vcpkg
         run: |
           git clone https://github.com/microsoft/vcpkg.git vcpkg
-          ./vcpkg/bootstrap-vcpkg.bat
+          .\vcpkg\bootstrap-vcpkg.bat
 
       - name: ⚒️ Configure with CMake
         run: |
-          if exist build ( rmdir /s /q build )
-          cmake -S . -B build -G "Ninja" ^
-            -DCMAKE_BUILD_TYPE=Release ^
-            -DCMAKE_TOOLCHAIN_FILE=%GITHUB_WORKSPACE%/vcpkg/scripts/buildsystems/vcpkg.cmake ^
+          if (Test-Path build) { Remove-Item -Recurse -Force build }
+          cmake -S . -B build -G "Ninja" `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\vcpkg\scripts\buildsystems\vcpkg.cmake `
             -DVCPKG_FEATURE_FLAGS=manifests
 
       - name: 🚀 Build project
