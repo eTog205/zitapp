@@ -21,7 +21,3 @@ def verify():
         })
 
     return jsonify({"status": "invalid"}), 400
-
-# nếu chạy local để test
-if __name__ == "__main__":
-    app.run(debug=True)
