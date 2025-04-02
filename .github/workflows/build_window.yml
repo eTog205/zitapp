@@ -1,0 +1,51 @@
+name: 🔧 Build ZitApp (Windows)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 🏗️ Build on Windows (CMake + Ninja + vcpkg)
+    runs-on: windows-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 💾 Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/vcpkg
+            ${{ github.workspace }}/build/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('**/vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
+      - name: ⚙️ Set up Ninja
+        uses: seanmiddleditch/gha-setup-ninja@v3
+
+      - name: 🛠️ Set up CMake
+        uses: jwlawson/actions-setup-cmake@v1
+
+      - name: 📦 Set up vcpkg
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git vcpkg
+          .\vcpkg\bootstrap-vcpkg.bat
+
+      - name: ⚒️ Configure with CMake
+        run: |
+          if (Test-Path build) { Remove-Item -Recurse -Force build }
+          cmake -S . -B build -G "Ninja" `
+            -DCMAKE_GENERATOR_PLATFORM=x64 `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\vcpkg\scripts\buildsystems\vcpkg.cmake `
+            -DVCPKG_FEATURE_FLAGS=manifests
+
+      - name: 🚀 Build project
+        run: cmake --build build --config Release --parallel
