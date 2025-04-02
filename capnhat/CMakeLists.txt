@@ -1,24 +1,24 @@
 # E:/source/zitapp/capnhat/CMakeLists.txt
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.30)
 
-# include thêm thư mục include/
-include_directories(include)
+project(capnhat LANGUAGES CXX)
 
-add_executable(capnhat cn_main.cpp
-    capnhat.cpp
-    get.cpp
-    giainen.cpp
+file(GLOB_RECURSE CAPNHAT_SOURCES CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
 
-target_sources(capnhat PRIVATE ${CMAKE_SOURCE_DIR}/src/log_nhalam.cpp)
+add_executable(capnhat ${CAPNHAT_SOURCES})
 
-target_link_libraries(capnhat PRIVATE 
+target_include_directories(capnhat PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(chung PUBLIC spdlog::spdlog)
+target_link_libraries(capnhat PRIVATE
+    chung
     Boost::json
     Boost::asio
     Boost::beast
     Boost::filesystem
-    unofficial::sqlite3::sqlite3
-    spdlog::spdlog
     OpenSSL::SSL
     OpenSSL::Crypto
+    unofficial::sqlite3::sqlite3
+    spdlog::spdlog
 )

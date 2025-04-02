@@ -1,10 +1,5 @@
 ﻿{
   "version": 3,
-  "cmakeMinimumRequired": {
-    "major": 3,
-    "minor": 25,
-    "patch": 0
-  },
   "configurePresets": [
     {
       "name": "base",
@@ -24,21 +19,29 @@
       "inherits": "base",
       "hidden": true,
       "description": "Build debug bằng Ninja + MSVC",
+      "displayName": "x64 Debug",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi /RTC1 /MDd",
-        "CMAKE_EXE_LINKER_FLAGS_DEBUG": "/DEBUG:FULL /INCREMENTAL /OPT:NOREF",
-        "CMAKE_SYSTEM_VERSION": "10.0.22621.0",
-        "CMAKE_WINDOWS_KIT_ROOT": "C:/Program Files (x86)/Windows Kits/10/"
+        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi /RTC1 /MDd /W4 /WX", //có thể bỏ /W4 /WX nếu thấy rắc rối
+        "CMAKE_EXE_LINKER_FLAGS_DEBUG": "/DEBUG:FULL /INCREMENTAL /OPT:NOREF"
       }
     },
     {
       "name": "x64-release",
       "inherits": "base",
       "description": "Build release tối ưu",
+      "displayName": "x64 Release",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_CXX_FLAGS_RELEASE": "/O2 /DNDEBUG /GL /Gy /Zc:inline",
+        "CMAKE_CXX_FLAGS_RELEASE": "/O2 /GL /Gy /Zc:inline", // /DNDEBUG
         "CMAKE_EXE_LINKER_FLAGS_RELEASE": "/LTCG /INCREMENTAL:NO /OPT:REF /OPT:ICF"
       }
     }

@@ -1,12 +1,13 @@
-﻿//giaodien.cpp
+﻿// giaodien.cpp
+#include "giaodien.h"
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
-#include "giaodien.h"
+#include "hieuung.h"
 #include "logic_giaodien.h"
 
 #include <imgui_stdlib.h>
 
-
+static ql_hieuung hu;
 giaodien gd;
 
 void hienthi_loi(const std::string& loi, const demtg::time_point tg_loi, const int tg_tb_mat)
@@ -41,9 +42,7 @@ thongtin_cuaso_imgui tinh_thongtin_cuaso(const int chieurong_manhinh, const int 
 ImVec4 adjust_color_brightness(const ImVec4& color, const float factor)
 {
 	return {
-		std::min(color.x * factor, 1.0f),
-		std::min(color.y * factor, 1.0f),
-		std::min(color.z * factor, 1.0f),
+		std::min(color.x * factor, 1.0f), std::min(color.y * factor, 1.0f), std::min(color.z * factor, 1.0f),
 		color.w // Giữ nguyên độ trong suốt (alpha)
 	};
 }
@@ -79,7 +78,7 @@ void combo_box(const char* nhãn, const char* options[], const int options_count
 	const std::string btn_label = std::string("X##") + nhãn;
 
 	if (ImGui::Button(btn_label.c_str()))
-		current_selection = 0; // Reset về trạng thái không hiển thị gì
+		current_selection = 0; // làm mới về trạng thái không hiển thị gì
 }
 
 void capnhat_bang_phanmem()
@@ -157,11 +156,11 @@ void capnhat_bang_phanmem()
 							bool ascending = (spec->SortDirection == ImGuiSortDirection_Ascending);
 							std::ranges::sort(lg_gd.data,
 											  [data_index, ascending](const std::vector<std::string>& a, const std::vector<std::string>& b)
-							{
-								if (ascending)
-									return a[data_index] < b[data_index];
-								return a[data_index] > b[data_index];
-							});
+											  {
+												  if (ascending)
+													  return a[data_index] < b[data_index];
+												  return a[data_index] > b[data_index];
+											  });
 						}
 					}
 				}
@@ -170,7 +169,7 @@ void capnhat_bang_phanmem()
 		}
 
 		float rowHeight = 20.0f;
-		//hiển thị dữ liệu cột
+		// hiển thị dữ liệu cột
 		for (size_t hang = 0; hang < lg_gd.data.size(); ++hang)
 		{
 			ImGui::TableNextRow(ImGuiTableRowFlags_None, rowHeight);
@@ -185,7 +184,8 @@ void capnhat_bang_phanmem()
 				{
 					std::string id = lg_gd.data[hang][0];
 					ImGui::Checkbox(("##check" + std::to_string(hang)).c_str(), &lg_gd.selected_map[id]);
-				} else
+				}
+				else
 				{
 					int vitri_dulieu = 0;
 					if (cot.id == "id")
@@ -196,7 +196,7 @@ void capnhat_bang_phanmem()
 						vitri_dulieu = 2;
 					if (vitri_dulieu < static_cast<int>(lg_gd.data[hang].size()))
 					{
-						//ImGui::Text("%s", lg_gd.data[hang][vitri_dulieu].c_str());
+						// ImGui::Text("%s", lg_gd.data[hang][vitri_dulieu].c_str());
 						ImGui::TextUnformatted(lg_gd.data[hang][vitri_dulieu].c_str());
 					}
 				}
@@ -205,15 +205,12 @@ void capnhat_bang_phanmem()
 					float columnWidth = ImGui::GetColumnWidth();
 					ImGui::SetCursorScreenPos(cellPos);
 
-					if (ImGui::InvisibleButton(
-						("##overlay_" + std::to_string(hang) + "_" + std::to_string(vitri_cot)).c_str(),
-						ImVec2(columnWidth, rowHeight)))
+					if (ImGui::InvisibleButton(("##overlay_" + std::to_string(hang) + "_" + std::to_string(vitri_cot)).c_str(), ImVec2(columnWidth, rowHeight)))
 					{
 						// Nếu bấm vào bất kỳ ô nào (trừ ô checkbox), ta đánh dấu
 						row_overlay_clicked = true;
 					}
 				}
-
 			}
 			if (row_overlay_clicked)
 			{
@@ -283,9 +280,9 @@ void giaodien_cuasotuychinh_menunho()
 		ImVec2 menuSize = ImGui::GetWindowSize();
 		ImGui::End();
 
-		//ImDrawList* draw_list = ImGui::GetForegroundDrawList();
+		// ImDrawList* draw_list = ImGui::GetForegroundDrawList();
 		//// Màu khung xanh lá, độ dày 2.0f
-		//draw_list->AddRect(menuPos, ImVec2(menuPos.x + menuSize.x, menuPos.y + menuSize.y),
+		// draw_list->AddRect(menuPos, ImVec2(menuPos.x + menuSize.x, menuPos.y + menuSize.y),
 		//				   IM_COL32(0, 255, 0, 255), 0.0f, 0, 2.0f);
 
 		// Kiểm tra click chuột trái bên ngoài vùng menu để đóng menu
@@ -294,8 +291,7 @@ void giaodien_cuasotuychinh_menunho()
 			if (!ImGui::IsMouseHoveringRect(toggleButtonMin, toggleButtonMax))
 			{
 				ImVec2 mousePos = ImGui::GetIO().MousePos;
-				if (mousePos.x < menuPos.x || mousePos.x > menuPos.x + menuSize.x ||
-					mousePos.y < menuPos.y || mousePos.y > menuPos.y + menuSize.y)
+				if (mousePos.x < menuPos.x || mousePos.x > menuPos.x + menuSize.x || mousePos.y < menuPos.y || mousePos.y > menuPos.y + menuSize.y)
 				{
 					gd.isMenuOpen = false;
 				}
@@ -309,20 +305,13 @@ void giaodien_menuben(const int chieucao_manhinh)
 	gd.chieucao_menuben = static_cast<float>(chieucao_manhinh) - gd.letren_menuben;
 
 	// Xử lý thu gọn menu
-	const float chieurong_hientai = tt_thugonkichthuoc(gd.menuben_thugon, gd.yeucau_thugon, gd.batdau_thugon,
-													   gd.chieurong_menuben_morong, gd.chieurong_menuben_thugon,
-													   gd.thoigian_thugon);
+	const float chieurong_hientai = tt_thugonkichthuoc(gd.menuben_thugon, gd.yeucau_thugon, gd.batdau_thugon, gd.chieurong_menuben_morong, gd.chieurong_menuben_thugon, gd.thoigian_thugon);
 
 	gd.chieurong_menuben = chieurong_hientai;
 
 	ImGui::SetNextWindowPos(ImVec2(gd.letrai_menuben, gd.letren_menuben));
 	ImGui::SetNextWindowSize(ImVec2(chieurong_hientai, gd.chieucao_menuben));
-	ImGui::Begin("Menu bên", nullptr,
-				 ImGuiWindowFlags_NoMove |
-				 ImGuiWindowFlags_NoResize |
-				 ImGuiWindowFlags_NoTitleBar |
-				 ImGuiWindowFlags_NoScrollbar |
-				 ImGuiWindowFlags_NoScrollWithMouse);
+	ImGui::Begin("Menu bên", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
 	auto mau_nut = ImVec4(0, 0, 0, 0);
 	ImVec4 mau_nut_hover = (mau_nut.w == 0.0f) ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : adjust_color_brightness(mau_nut, 0.8f);
@@ -337,9 +326,9 @@ void giaodien_menuben(const int chieucao_manhinh)
 	const ImVec2 kichthuoc_nut(chieurong_hientai, chieucao_nut);
 
 	const std::vector<MenuItem> menu_items = {
-		{L"Bảng dữ liệu", "bangdl"},
-		{L"Tiện ích", "tienich"},
-		{L"Cài đặt", "caidat"},
+		{ L"Bảng dữ liệu", "bangdl" },
+		{ L"Tiện ích", "tienich" },
+		{ L"Cài đặt", "caidat" },
 	};
 
 	for (const auto& [full_text, id] : menu_items)
@@ -349,10 +338,7 @@ void giaodien_menuben(const int chieucao_manhinh)
 		ImGui::SetCursorScreenPos(vitri_nut);
 
 		// Tính toán tỷ lệ để thu gọn chữ
-		std::string vanban_nhinthay = tt_vanbancothenhinthay(full_text,
-															 chieurong_hientai,
-															 gd.chieurong_menuben_thugon,
-															 gd.chieurong_menuben_morong);
+		std::string vanban_nhinthay = tt_vanbancothenhinthay(full_text, chieurong_hientai, gd.chieurong_menuben_thugon, gd.chieurong_menuben_morong);
 
 		ImVec2 vitri_vanban = ImGui::GetCursorScreenPos();
 		vitri_vanban.x += 10.0f;
@@ -360,9 +346,12 @@ void giaodien_menuben(const int chieucao_manhinh)
 
 		if (ImGui::Button(("###" + id).c_str(), kichthuoc_nut))
 		{
-			if (id == "bangdl") ImGui::SetWindowFocus("bangdl");
-			if (id == "tienich") ImGui::SetWindowFocus("tienich");
-			if (id == "caidat") ImGui::SetWindowFocus("caidat");
+			if (id == "bangdl")
+				ImGui::SetWindowFocus("bangdl");
+			if (id == "tienich")
+				ImGui::SetWindowFocus("tienich");
+			if (id == "caidat")
+				ImGui::SetWindowFocus("caidat");
 		}
 
 		ImGui::GetWindowDrawList()->AddText(vitri_vanban, ImGui::GetColorU32(ImGuiCol_Text), vanban_nhinthay.c_str());
@@ -405,7 +394,6 @@ void giaodien_bangdl(const int chieurong_manhinh, const int chieucao_manhinh)
 	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
 	ImGui::Begin("bangdl", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
 
-
 	capnhat_bang_phanmem();
 	ImGui::End();
 }
@@ -436,6 +424,10 @@ void giaodien_caidat(const int chieurong_manhinh, const int chieucao_manhinh)
 	/*const char* options[] = { "Option 1", "Option 2", "Option 3" };
 	int current_selection = 0;
 	combo_box("a", options, 3, current_selection, 4.0f);*/
+
+	ImGui::Separator();
+	hienthi_nhapkey();
+
 	ImGui::End();
 }
 
@@ -489,4 +481,68 @@ void giaodien_tinhnang_xuatnap_cauhinh()
 	}
 }
 
+void hienthi_nhapkey()
+{
+	static char key_nhap[64] = "";
+	static std::string ketqua = "";
 
+	ImGui::InputText("Nhập key bản quyền", key_nhap, sizeof(key_nhap));
+
+	if (ImGui::Button("Kiểm tra"))
+	{
+		std::string ten_nguoidung, thongbao;
+		if (kiemtra_khoapro(key_nhap, ten_nguoidung, thongbao))
+		{
+			ketqua = "✔ Hợp lệ! Xin chào " + ten_nguoidung;
+			// TODO: Lưu key vào file hoặc set cờ đã kích hoạt
+		}
+		else
+		{
+			ketqua = "❌ " + thongbao;
+		}
+	}
+
+	if (!ketqua.empty())
+		ImGui::TextWrapped("%s", ketqua.c_str());
+}
+
+void kiemtra_tinhnang()
+{
+	static const char* cac_tuychon[] = { "hiệu ứng mờ", "hiệu ứng trượt", "hiệu ứng bật lên" };
+	static int tuychon_hientai = 0;
+
+	if (ImGui::Begin("kiểm tra tính năng"))
+	{
+		if (ImGui::BeginCombo("tùy chọn hiệu ứng", cac_tuychon[tuychon_hientai]))
+		{
+			for (int i = 0; i < IM_ARRAYSIZE(cac_tuychon); ++i)
+			{
+				bool dangduoc_chon = (tuychon_hientai == i);
+				if (ImGui::Selectable(cac_tuychon[i], dangduoc_chon))
+					tuychon_hientai = i;
+
+				if (dangduoc_chon)
+					ImGui::SetItemDefaultFocus();
+			}
+			ImGui::EndCombo();
+		}
+
+		if (ImGui::Button("chạy"))
+		{
+			if (tuychon_hientai == 0)
+			{
+				// gọi hiệu ứng mờ
+			}
+			else if (tuychon_hientai == 1)
+			{
+				// gọi hiệu ứng trượt
+			}
+			else if (tuychon_hientai == 2)
+			{
+				// gọi hiệu ứng bật lên
+			}
+		}
+
+		ImGui::End();
+	}
+}

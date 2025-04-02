@@ -1,17 +1,30 @@
-//logic_giaodien.cpp
+// logic_giaodien.cpp
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
 #include "giaodien.h"
 #include "log_nhalam.h"
 #include "logic_giaodien.h"
 
+#include <boost/asio/connect.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/ssl/context.hpp>
+#include <boost/asio/ssl/stream_base.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/http.hpp>
+#include <boost/beast/ssl/ssl_stream.hpp>
+#include <boost/beast/version.hpp>
+#include <boost/json.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-
 
 logic_giaodien lg_gd;
 dulieuduongdan dl;
 cauhinh ch;
+
+namespace beast = boost::beast;
+namespace http = beast::http;
+namespace net = boost::asio;
+using tcp = net::ip::tcp;
 
 using demtg = std::chrono::steady_clock;
 
@@ -26,7 +39,8 @@ void logic_giaodien::khoidong_bang_dl()
 
 std::string wstring_to_string(const std::wstring& wch)
 {
-	if (wch.empty()) return "";
+	if (wch.empty())
+		return "";
 
 	const int size_needed = WideCharToMultiByte(CP_UTF8, 0, wch.c_str(), static_cast<int>(wch.size()), nullptr, 0, nullptr, nullptr);
 	std::string str(size_needed, 0);
@@ -37,7 +51,8 @@ std::string wstring_to_string(const std::wstring& wch)
 
 std::wstring string_to_wstring(const std::string& chuoi)
 {
-	if (chuoi.empty()) return L"";
+	if (chuoi.empty())
+		return L"";
 
 	const int size_needed = MultiByteToWideChar(CP_UTF8, 0, chuoi.c_str(), static_cast<int>(chuoi.size()), nullptr, 0);
 	std::wstring wstr(size_needed, 0);
@@ -46,8 +61,8 @@ std::wstring string_to_wstring(const std::string& chuoi)
 	return wstr;
 }
 
-float tt_thugonkichthuoc(bool& da_thugon, bool& yeucau_thugon, const std::chrono::steady_clock::time_point& thoigian_batdau_thugon,
-						 const float kichthuoc_morong, const float kichthuoc_thugon, const float thoigian_tre)
+float tt_thugonkichthuoc(bool& da_thugon, bool& yeucau_thugon, const std::chrono::steady_clock::time_point& thoigian_batdau_thugon, const float kichthuoc_morong, const float kichthuoc_thugon,
+						 const float thoigian_tre)
 {
 	float new_size = da_thugon ? kichthuoc_thugon : kichthuoc_morong;
 	if (yeucau_thugon)
@@ -126,14 +141,10 @@ bool kiemtra_duongdan(const std::string& duongdan_str, bool (*ham_kiemtra)(const
 		return false;
 	}
 
-	if (ham_kiemtra == static_cast<bool(*)(const fs::path&)>(fs::is_regular_file))
+	if (ham_kiemtra == static_cast<bool (*)(const fs::path&)>(fs::is_regular_file))
 	{
 		std::string ext = duongdan.extension().string();
-		std::ranges::transform(ext, ext.begin(),
-							   [](const unsigned char c)
-		{
-			return std::tolower(c);
-		});
+		std::ranges::transform(ext, ext.begin(), [](const unsigned char c) { return std::tolower(c); });
 		if (ext != ".ini")
 		{
 			loi = "Lỗi: Tệp không phải định dạng .ini!";
@@ -200,4 +211,75 @@ void ch_macdinh()
 	fs::remove(ch.tep_dich);
 }
 
+bool kiemtra_khoapro(const std::string& key, std::string& ten_nguoidung, std::string& loi)
+{
+	try
+	{
+		const std::string host = "api.tntstudio.io.vn";
+		const std::string port = "443";
+		const std::string target = "/";
+		constexpr int version = 11;
 
+		net::io_context ioc;
+		boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
+		beast::ssl_stream<tcp::socket> stream(ioc, ctx);
+
+		tcp::resolver resolver(ioc);
+		auto const results = resolver.resolve(host, port);
+
+		net::connect(stream.next_layer(), results);
+
+		if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
+		{
+			boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
+			throw boost::system::system_error{ ec };
+		}
+
+		stream.handshake(boost::asio::ssl::stream_base::client);
+
+		boost::json::object body_obj;
+		body_obj["key"] = key;
+		std::string body_str = boost::json::serialize(body_obj);
+
+		http::request<http::string_body> req{ http::verb::post, target, version };
+		req.set(http::field::host, host);
+		req.set(http::field::user_agent, "ZitApp/1.0");
+		req.set(http::field::content_type, "application/json");
+		req.body() = body_str;
+		req.prepare_payload();
+
+		http::write(stream, req);
+
+		beast::flat_buffer buffer;
+		http::response<http::string_body> res;
+		http::read(stream, buffer, res);
+
+		// Đóng SSL
+		boost::system::error_code ec;
+		(void)stream.shutdown(ec);
+		if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
+		{
+			// Cloudflare đóng sớm – bỏ qua
+			ec.clear();
+		}
+		else if (ec)
+		{
+			throw boost::system::system_error{ ec };
+		}
+
+		// Phân tích JSON phản hồi
+		auto json_res = boost::json::parse(res.body()).as_object();
+		if (json_res.contains("valid") && json_res.at("valid").as_bool())
+		{
+			ten_nguoidung = json_res.at("user").as_string().c_str();
+			return true;
+		}
+		loi = "Key không hợp lệ.";
+		return false;
+
+	} catch (const std::exception& e)
+	{
+		loi = std::string("Lỗi: ") + e.what();
+		return false;
+	}
+}

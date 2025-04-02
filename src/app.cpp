@@ -102,5 +102,3 @@ void dondep(GLFWwindow* cuaso)
 	glfwDestroyWindow(cuaso);
 	glfwTerminate();
 }
-
-
