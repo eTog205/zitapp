@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-boost-x64-windows-2024-05-15-90976671-561e-4a14-b46c-b6f7322ef648",
-  "name": "vcpkg-boost:x64-windows@2024-05-15 234d9322f2bc5c35025e76fa8afb34172d0cb7a5a1c89039078ab488cf3698b3",
+  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-boost-x64-windows-2024-05-15-fa436658-7696-48b9-a2d9-5914082bc991",
+  "name": "vcpkg-boost:x64-windows@2024-05-15 f34d6899007f4fec705126ca529d60065890ad87580b4bb4492f78c4359e21cb",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:12Z"
+    "created": "2025-04-04T03:33:35Z"
   },
   "relationships": [
     {
@@ -78,7 +78,7 @@
       "name": "vcpkg-boost",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "2024-05-15",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@aca8ab6ec76d120c4482a629de23cad5ad7e4643",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
@@ -87,7 +87,7 @@
     {
       "name": "vcpkg-boost:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "234d9322f2bc5c35025e76fa8afb34172d0cb7a5a1c89039078ab488cf3698b3",
+      "versionInfo": "f34d6899007f4fec705126ca529d60065890ad87580b4bb4492f78c4359e21cb",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -97,7 +97,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/vcpkg-boost/boost-install.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/boost-install.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -109,7 +109,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/vcpkg-boost/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -121,7 +121,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/vcpkg-boost/usage.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/usage.in",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -133,7 +133,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/vcpkg-boost/vcpkg-port-config.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/vcpkg-port-config.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -145,7 +145,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/vcpkg-boost/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/vcpkg.json",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {

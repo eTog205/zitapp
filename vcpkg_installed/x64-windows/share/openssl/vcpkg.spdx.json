@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/openssl-x64-windows-3.4.1-dd057fde-ebc0-4385-85ef-290fe07ebe07",
-  "name": "openssl:x64-windows@3.4.1 c38d3783203e6f9f461edb69b4c523a6c3654655e88cfca16a5000f5429a7070",
+  "documentNamespace": "https://spdx.org/spdxdocs/openssl-x64-windows-3.4.1-bb9a6dba-7541-4fa2-a9b3-e8ab8fa72ead",
+  "name": "openssl:x64-windows@3.4.1 b1094a09ec03bd02e9e0afb97a912fc786ab6d36cf176d11b37363b800c0457c",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:37:34Z"
+    "created": "2025-04-04T03:37:09Z"
   },
   "relationships": [
     {
@@ -218,7 +218,7 @@
       "name": "openssl",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "3.4.1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@d740be74dc7940c2b88e69db0b2d181024e1028c",
       "homepage": "https://www.openssl.org",
       "licenseConcluded": "Apache-2.0",
       "licenseDeclared": "NOASSERTION",
@@ -229,7 +229,7 @@
     {
       "name": "openssl:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "c38d3783203e6f9f461edb69b4c523a6c3654655e88cfca16a5000f5429a7070",
+      "versionInfo": "b1094a09ec03bd02e9e0afb97a912fc786ab6d36cf176d11b37363b800c0457c",
       "downloadLocation": "NONE",
       "licenseConcluded": "Apache-2.0",
       "licenseDeclared": "NOASSERTION",
@@ -253,7 +253,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/cmake-config.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/cmake-config.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -265,7 +265,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/command-line-length.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/command-line-length.patch",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -277,7 +277,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/install-pc-files.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/install-pc-files.cmake",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -289,7 +289,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/openssl.pc.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/openssl.pc.in",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -301,7 +301,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/portfile.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -313,7 +313,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/script-prefix.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/script-prefix.patch",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -325,7 +325,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/android-cc.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/android-cc.patch",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -337,7 +337,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/configure",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/configure",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {
@@ -349,7 +349,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/move-openssldir.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/move-openssldir.patch",
       "SPDXID": "SPDXRef-file-8",
       "checksums": [
         {
@@ -361,7 +361,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/no-empty-dirs.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/no-empty-dirs.patch",
       "SPDXID": "SPDXRef-file-9",
       "checksums": [
         {
@@ -373,7 +373,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/no-static-libs-for-shared.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/no-static-libs-for-shared.patch",
       "SPDXID": "SPDXRef-file-10",
       "checksums": [
         {
@@ -385,7 +385,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/portfile.cmake",
       "SPDXID": "SPDXRef-file-11",
       "checksums": [
         {
@@ -397,7 +397,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/unix/remove-deps.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/unix/remove-deps.cmake",
       "SPDXID": "SPDXRef-file-12",
       "checksums": [
         {
@@ -409,7 +409,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/usage",
       "SPDXID": "SPDXRef-file-13",
       "checksums": [
         {
@@ -421,7 +421,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/vcpkg-cmake-wrapper.cmake.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/vcpkg-cmake-wrapper.cmake.in",
       "SPDXID": "SPDXRef-file-14",
       "checksums": [
         {
@@ -433,7 +433,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/vcpkg.json",
       "SPDXID": "SPDXRef-file-15",
       "checksums": [
         {
@@ -445,7 +445,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/windows/install-layout.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/windows/install-layout.patch",
       "SPDXID": "SPDXRef-file-16",
       "checksums": [
         {
@@ -457,7 +457,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/windows/install-pdbs.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/windows/install-pdbs.patch",
       "SPDXID": "SPDXRef-file-17",
       "checksums": [
         {
@@ -469,7 +469,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/openssl/windows/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/openssl/d740be74dc7940c2b88e69db0b2d181024e1028c/windows/portfile.cmake",
       "SPDXID": "SPDXRef-file-18",
       "checksums": [
         {

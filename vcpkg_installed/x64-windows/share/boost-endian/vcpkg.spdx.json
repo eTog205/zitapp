@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-endian-x64-windows-1.87.0-c3a375ac-ce35-4620-8011-f02e441269a0",
-  "name": "boost-endian:x64-windows@1.87.0 11327f4906805e0f1ffb2dc8b6e9bc42f972b06e128af69578f1ba49305bd20b",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-endian-x64-windows-1.87.0-86a6f2ee-0ed4-4da3-90b8-0506d65b3d18",
+  "name": "boost-endian:x64-windows@1.87.0 e3b6a86f5b45800a6ffd2322f62df2d4b2014c91972f98d477106ab61085db51",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:14Z"
+    "created": "2025-04-04T03:34:31Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-endian",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@7f833dd70809fe39992a281c727df7272ddd2fcb",
       "homepage": "https://www.boost.org/libs/endian",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-endian:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "11327f4906805e0f1ffb2dc8b6e9bc42f972b06e128af69578f1ba49305bd20b",
+      "versionInfo": "e3b6a86f5b45800a6ffd2322f62df2d4b2014c91972f98d477106ab61085db51",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-endian/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-endian/7f833dd70809fe39992a281c727df7272ddd2fcb/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-endian/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-endian/7f833dd70809fe39992a281c727df7272ddd2fcb/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

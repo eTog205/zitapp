@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-align-x64-windows-1.87.0-a490f441-9027-47fd-aaea-9a2589d89d55",
-  "name": "boost-align:x64-windows@1.87.0 a3ca3bd01a6cbfca97423fb390749e75576a944bbfa75d2813fcf4761e5406c4",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-align-x64-windows-1.87.0-8a58850a-2754-4af9-a96f-7e3a64fbc59d",
+  "name": "boost-align:x64-windows@1.87.0 770f2dcd52a576911f01aed9053b745377f3a618be854d27a4e205fa697904a6",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:03Z"
+    "created": "2025-04-04T03:34:26Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-align",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@e68b618a2cd8faa62bdb7512b8fb9026f66bccab",
       "homepage": "https://www.boost.org/libs/align",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-align:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "a3ca3bd01a6cbfca97423fb390749e75576a944bbfa75d2813fcf4761e5406c4",
+      "versionInfo": "770f2dcd52a576911f01aed9053b745377f3a618be854d27a4e205fa697904a6",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-align/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-align/e68b618a2cd8faa62bdb7512b8fb9026f66bccab/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-align/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-align/e68b618a2cd8faa62bdb7512b8fb9026f66bccab/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

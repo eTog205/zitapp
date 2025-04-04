@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-tuple-x64-windows-1.87.0-c9aca848-4b92-4a3e-abf2-e18f5108b576",
-  "name": "boost-tuple:x64-windows@1.87.0 508382391b0fffde44d7654d64056c861f4cb4a7bf7f789d95d8a1e55269bd90",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-tuple-x64-windows-1.87.0-9419cc91-0564-4993-924d-e3de7d36636c",
+  "name": "boost-tuple:x64-windows@1.87.0 cc11b7091c3e9d6a204e2173bde852cf0993b8567b31a03fa50382a45eb2d59e",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:23Z"
+    "created": "2025-04-04T03:33:55Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-tuple",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@742499dcbd56ae28d11af26b2c563cc598732d83",
       "homepage": "https://www.boost.org/libs/tuple",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-tuple:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "508382391b0fffde44d7654d64056c861f4cb4a7bf7f789d95d8a1e55269bd90",
+      "versionInfo": "cc11b7091c3e9d6a204e2173bde852cf0993b8567b31a03fa50382a45eb2d59e",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-tuple/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-tuple/742499dcbd56ae28d11af26b2c563cc598732d83/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-tuple/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-tuple/742499dcbd56ae28d11af26b2c563cc598732d83/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

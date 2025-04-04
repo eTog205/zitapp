@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-winapi-x64-windows-1.87.0-2c0c3ae9-120b-4873-80fb-84642b3589f7",
-  "name": "boost-winapi:x64-windows@1.87.0 2398e392297039f526c78ad327c66e450b793c487dff12b5b7b2ef37f8fd5b01",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-winapi-x64-windows-1.87.0-257fe0ab-c3bb-4ee6-89e3-050284caa744",
+  "name": "boost-winapi:x64-windows@1.87.0 2c504569b22b624d16bf5230747e7323b9ebd1a0950a7caa9fbf3ec84bd1187d",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:39Z"
+    "created": "2025-04-04T03:33:41Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-winapi",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@9c479ba00f4e2401e518595446748e4394cd9568",
       "homepage": "https://www.boost.org/libs/winapi",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-winapi:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "2398e392297039f526c78ad327c66e450b793c487dff12b5b7b2ef37f8fd5b01",
+      "versionInfo": "2c504569b22b624d16bf5230747e7323b9ebd1a0950a7caa9fbf3ec84bd1187d",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-winapi/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/9c479ba00f4e2401e518595446748e4394cd9568/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-winapi/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/9c479ba00f4e2401e518595446748e4394cd9568/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

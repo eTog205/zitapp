@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-optional-x64-windows-1.87.0#1-5abe0f96-a8c6-4c64-b123-94708a410ca3",
-  "name": "boost-optional:x64-windows@1.87.0#1 47a753d6175bbda75e319656af209c18ab89a69f9c7948bf97dc61a872e6e4b3",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-optional-x64-windows-1.87.0#1-ed95be31-daea-4aaa-83fa-ab98faf40153",
+  "name": "boost-optional:x64-windows@1.87.0#1 3b27be67a2a0100fdcc8fc4816a149f6f9120a4f61eca8808cd1290a8a4748ba",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:43Z"
+    "created": "2025-04-04T03:33:52Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-optional",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@fe57251855d60463135bebf003e322373662baa4",
       "homepage": "https://www.boost.org/libs/optional",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-optional:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "47a753d6175bbda75e319656af209c18ab89a69f9c7948bf97dc61a872e6e4b3",
+      "versionInfo": "3b27be67a2a0100fdcc8fc4816a149f6f9120a4f61eca8808cd1290a8a4748ba",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-optional/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-optional/fe57251855d60463135bebf003e322373662baa4/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-optional/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-optional/fe57251855d60463135bebf003e322373662baa4/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

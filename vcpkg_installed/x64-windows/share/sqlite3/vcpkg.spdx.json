@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/sqlite3-x64-windows-3.49.1-8b8e7047-335e-4149-a3b8-d37eab0d1f67",
-  "name": "sqlite3:x64-windows@3.49.1 5f581e1c22ab6b5b4e08f14e23567f90edee45c2ba9454e4733c814b1e401302",
+  "documentNamespace": "https://spdx.org/spdxdocs/sqlite3-x64-windows-3.49.1-8a0eb21a-21a6-4b19-afa7-72993a44c333",
+  "name": "sqlite3:x64-windows@3.49.1 47545b36fba98511d944c677324ed0c672591a2550c91ffb56a98d6e4c558334",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:36:04Z"
+    "created": "2025-04-04T03:37:26Z"
   },
   "relationships": [
     {
@@ -118,7 +118,7 @@
       "name": "sqlite3",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "3.49.1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@92c7e25e29daa51849b0f0b82bae84898ebb80d9",
       "homepage": "https://sqlite.org/",
       "licenseConcluded": "blessing",
       "licenseDeclared": "NOASSERTION",
@@ -129,7 +129,7 @@
     {
       "name": "sqlite3:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "5f581e1c22ab6b5b4e08f14e23567f90edee45c2ba9454e4733c814b1e401302",
+      "versionInfo": "47545b36fba98511d944c677324ed0c672591a2550c91ffb56a98d6e4c558334",
       "downloadLocation": "NONE",
       "licenseConcluded": "blessing",
       "licenseDeclared": "NOASSERTION",
@@ -154,7 +154,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/add-config-include.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/add-config-include.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -166,7 +166,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/CMakeLists.txt",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/CMakeLists.txt",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -178,7 +178,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/fix-arm-uwp.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/fix-arm-uwp.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -190,7 +190,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/portfile.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -202,7 +202,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/sqlite3-config.in.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3-config.in.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -214,7 +214,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/sqlite3-vcpkg-config.h.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3-vcpkg-config.h.in",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -226,7 +226,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/sqlite3.pc.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3.pc.in",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -238,7 +238,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/usage",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {
@@ -250,7 +250,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/sqlite3/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/vcpkg.json",
       "SPDXID": "SPDXRef-file-8",
       "checksums": [
         {

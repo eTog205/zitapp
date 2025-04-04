@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-ratio-x64-windows-1.87.0-7816ca9f-3213-4665-83e2-c39f63ff774c",
-  "name": "boost-ratio:x64-windows@1.87.0 49a98d1c6162f0592bf8c43e756c8279d98cdc045d96457e68e766a8f246ffbe",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-ratio-x64-windows-1.87.0-0734be86-3321-4f90-8450-f103b652d7bc",
+  "name": "boost-ratio:x64-windows@1.87.0 4396e21885fcbcc9ba5842f5a589b7eb2f70af817dddb12dbe761d35e3f7b6e8",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:00Z"
+    "created": "2025-04-04T03:34:35Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-ratio",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@db4e9073d21826b2dbc6128cf771d903a5b05634",
       "homepage": "https://www.boost.org/libs/ratio",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-ratio:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "49a98d1c6162f0592bf8c43e756c8279d98cdc045d96457e68e766a8f246ffbe",
+      "versionInfo": "4396e21885fcbcc9ba5842f5a589b7eb2f70af817dddb12dbe761d35e3f7b6e8",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-ratio/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-ratio/db4e9073d21826b2dbc6128cf771d903a5b05634/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-ratio/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-ratio/db4e9073d21826b2dbc6128cf771d903a5b05634/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

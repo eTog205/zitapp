@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.87.0#1-e7a77f86-8370-4a75-b880-926567c609af",
-  "name": "boost-asio:x64-windows@1.87.0#1 ba7c12050ad146dc9faf859160b233e8e14af14136fce7006d4168443714ae46",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.87.0#1-b6b422e2-6bb5-4174-bd0a-8e3ea5aca643",
+  "name": "boost-asio:x64-windows@1.87.0#1 6c722542c55297492ea2c7d9714afcbd376ae8525e6f92df4cd98135174f877f",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:35:52Z"
+    "created": "2025-04-04T03:34:28Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "boost-asio",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@05c6ddb5e69d7b3397822f72d7b582757e0f8dd7",
       "homepage": "https://www.boost.org/libs/asio",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-asio:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ba7c12050ad146dc9faf859160b233e8e14af14136fce7006d4168443714ae46",
+      "versionInfo": "6c722542c55297492ea2c7d9714afcbd376ae8525e6f92df4cd98135174f877f",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-asio/opt-dep.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/opt-dep.diff",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-asio/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-asio/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {

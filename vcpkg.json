@@ -18,6 +18,7 @@
     "boost-dll",
     "boost-interprocess",
     "boost-property-tree",
+    "boost-filesystem",
     "sqlite3",
     "openssl",
     "spdlog"

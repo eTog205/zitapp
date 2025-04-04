@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-smart-ptr-x64-windows-1.87.0-d9e3df74-d0ff-454e-8450-c1a593151a46",
-  "name": "boost-smart-ptr:x64-windows@1.87.0 b738c8c58c381066e4a25b465df0771bd8c9bc4bf870d4819f78ab52e8ea11b0",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-smart-ptr-x64-windows-1.87.0-99f23590-8658-4e23-bc9b-ee529dd63650",
+  "name": "boost-smart-ptr:x64-windows@1.87.0 3c289eb16380809dcd57fa7f4f0b2d73bcdd88271d8dfc68cca6fab78e65cd5c",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:42Z"
+    "created": "2025-04-04T03:33:51Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-smart-ptr",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@5e6365ae738cb18fbe9208f05b442153429dc665",
       "homepage": "https://www.boost.org/libs/smart_ptr",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-smart-ptr:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "b738c8c58c381066e4a25b465df0771bd8c9bc4bf870d4819f78ab52e8ea11b0",
+      "versionInfo": "3c289eb16380809dcd57fa7f4f0b2d73bcdd88271d8dfc68cca6fab78e65cd5c",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-smart-ptr/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-smart-ptr/5e6365ae738cb18fbe9208f05b442153429dc665/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-smart-ptr/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-smart-ptr/5e6365ae738cb18fbe9208f05b442153429dc665/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

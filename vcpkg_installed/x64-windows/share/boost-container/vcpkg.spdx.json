@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-container-x64-windows-1.87.0-294a3811-87e0-4805-8a3a-dea64a740527",
-  "name": "boost-container:x64-windows@1.87.0 7037bca4c6768048392c0992c435cfcb21b65fdebb2d6935f038de4195b1068f",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-container-x64-windows-1.87.0-b623f6af-b6fc-4a92-8de2-0ac8625e5bb9",
+  "name": "boost-container:x64-windows@1.87.0 a78a336ceff3eb9e58f3183d22ab68818e2049079a00e5949f7087931f4e2599",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:56Z"
+    "created": "2025-04-04T03:34:17Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "boost-container",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@9ce8e6d6ddea731693f35c1f3d7f5a77b3826fbb",
       "homepage": "https://www.boost.org/libs/container",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-container:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "7037bca4c6768048392c0992c435cfcb21b65fdebb2d6935f038de4195b1068f",
+      "versionInfo": "a78a336ceff3eb9e58f3183d22ab68818e2049079a00e5949f7087931f4e2599",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-container/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-container/9ce8e6d6ddea731693f35c1f3d7f5a77b3826fbb/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-container/posix-threads.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-container/9ce8e6d6ddea731693f35c1f3d7f5a77b3826fbb/posix-threads.diff",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-container/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-container/9ce8e6d6ddea731693f35c1f3d7f5a77b3826fbb/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {

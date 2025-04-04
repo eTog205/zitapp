@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-function-types-x64-windows-1.87.0-a3a6748b-e6ea-4b78-9600-33f941d72430",
-  "name": "boost-function-types:x64-windows@1.87.0 fb99c868b9a2a33305183c6c3ba173c1c1eecb7d8eda08efa362c6af1125b363",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-function-types-x64-windows-1.87.0-10ecf85f-cca1-4faa-ab1f-a0d231704dc3",
+  "name": "boost-function-types:x64-windows@1.87.0 020a33b4ddf3bcb72870a2d15e69356b6b4094dda94fbc01eb708f6a9634c97a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:30Z"
+    "created": "2025-04-04T03:33:57Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-function-types",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@3cb3d8dbaaf5d4a17dc611f0a97ea399413e336a",
       "homepage": "https://www.boost.org/libs/function_types",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-function-types:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "fb99c868b9a2a33305183c6c3ba173c1c1eecb7d8eda08efa362c6af1125b363",
+      "versionInfo": "020a33b4ddf3bcb72870a2d15e69356b6b4094dda94fbc01eb708f6a9634c97a",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-function-types/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-function-types/3cb3d8dbaaf5d4a17dc611f0a97ea399413e336a/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-function-types/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-function-types/3cb3d8dbaaf5d4a17dc611f0a97ea399413e336a/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

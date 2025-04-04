@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-concept-check-x64-windows-1.87.0-c3c091fd-8ed5-473b-9db3-e80c01fe0c44",
-  "name": "boost-concept-check:x64-windows@1.87.0 9f56255bcabcb479397ffa81cc7cba1b8bdddcfd5ca1ce935c58c10735284d23",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-concept-check-x64-windows-1.87.0-b3ed7aaa-b8ad-443c-a435-acc0865093dd",
+  "name": "boost-concept-check:x64-windows@1.87.0 4ac34a5d77a1b7f51011269bf9ae1a4e38ec5536a92ca8852fcb5fb243152cbe",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:45Z"
+    "created": "2025-04-04T03:34:04Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-concept-check",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@0a3ddd0539fd3000331ac43db3fd6c11d3338ff8",
       "homepage": "https://www.boost.org/libs/concept_check",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-concept-check:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "9f56255bcabcb479397ffa81cc7cba1b8bdddcfd5ca1ce935c58c10735284d23",
+      "versionInfo": "4ac34a5d77a1b7f51011269bf9ae1a4e38ec5536a92ca8852fcb5fb243152cbe",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-concept-check/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-concept-check/0a3ddd0539fd3000331ac43db3fd6c11d3338ff8/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-concept-check/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-concept-check/0a3ddd0539fd3000331ac43db3fd6c11d3338ff8/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

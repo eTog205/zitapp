@@ -26,7 +26,7 @@
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi /RTC1 /MDd /W4 /WX", //có thể bỏ /W4 /WX nếu thấy rắc rối
+        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi /RTC1 /MDd /W4 /WX", // /W4 /WX
         "CMAKE_EXE_LINKER_FLAGS_DEBUG": "/DEBUG:FULL /INCREMENTAL /OPT:NOREF"
       }
     },

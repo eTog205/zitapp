@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-logic-x64-windows-1.87.0-7df3ba8c-81a6-459e-af12-70c2e2e005de",
-  "name": "boost-logic:x64-windows@1.87.0 dd719a5a5d7bf68fdc0eec19b44a5443bd688ccceddead7657f30f9d446d6ff4",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-logic-x64-windows-1.87.0-8fbc07bc-83f0-412a-adfd-ae156cadc362",
+  "name": "boost-logic:x64-windows@1.87.0 85749f55071b1f90abc4d4152bdc97dc5239a715d24c875c9fb8350afd87c19d",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:35:09Z"
+    "created": "2025-04-04T03:34:31Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-logic",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@f9b23fd1f012a637173382e92fd2b96a81a23658",
       "homepage": "https://www.boost.org/libs/logic",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-logic:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "dd719a5a5d7bf68fdc0eec19b44a5443bd688ccceddead7657f30f9d446d6ff4",
+      "versionInfo": "85749f55071b1f90abc4d4152bdc97dc5239a715d24c875c9fb8350afd87c19d",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-logic/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-logic/f9b23fd1f012a637173382e92fd2b96a81a23658/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-logic/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-logic/f9b23fd1f012a637173382e92fd2b96a81a23658/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

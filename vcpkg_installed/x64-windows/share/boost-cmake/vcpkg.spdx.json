@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-cmake-x64-windows-1.87.0-4827d439-8652-41c0-b0f3-c9d95e8d8d7c",
-  "name": "boost-cmake:x64-windows@1.87.0 3e9a22283a8dd07cb43647590eb9f70aa30d40ec0acf77eb4b40a48805d6ddf6",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-cmake-x64-windows-1.87.0-f09caeb6-892c-4b83-9e65-51946e682b54",
+  "name": "boost-cmake:x64-windows@1.87.0 3c3ca3b05ae5f069f89a8e6ef597320c67a899d43d68ec28807e0511fccb40f0",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:13Z"
+    "created": "2025-04-04T03:33:35Z"
   },
   "relationships": [
     {
@@ -148,7 +148,7 @@
       "name": "boost-cmake",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@505ce95a9945e5733f94e90fc683c13b6f6b7457",
       "homepage": "https://github.com/boostorg/cmake",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -159,7 +159,7 @@
     {
       "name": "boost-cmake:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "3e9a22283a8dd07cb43647590eb9f70aa30d40ec0acf77eb4b40a48805d6ddf6",
+      "versionInfo": "3c3ca3b05ae5f069f89a8e6ef597320c67a899d43d68ec28807e0511fccb40f0",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -197,7 +197,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/add-optional-deps.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/add-optional-deps.diff",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -209,7 +209,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/CMakeLists.txt.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/CMakeLists.txt.in",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -221,7 +221,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/fix-mpi.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/fix-mpi.diff",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -233,7 +233,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/no-config-suffix.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/no-config-suffix.diff",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -245,7 +245,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/no-honor-static.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/no-honor-static.diff",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -257,7 +257,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/no-prefix.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/no-prefix.diff",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -269,7 +269,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/portfile.cmake",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -281,7 +281,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/ref_sha.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/ref_sha.cmake",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {
@@ -293,7 +293,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/usage",
       "SPDXID": "SPDXRef-file-8",
       "checksums": [
         {
@@ -305,7 +305,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/vcpkg-build.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/vcpkg-build.diff",
       "SPDXID": "SPDXRef-file-9",
       "checksums": [
         {
@@ -317,7 +317,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/vcpkg-port-config.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/vcpkg-port-config.cmake",
       "SPDXID": "SPDXRef-file-10",
       "checksums": [
         {
@@ -329,7 +329,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-cmake/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-cmake/505ce95a9945e5733f94e90fc683c13b6f6b7457/vcpkg.json",
       "SPDXID": "SPDXRef-file-11",
       "checksums": [
         {

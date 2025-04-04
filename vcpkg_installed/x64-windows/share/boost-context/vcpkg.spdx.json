@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-context-x64-windows-1.87.0#1-7cd28052-362f-4ee3-a85a-21bbf6bf3e6c",
-  "name": "boost-context:x64-windows@1.87.0#1 e83e97260a5e8c1e214ce7ab71386f903c177597cd23cf2ee0b519d689bc7ac5",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-context-x64-windows-1.87.0#1-6fd1c59c-c3fc-4d46-922f-5e57ec928dc7",
+  "name": "boost-context:x64-windows@1.87.0#1 ac0a9c151d718f63e9ec64f24aacf0c5762f4dad926f74ad50f05ce4c0c6d4ac",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:35:51Z"
+    "created": "2025-04-04T03:34:26Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "boost-context",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@41dfcdb2574b9d0f36ee932fabc31bf3f0499a99",
       "homepage": "https://www.boost.org/libs/context",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-context:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "e83e97260a5e8c1e214ce7ab71386f903c177597cd23cf2ee0b519d689bc7ac5",
+      "versionInfo": "ac0a9c151d718f63e9ec64f24aacf0c5762f4dad926f74ad50f05ce4c0c6d4ac",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-context/marmasm.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-context/41dfcdb2574b9d0f36ee932fabc31bf3f0499a99/marmasm.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-context/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-context/41dfcdb2574b9d0f36ee932fabc31bf3f0499a99/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-context/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-context/41dfcdb2574b9d0f36ee932fabc31bf3f0499a99/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {

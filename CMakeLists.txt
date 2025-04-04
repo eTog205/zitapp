@@ -1,15 +1,13 @@
-# E:/source/zitapp/CMakeLists.txt
 cmake_minimum_required(VERSION 3.30)
-cmake_policy(SET CMP0167 NEW)
 
 project(zitapp LANGUAGES CXX)
 
-set(CMAKE_COLOR_DIAGNOSTICS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+cmake_policy(SET CMP0167 NEW)
+
 add_compile_definitions(_WIN32_WINNT=0x0A00)
 
-# tự động chạy vcpkg install
 if(EXISTS "E:/dev/vcpkg/vcpkg.exe")
   message(STATUS "[vcpkg] ✅ Đã tìm thấy vcpkg, đang cài gói...")
   execute_process(
@@ -26,12 +24,28 @@ else()
   message(WARNING "[vcpkg] ⚠ Không tìm thấy vcpkg ở E:/dev/vcpkg/vcpkg.exe → bỏ qua cài đặt.")
 endif()
 
-find_package(Boost REQUIRED COMPONENTS json asio beast process unordered dll interprocess property_tree)
-find_package(spdlog REQUIRED)
-find_package(glfw3 CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
-find_package(unofficial-sqlite3 CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
+find_package(boost_json CONFIG REQUIRED)
+find_package(boost_asio CONFIG REQUIRED)
+find_package(boost_beast CONFIG REQUIRED)
+find_package(boost_unordered CONFIG REQUIRED)
+find_package(boost_process CONFIG REQUIRED)
+find_package(boost_dll CONFIG REQUIRED)
+find_package(boost_interprocess CONFIG REQUIRED)
+find_package(boost_property_tree CONFIG REQUIRED)
+find_package(boost_filesystem CONFIG REQUIRED)
+
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/tienich
+    ${CMAKE_SOURCE_DIR}/giaodien
+    ${CMAKE_SOURCE_DIR}/csdl
+)
 
 file(GLOB_RECURSE ZITAPP_SOURCES CONFIGURE_DEPENDS src/*.cpp)
 file(GLOB_RECURSE TIENICH_SRC CONFIGURE_DEPENDS "tienich/*.cpp" "tienich/*.h")
@@ -52,18 +66,7 @@ target_include_directories(chung PUBLIC
     ${CMAKE_SOURCE_DIR}/csdl
 )
 
-add_executable(zitapp ${ZITAPP_SOURCES})
-
-target_include_directories(zitapp PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/tienich
-    ${CMAKE_SOURCE_DIR}/giaodien
-    ${CMAKE_SOURCE_DIR}/csdl
-)
-
-target_link_libraries(zitapp PRIVATE
-    chung
+target_link_libraries(chung PUBLIC
     imgui::imgui
     glfw
     Boost::json
@@ -74,6 +77,7 @@ target_link_libraries(zitapp PRIVATE
     Boost::dll
     Boost::interprocess
     Boost::property_tree
+    Boost::filesystem
     OpenSSL::SSL
     OpenSSL::Crypto
     unofficial::sqlite3::sqlite3
@@ -81,10 +85,14 @@ target_link_libraries(zitapp PRIVATE
     opengl32
 )
 
+add_executable(zitapp ${ZITAPP_SOURCES})
+
+target_link_libraries(zitapp PRIVATE chung)
+
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/zitapp.rc")
     target_sources(zitapp PRIVATE zitapp.rc)
 endif()
 
-# copy toàn bộ thư mục tài nguyên vào thư mục build
 file(COPY ${CMAKE_SOURCE_DIR}/tainguyen DESTINATION ${CMAKE_BINARY_DIR})
-add_subdirectory(capnhat EXCLUDE_FROM_ALL)
+
+add_subdirectory(capnhat)

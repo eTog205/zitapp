@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-proto-x64-windows-1.87.0-6fdfd08e-99f0-4573-b0fe-cd15e9e66620",
-  "name": "boost-proto:x64-windows@1.87.0 2c7f902286f6cd50ce446c99c382a5d3dfe14ef8f11865295e403c444cfd4313",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-proto-x64-windows-1.87.0-ccd5dbcd-70f4-482d-8a66-728124478310",
+  "name": "boost-proto:x64-windows@1.87.0 5eac9513e50292c21a5ec95ef551af8f3ceb00576fcf5f85ac9bb040f081ac89",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:11Z"
+    "created": "2025-04-04T03:34:45Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-proto",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@bfbdb650b3e8211eb952c209c25626574994ade2",
       "homepage": "https://www.boost.org/libs/proto",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-proto:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "2c7f902286f6cd50ce446c99c382a5d3dfe14ef8f11865295e403c444cfd4313",
+      "versionInfo": "5eac9513e50292c21a5ec95ef551af8f3ceb00576fcf5f85ac9bb040f081ac89",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-proto/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-proto/bfbdb650b3e8211eb952c209c25626574994ade2/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-proto/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-proto/bfbdb650b3e8211eb952c209c25626574994ade2/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

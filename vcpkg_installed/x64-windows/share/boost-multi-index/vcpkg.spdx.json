@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-multi-index-x64-windows-1.87.0-35e9d909-c3e2-46b7-8977-f12ba016b17e",
-  "name": "boost-multi-index:x64-windows@1.87.0 fe71a75be546ae8a97d4b1604666b866254e35abfadd01d8ce250b91b539be31",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-multi-index-x64-windows-1.87.0-a429761b-313f-46f2-a9b8-d34f57a168b2",
+  "name": "boost-multi-index:x64-windows@1.87.0 795b93dff18c834c8a47bfef654422b40b9691205ca52baf4064b87cb116cce1",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:27Z"
+    "created": "2025-04-04T03:35:24Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-multi-index",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@603e63775ca778f5d2e59040c1b8cd52399c70ea",
       "homepage": "https://www.boost.org/libs/multi_index",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-multi-index:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "fe71a75be546ae8a97d4b1604666b866254e35abfadd01d8ce250b91b539be31",
+      "versionInfo": "795b93dff18c834c8a47bfef654422b40b9691205ca52baf4064b87cb116cce1",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-multi-index/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-multi-index/603e63775ca778f5d2e59040c1b8cd52399c70ea/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-multi-index/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-multi-index/603e63775ca778f5d2e59040c1b8cd52399c70ea/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

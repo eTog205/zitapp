@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.15.1#1-fb8742de-7ecc-451d-a805-c9db07e885bc",
-  "name": "spdlog:x64-windows@1.15.1#1 833319199735e0cbdbb061951710fb405ebc7f65fcec4f64f86be2130d0b1763",
+  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.15.1#1-093cf019-1c45-486b-a0b6-9bdf434a35f7",
+  "name": "spdlog:x64-windows@1.15.1#1 a9410d506f602d82c2063b28ee03b36d908d46f99077e214875824d6b234c521",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:32:30Z"
+    "created": "2025-04-04T03:37:17Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "spdlog",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.15.1#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@0897c1cad98251e9bf2b04124d1daf522b2697e5",
       "homepage": "https://github.com/gabime/spdlog",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "spdlog:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "833319199735e0cbdbb061951710fb405ebc7f65fcec4f64f86be2130d0b1763",
+      "versionInfo": "a9410d506f602d82c2063b28ee03b36d908d46f99077e214875824d6b234c521",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/spdlog/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/0897c1cad98251e9bf2b04124d1daf522b2697e5/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/spdlog/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/0897c1cad98251e9bf2b04124d1daf522b2697e5/usage",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/spdlog/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/0897c1cad98251e9bf2b04124d1daf522b2697e5/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {

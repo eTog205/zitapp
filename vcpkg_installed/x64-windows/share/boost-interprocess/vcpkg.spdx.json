@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-interprocess-x64-windows-1.87.0#1-6c142ad8-1809-452e-b36b-91037013b1e2",
-  "name": "boost-interprocess:x64-windows@1.87.0#1 9493cda5283f9e2358525610832cbf74ca046877a47992f6da7af12217881c46",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-interprocess-x64-windows-1.87.0#1-cc392323-daf4-4bf9-97b4-cb063242ccdb",
+  "name": "boost-interprocess:x64-windows@1.87.0#1 6a82957152d86a16a60c4a21b98049baff5267e0da8b284244d4015495f833a6",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:42:53Z"
+    "created": "2025-04-04T03:34:58Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-interprocess",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@480f6f44c3767ccd6c591ca65aa1f2548369ddc6",
       "homepage": "https://www.boost.org/libs/interprocess",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-interprocess:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "9493cda5283f9e2358525610832cbf74ca046877a47992f6da7af12217881c46",
+      "versionInfo": "6a82957152d86a16a60c4a21b98049baff5267e0da8b284244d4015495f833a6",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -98,7 +98,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-interprocess/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-interprocess/480f6f44c3767ccd6c591ca65aa1f2548369ddc6/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -110,7 +110,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-interprocess/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-interprocess/480f6f44c3767ccd6c591ca65aa1f2548369ddc6/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

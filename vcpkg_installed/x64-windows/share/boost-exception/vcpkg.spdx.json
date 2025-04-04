@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-exception-x64-windows-1.87.0-6733bc82-9b7e-43b4-b38a-1c512994e84a",
-  "name": "boost-exception:x64-windows@1.87.0 7357466a55727cd6c54946e82e54453f77c6755f6bc2a2984596135dd6d266d1",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-exception-x64-windows-1.87.0-d2b24c78-000d-498d-93fc-350a541a7ba9",
+  "name": "boost-exception:x64-windows@1.87.0 386cb37cf44bd20c16170f01988fad598c85578e9281801d089aa00c78a7a5a3",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:44Z"
+    "created": "2025-04-04T03:34:20Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "boost-exception",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@e98b1b931df90dd5d25c28910815e9b17b83a2bf",
       "homepage": "https://www.boost.org/libs/exception",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-exception:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "7357466a55727cd6c54946e82e54453f77c6755f6bc2a2984596135dd6d266d1",
+      "versionInfo": "386cb37cf44bd20c16170f01988fad598c85578e9281801d089aa00c78a7a5a3",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-exception/features.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-exception/e98b1b931df90dd5d25c28910815e9b17b83a2bf/features.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-exception/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-exception/e98b1b931df90dd5d25c28910815e9b17b83a2bf/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-exception/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-exception/e98b1b931df90dd5d25c28910815e9b17b83a2bf/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {

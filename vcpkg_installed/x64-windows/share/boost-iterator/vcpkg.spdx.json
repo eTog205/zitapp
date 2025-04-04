@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-iterator-x64-windows-1.87.0-70ab6e69-752c-4a88-8802-9b88bf2c33c2",
-  "name": "boost-iterator:x64-windows@1.87.0 60a7a8f44e574ab59e831aa49f6910cdc34a01a377a1af8a0b578d58a2d3171d",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-iterator-x64-windows-1.87.0-ba147375-8863-4d53-90c5-884850979655",
+  "name": "boost-iterator:x64-windows@1.87.0 dc65856a6dfeaac799a78d2220524f102283940122c99d87a1f1ab5da8387a53",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:46Z"
+    "created": "2025-04-04T03:34:05Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-iterator",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@5dc5136e9ababa4323919a8801c4bbd9fbb74122",
       "homepage": "https://www.boost.org/libs/iterator",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-iterator:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "60a7a8f44e574ab59e831aa49f6910cdc34a01a377a1af8a0b578d58a2d3171d",
+      "versionInfo": "dc65856a6dfeaac799a78d2220524f102283940122c99d87a1f1ab5da8387a53",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-iterator/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-iterator/5dc5136e9ababa4323919a8801c4bbd9fbb74122/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-iterator/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-iterator/5dc5136e9ababa4323919a8801c4bbd9fbb74122/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

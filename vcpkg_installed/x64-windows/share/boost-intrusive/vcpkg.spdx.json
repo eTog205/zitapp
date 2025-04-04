@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-intrusive-x64-windows-1.87.0-7c5f2c63-5c49-4fa8-b915-b905ec1047b0",
-  "name": "boost-intrusive:x64-windows@1.87.0 8eb1c2fe2f83bdc9d8f9719ed7e33d63cbfe848bc5ba3dadb73f6a7d321b38bf",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-intrusive-x64-windows-1.87.0-323ba19e-ad22-4e4f-b01d-d17501fe3aba",
+  "name": "boost-intrusive:x64-windows@1.87.0 b0e1c8ddc0d0cb7789f51e9f0a5fc3e33aca0bc02614f47fa7a9af0b59b1fb48",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:54Z"
+    "created": "2025-04-04T03:34:15Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-intrusive",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@543b1bdd8a5e50c2970fca90fa0742f22aa3187c",
       "homepage": "https://www.boost.org/libs/intrusive",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-intrusive:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "8eb1c2fe2f83bdc9d8f9719ed7e33d63cbfe848bc5ba3dadb73f6a7d321b38bf",
+      "versionInfo": "b0e1c8ddc0d0cb7789f51e9f0a5fc3e33aca0bc02614f47fa7a9af0b59b1fb48",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-intrusive/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-intrusive/543b1bdd8a5e50c2970fca90fa0742f22aa3187c/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-intrusive/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-intrusive/543b1bdd8a5e50c2970fca90fa0742f22aa3187c/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/imgui-x64-windows-1.91.9-b586c60e-f210-4f99-a490-19af14649924",
-  "name": "imgui:x64-windows@1.91.9 34b12014b69b488b633c5adb41b3e82a7b4fed754c4a4f8223d6aa60e331ab6c",
+  "documentNamespace": "https://spdx.org/spdxdocs/imgui-x64-windows-1.91.9-7dd2c2f0-4450-4e9e-81ea-06eedad52342",
+  "name": "imgui:x64-windows@1.91.9 7776d51b7b299d10e12cdc32a1330d86cd0a423f37f4eaafa5494b99293cb604",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T23:03:22Z"
+    "created": "2025-04-04T03:35:32Z"
   },
   "relationships": [
     {
@@ -68,7 +68,7 @@
       "name": "imgui",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.91.9",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@cecad336497c19491c07fead1897ac139a173ed2",
       "homepage": "https://github.com/ocornut/imgui",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -79,7 +79,7 @@
     {
       "name": "imgui:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "34b12014b69b488b633c5adb41b3e82a7b4fed754c4a4f8223d6aa60e331ab6c",
+      "versionInfo": "7776d51b7b299d10e12cdc32a1330d86cd0a423f37f4eaafa5494b99293cb604",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -146,7 +146,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/imgui/CMakeLists.txt",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/imgui/cecad336497c19491c07fead1897ac139a173ed2/CMakeLists.txt",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -158,7 +158,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/imgui/imgui-config.cmake.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/imgui/cecad336497c19491c07fead1897ac139a173ed2/imgui-config.cmake.in",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -170,7 +170,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/imgui/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/imgui/cecad336497c19491c07fead1897ac139a173ed2/portfile.cmake",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -182,7 +182,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/imgui/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/imgui/cecad336497c19491c07fead1897ac139a173ed2/vcpkg.json",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {

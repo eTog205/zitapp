@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.87.0#1-dbce49d2-c871-49fb-bd9e-85bf8f62dea3",
-  "name": "boost-lexical-cast:x64-windows@1.87.0#1 11fb892b11c86237ee60f7978849ff5a530072b1bc0fecc3f5ec5248b5b87e47",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.87.0#1-92402790-9120-4af9-9175-4139dad51e90",
+  "name": "boost-lexical-cast:x64-windows@1.87.0#1 fdd96d2ea4b800d4cb5c44817ecfaf5d94255a51ba765f25a1588a76ead69717",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:57Z"
+    "created": "2025-04-04T03:34:18Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-lexical-cast",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1",
       "homepage": "https://www.boost.org/libs/lexical_cast",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-lexical-cast:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "11fb892b11c86237ee60f7978849ff5a530072b1bc0fecc3f5ec5248b5b87e47",
+      "versionInfo": "fdd96d2ea4b800d4cb5c44817ecfaf5d94255a51ba765f25a1588a76ead69717",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-lexical-cast/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-lexical-cast/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

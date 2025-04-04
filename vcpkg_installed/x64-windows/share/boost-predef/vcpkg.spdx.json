@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-predef-x64-windows-1.87.0-de2e2cf7-d98c-430c-b32e-b8ec026ae8b8",
-  "name": "boost-predef:x64-windows@1.87.0 ab9debb78dfc9dcaf1edc81753073bd3edc2158791bcaa377fe50f6fde9eeb65",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-predef-x64-windows-1.87.0-7c63823c-cb62-4a69-bee7-0b01755a9608",
+  "name": "boost-predef:x64-windows@1.87.0 a6680b8c2e59a174b3510369e1da748d097a8982e36a68e2824a3a2ebc9de2c0",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:26Z"
+    "created": "2025-04-04T03:33:40Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-predef",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@b03d87958b87d7b6a214a2b92327db0b780e2ed3",
       "homepage": "https://www.boost.org/libs/predef",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-predef:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ab9debb78dfc9dcaf1edc81753073bd3edc2158791bcaa377fe50f6fde9eeb65",
+      "versionInfo": "a6680b8c2e59a174b3510369e1da748d097a8982e36a68e2824a3a2ebc9de2c0",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-predef/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-predef/b03d87958b87d7b6a214a2b92327db0b780e2ed3/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-predef/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-predef/b03d87958b87d7b6a214a2b92327db0b780e2ed3/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

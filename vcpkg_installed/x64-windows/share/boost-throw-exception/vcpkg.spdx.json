@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-throw-exception-x64-windows-1.87.0-2344cc5c-7b17-49e2-9b0e-d8d2a9de835a",
-  "name": "boost-throw-exception:x64-windows@1.87.0 8ddb95ae0eb932867599653e3487bfe0d80ed77807d8e312f03e0169ec6e0066",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-throw-exception-x64-windows-1.87.0-03be60d9-cfc2-4b7d-8a16-9bab50b49d8f",
+  "name": "boost-throw-exception:x64-windows@1.87.0 dd4ca92bf663caa5bc32bd219150988ea0beaae6ec6b8e63252144c9c33c3223",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:16Z"
+    "created": "2025-04-04T03:33:39Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-throw-exception",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@4a56dd17aa1fb1a18f50d189593938893ec24386",
       "homepage": "https://www.boost.org/libs/throw_exception",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-throw-exception:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "8ddb95ae0eb932867599653e3487bfe0d80ed77807d8e312f03e0169ec6e0066",
+      "versionInfo": "dd4ca92bf663caa5bc32bd219150988ea0beaae6ec6b8e63252144c9c33c3223",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-throw-exception/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-throw-exception/4a56dd17aa1fb1a18f50d189593938893ec24386/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-throw-exception/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-throw-exception/4a56dd17aa1fb1a18f50d189593938893ec24386/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

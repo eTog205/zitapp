@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-spirit-x64-windows-1.87.0-03515807-eebd-4b57-91b1-6f57ed33575b",
-  "name": "boost-spirit:x64-windows@1.87.0 ac2a099d8aa3ad1ffaa90cd2b371c1fa2113bbb63a5ac4e4a7e00aa47291794a",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-spirit-x64-windows-1.87.0-c8a61d22-f2a3-42f8-94f9-1a44bbb95289",
+  "name": "boost-spirit:x64-windows@1.87.0 2c3d150bf07b080f5703940b99e516630efdb19c70ff5da8a9bd33fe69804f4f",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:34:15Z"
+    "created": "2025-04-04T03:34:49Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-spirit",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@69bc4b2d4e89d40766823ba565d52467cb1b25d9",
       "homepage": "https://www.boost.org/libs/spirit",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-spirit:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ac2a099d8aa3ad1ffaa90cd2b371c1fa2113bbb63a5ac4e4a7e00aa47291794a",
+      "versionInfo": "2c3d150bf07b080f5703940b99e516630efdb19c70ff5da8a9bd33fe69804f4f",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-spirit/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-spirit/69bc4b2d4e89d40766823ba565d52467cb1b25d9/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-spirit/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-spirit/69bc4b2d4e89d40766823ba565d52467cb1b25d9/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

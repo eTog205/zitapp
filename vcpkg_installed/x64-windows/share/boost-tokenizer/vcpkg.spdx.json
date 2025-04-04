@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-tokenizer-x64-windows-1.87.0-d1575624-b2ce-4dca-bb99-df5635e82c99",
-  "name": "boost-tokenizer:x64-windows@1.87.0 ebac66f1f6e1e1643f6e70e8ae0ad09c1e3cede89ce3213f801d9b79d0d108a7",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-tokenizer-x64-windows-1.87.0-542ed797-6854-4814-ba73-1548f69d0443",
+  "name": "boost-tokenizer:x64-windows@1.87.0 c8aab4d387c15280e16d76a6b84d3493fd6954f903cd72e263e3bbdd43cbd41b",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:33:47Z"
+    "created": "2025-04-04T03:34:06Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "boost-tokenizer",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.87.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@30bfa8585c66192e1e6eddc5917df7ac3702a488",
       "homepage": "https://www.boost.org/libs/tokenizer",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-tokenizer:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ebac66f1f6e1e1643f6e70e8ae0ad09c1e3cede89ce3213f801d9b79d0d108a7",
+      "versionInfo": "c8aab4d387c15280e16d76a6b84d3493fd6954f903cd72e263e3bbdd43cbd41b",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-tokenizer/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-tokenizer/30bfa8585c66192e1e6eddc5917df7ac3702a488/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/boost-tokenizer/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-tokenizer/30bfa8585c66192e1e6eddc5917df7ac3702a488/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

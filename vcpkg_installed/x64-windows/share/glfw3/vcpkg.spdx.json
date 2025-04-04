@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/glfw3-x64-windows-3.4#1-288a33d4-ec28-4b85-8c09-2cba4255e306",
-  "name": "glfw3:x64-windows@3.4#1 c5b39de495657e49af1c89910cef39ba704cd44ea95f68bca0a40e40ea56ac56",
+  "documentNamespace": "https://spdx.org/spdxdocs/glfw3-x64-windows-3.4#1-5c64f3fc-17b1-4bf9-8ebc-9d98899caae1",
+  "name": "glfw3:x64-windows@3.4#1 86e6f0217ab04486b5f46146b452d2992fa4915d8b32b19255266e325215c259",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-03-26T21:32:23Z"
+    "created": "2025-04-04T03:35:28Z"
   },
   "relationships": [
     {
@@ -58,7 +58,7 @@
       "name": "glfw3",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "3.4#1",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@d4bbd4f27c2ca619f57778985120cddcedadb1cc",
       "homepage": "https://github.com/glfw/glfw",
       "licenseConcluded": "Zlib",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "glfw3:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "c5b39de495657e49af1c89910cef39ba704cd44ea95f68bca0a40e40ea56ac56",
+      "versionInfo": "86e6f0217ab04486b5f46146b452d2992fa4915d8b32b19255266e325215c259",
       "downloadLocation": "NONE",
       "licenseConcluded": "Zlib",
       "licenseDeclared": "NOASSERTION",
@@ -93,7 +93,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/ports/glfw3/glfw3Config.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/glfw3/d4bbd4f27c2ca619f57778985120cddcedadb1cc/glfw3Config.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,7 +105,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/glfw3/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/glfw3/d4bbd4f27c2ca619f57778985120cddcedadb1cc/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,7 +117,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/ports/glfw3/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/glfw3/d4bbd4f27c2ca619f57778985120cddcedadb1cc/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
