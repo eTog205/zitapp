@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-smart-ptr-x64-windows-1.87.0-99f23590-8658-4e23-bc9b-ee529dd63650",
-  "name": "boost-smart-ptr:x64-windows@1.87.0 3c289eb16380809dcd57fa7f4f0b2d73bcdd88271d8dfc68cca6fab78e65cd5c",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-smart-ptr-x64-windows-1.87.0-4aae072d-ed60-4983-8f8a-e2facf912b9e",
+  "name": "boost-smart-ptr:x64-windows@1.87.0 799aa269d335e11148de4ca21d5f383c0a0340a5dc5f25476e4175a05079ba09",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:33:51Z"
+    "created": "2025-04-10T23:55:18Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-smart-ptr:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "3c289eb16380809dcd57fa7f4f0b2d73bcdd88271d8dfc68cca6fab78e65cd5c",
+      "versionInfo": "799aa269d335e11148de4ca21d5f383c0a0340a5dc5f25476e4175a05079ba09",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

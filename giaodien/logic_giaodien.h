@@ -135,4 +135,4 @@ void capnhat_cauhinh(const boost::property_tree::ptree& pt, const std::string& k
 
 void ch_macdinh();
 
-bool kiemtra_khoapro(const std::string& key, std::string& ten_nguoidung, std::string& loi);
+bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan);

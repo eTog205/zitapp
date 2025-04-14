@@ -1,4 +1,4 @@
-﻿//CL_PhanMem.cpp
+﻿// CL_PhanMem.cpp
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 
 #include "app.h"
@@ -27,9 +27,8 @@ int main()
 
 	GLFWwindow* cuaso = khoitao_cuaso();
 	if (!cuaso)
-	{
 		return 1;
-	}
+
 #ifdef _WIN32
 	dat_taskbar_icon(cuaso);
 #endif

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-property-tree-x64-windows-1.87.0-6c6d673c-033c-4355-96d6-3e3af2115a1b",
-  "name": "boost-property-tree:x64-windows@1.87.0 6dcf4d097ddaf1dbffdbf6195df0ab6c796c9281b86a41f767db9ea8cfe0933f",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-property-tree-x64-windows-1.87.0-ab27065f-5952-4fdf-a305-34f53b616e09",
+  "name": "boost-property-tree:x64-windows@1.87.0 9761befba18fff2126aeb73e5d279259be948cb66cfc4c1a711dad65c5fd5ce9",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:35:26Z"
+    "created": "2025-04-10T23:56:52Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-property-tree:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "6dcf4d097ddaf1dbffdbf6195df0ab6c796c9281b86a41f767db9ea8cfe0933f",
+      "versionInfo": "9761befba18fff2126aeb73e5d279259be948cb66cfc4c1a711dad65c5fd5ce9",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

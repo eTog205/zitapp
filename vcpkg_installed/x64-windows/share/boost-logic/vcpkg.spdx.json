@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-logic-x64-windows-1.87.0-8fbc07bc-83f0-412a-adfd-ae156cadc362",
-  "name": "boost-logic:x64-windows@1.87.0 85749f55071b1f90abc4d4152bdc97dc5239a715d24c875c9fb8350afd87c19d",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-logic-x64-windows-1.87.0-e7610d62-25d1-41cb-ae01-f33114d738be",
+  "name": "boost-logic:x64-windows@1.87.0 90879b1dcd312a2f6d17a115db61a50c1ecdb9318b35c163c22340e5e1460b35",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:31Z"
+    "created": "2025-04-10T23:55:56Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-logic:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "85749f55071b1f90abc4d4152bdc97dc5239a715d24c875c9fb8350afd87c19d",
+      "versionInfo": "90879b1dcd312a2f6d17a115db61a50c1ecdb9318b35c163c22340e5e1460b35",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

@@ -1,4 +1,4 @@
-//get.cpp
+// get.cpp
 #include "get.h"
 #include "log_nhalam.h"
 
@@ -79,7 +79,8 @@ std::string send_http_request(const std::string& url, bool is_asset, int redirec
 		read(stream, buffer, parser);
 		auto& res = parser.get();
 
-		if (res.result() == http::status::moved_permanently || res.result() == http::status::found || res.result() == http::status::temporary_redirect || res.result() == http::status::permanent_redirect)
+		if (res.result() == http::status::moved_permanently || res.result() == http::status::found || res.result() == http::status::temporary_redirect ||
+			res.result() == http::status::permanent_redirect)
 		{
 			auto loc = res.find(http::field::location);
 			if (loc != res.end())
@@ -141,11 +142,7 @@ std::string get_release_tag()
 		return "";
 	}
 
-	//không cần
-	//td_log(loai_log::thong_bao, "[get_release_tag] Phản hồi JSON từ GitHub: " + response_body.substr(0, 500));
-
 	json::value jv = parse_json_response(response_body);
-	//cái này có thể không cần kiểm tra
 	if (!jv.is_object() || !jv.as_object().contains("tag_name"))
 	{
 		td_log(loai_log::canh_bao, "Không tìm thấy 'tag_name' trong phản hồi JSON.");
@@ -161,18 +158,15 @@ bool download_file(const std::string& url, const std::string& save_path)
 {
 	const std::string file_content = send_http_request(url, true);
 
-	//không cần
 	if (file_content.empty())
 	{
 		td_log(loai_log::loi, "[download_file] Nội dung tải về rỗng.");
 		return false;
 	}
 
-	// Ghi nội dung nhận được ra file ở chế độ binary
 	std::ofstream ofs(save_path, std::ios::binary);
 	if (!ofs)
 	{
-		//không cần
 		td_log(loai_log::loi, "[download_file] Không mở được file để ghi: " + save_path);
 		return false;
 	}
@@ -218,16 +212,14 @@ bool download_latest_release()
 
 	const auto download_url = json::value_to<std::string>(asset["browser_download_url"]);
 
-	// Lấy tên tệp gốc từ asset (trường "name")
 	if (asset.contains("name"))
 	{
 		tentep = json::value_to<std::string>(asset["name"]);
-	} else
+	}
+	else
 	{
 		tentep = "AppZit.rar";
 	}
 
 	return download_file(download_url, tentep);
 }
-
-

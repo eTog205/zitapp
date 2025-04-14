@@ -1,9 +1,9 @@
 // logic_giaodien.cpp
+#include "logic_giaodien.h"
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
 #include "giaodien.h"
 #include "log_nhalam.h"
-#include "logic_giaodien.h"
 
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -211,75 +211,68 @@ void ch_macdinh()
 	fs::remove(ch.tep_dich);
 }
 
-bool kiemtra_khoapro(const std::string& key, std::string& ten_nguoidung, std::string& loi)
+bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan)
 {
-	try
+
+	const std::string host = "api.tntstudio.io.vn";
+	const std::string port = "443";
+	const std::string target = "/";
+	constexpr int version = 11;
+
+	net::io_context ioc;
+	boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
+	beast::ssl_stream<tcp::socket> stream(ioc, ctx);
+
+	tcp::resolver resolver(ioc);
+	auto const results = resolver.resolve(host, port);
+
+	net::connect(stream.next_layer(), results);
+
+	if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
 	{
-		const std::string host = "api.tntstudio.io.vn";
-		const std::string port = "443";
-		const std::string target = "/";
-		constexpr int version = 11;
-
-		net::io_context ioc;
-		boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
-		beast::ssl_stream<tcp::socket> stream(ioc, ctx);
-
-		tcp::resolver resolver(ioc);
-		auto const results = resolver.resolve(host, port);
-
-		net::connect(stream.next_layer(), results);
-
-		if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
-		{
-			boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
-			throw boost::system::system_error{ ec };
-		}
-
-		stream.handshake(boost::asio::ssl::stream_base::client);
-
-		boost::json::object body_obj;
-		body_obj["key"] = key;
-		std::string body_str = boost::json::serialize(body_obj);
-
-		http::request<http::string_body> req{ http::verb::post, target, version };
-		req.set(http::field::host, host);
-		req.set(http::field::user_agent, "ZitApp/1.0");
-		req.set(http::field::content_type, "application/json");
-		req.body() = body_str;
-		req.prepare_payload();
-
-		http::write(stream, req);
-
-		beast::flat_buffer buffer;
-		http::response<http::string_body> res;
-		http::read(stream, buffer, res);
-
-		// Đóng SSL
-		boost::system::error_code ec;
-		(void)stream.shutdown(ec);
-		if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
-		{
-			// Cloudflare đóng sớm – bỏ qua
-			ec.clear();
-		}
-		else if (ec)
-		{
-			throw boost::system::system_error{ ec };
-		}
-
-		// Phân tích JSON phản hồi
-		auto json_res = boost::json::parse(res.body()).as_object();
-		if (json_res.contains("valid") && json_res.at("valid").as_bool())
-		{
-			ten_nguoidung = json_res.at("user").as_string().c_str();
-			return true;
-		}
-		loi = "Key không hợp lệ.";
-		return false;
-
-	} catch (const std::exception& e)
-	{
-		loi = std::string("Lỗi: ") + e.what();
-		return false;
+		boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
+		throw boost::system::system_error{ ec };
 	}
+
+	stream.handshake(boost::asio::ssl::stream_base::client);
+
+	boost::json::object body_obj;
+	body_obj["key"] = key;
+	std::string body_str = serialize(body_obj);
+
+	http::request<http::string_body> req{ http::verb::post, target, version };
+	req.set(http::field::host, host);
+	req.set(http::field::user_agent, "ZitApp/1.0");
+	req.set(http::field::content_type, "application/json");
+	req.body() = body_str;
+	req.prepare_payload();
+
+	http::write(stream, req);
+
+	beast::flat_buffer buffer;
+	http::response<http::string_body> res;
+	http::read(stream, buffer, res);
+
+	// Đóng SSL
+	boost::system::error_code ec;
+	stream.shutdown(ec);
+	if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
+	{
+		// Cloudflare đóng sớm – bỏ qua
+		ec.clear();
+	}
+	else if (ec)
+	{
+		throw boost::system::system_error{ ec };
+	}
+
+	// Phân tích JSON phản hồi
+	auto json_res = boost::json::parse(res.body()).as_object();
+	if (json_res.contains("valid") && json_res.at("valid").as_bool())
+	{
+		ngayhethan = json_res.at("ngayhethan").as_string().c_str();
+		return true;
+	}
+
+	return false;
 }

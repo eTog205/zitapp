@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-integer-x64-windows-1.87.0-32fce3af-7ee2-4587-8c94-b856db44b155",
-  "name": "boost-integer:x64-windows@1.87.0 99602ad5bde3e98e11919cc0ecf62587a905866cf2997cc019e68df43e2842bd",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-integer-x64-windows-1.87.0-2e8b8304-f04d-4597-a2f1-e6c68f08c803",
+  "name": "boost-integer:x64-windows@1.87.0 db47f0e15c27d944681aab79fd01d141251c57e37a11d3c7b1d8fd4580d28c7c",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:07Z"
+    "created": "2025-04-10T23:55:32Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-integer:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "99602ad5bde3e98e11919cc0ecf62587a905866cf2997cc019e68df43e2842bd",
+      "versionInfo": "db47f0e15c27d944681aab79fd01d141251c57e37a11d3c7b1d8fd4580d28c7c",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

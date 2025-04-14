@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-conversion-x64-windows-1.87.0-5e9b1ae3-9934-4040-828b-679fb49fd86c",
-  "name": "boost-conversion:x64-windows@1.87.0 42a6b0badd8e7c8dc04d8f6b7f1d1d730d6731b6dbaa14ca13272c152040b4cb",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-conversion-x64-windows-1.87.0-6155436a-6242-4811-aa3b-f57c06f2f4cd",
+  "name": "boost-conversion:x64-windows@1.87.0 f9dc1964a0107ac7c605175296d1c35723a775bd616bf5cc439aebdf253aae2c",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:10Z"
+    "created": "2025-04-10T23:55:35Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-conversion:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "42a6b0badd8e7c8dc04d8f6b7f1d1d730d6731b6dbaa14ca13272c152040b4cb",
+      "versionInfo": "f9dc1964a0107ac7c605175296d1c35723a775bd616bf5cc439aebdf253aae2c",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

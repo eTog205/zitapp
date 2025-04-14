@@ -1,7 +1,7 @@
 ﻿// giaodien.cpp
-#include "giaodien.h"
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
+#include "giaodien.h"
 #include "hieuung.h"
 #include "logic_giaodien.h"
 
@@ -481,25 +481,39 @@ void giaodien_tinhnang_xuatnap_cauhinh()
 	}
 }
 
+bool sosanh_ngay(const std::string& ngay_yyyy_mm_dd)
+{
+	std::tm tm = {};
+	std::istringstream ss(ngay_yyyy_mm_dd);
+	ss >> std::get_time(&tm, "%Y-%m-%d");
+	if (ss.fail())
+		return false;
+
+	// Chuyển sang time_t
+	std::time_t ngay_key = std::mktime(&tm);
+	if (ngay_key == -1)
+		return false;
+
+	// Lấy thời gian hiện tại
+	auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+	// So sánh
+	return now <= ngay_key;
+}
+
 void hienthi_nhapkey()
 {
 	static char key_nhap[64] = "";
-	static std::string ketqua = "";
+	static std::string ketqua = "lỗi";
 
 	ImGui::InputText("Nhập key bản quyền", key_nhap, sizeof(key_nhap));
 
 	if (ImGui::Button("Kiểm tra"))
 	{
-		std::string ten_nguoidung, thongbao;
-		if (kiemtra_khoapro(key_nhap, ten_nguoidung, thongbao))
-		{
-			ketqua = "✔ Hợp lệ! Xin chào " + ten_nguoidung;
-			// TODO: Lưu key vào file hoặc set cờ đã kích hoạt
-		}
-		else
-		{
-			ketqua = "❌ " + thongbao;
-		}
+		std::string ngayhethan, thongbao;
+		if (kiemtra_khoapro(key_nhap, ngayhethan))
+			if (sosanh_ngay(ngayhethan))
+				ketqua = "đúng";
 	}
 
 	if (!ketqua.empty())

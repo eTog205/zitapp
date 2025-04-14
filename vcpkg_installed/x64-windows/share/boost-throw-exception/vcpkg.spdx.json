@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-throw-exception-x64-windows-1.87.0-03be60d9-cfc2-4b7d-8a16-9bab50b49d8f",
-  "name": "boost-throw-exception:x64-windows@1.87.0 dd4ca92bf663caa5bc32bd219150988ea0beaae6ec6b8e63252144c9c33c3223",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-throw-exception-x64-windows-1.87.0-2c74cfe4-3c04-4855-88b0-9f34e2e9a17d",
+  "name": "boost-throw-exception:x64-windows@1.87.0 74c0f7ab92ffdce1fc8ebf75812f24f78ffa098f94c344c9d710b78ebc0bf2c7",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:33:39Z"
+    "created": "2025-04-10T23:55:07Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-throw-exception:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "dd4ca92bf663caa5bc32bd219150988ea0beaae6ec6b8e63252144c9c33c3223",
+      "versionInfo": "74c0f7ab92ffdce1fc8ebf75812f24f78ffa098f94c344c9d710b78ebc0bf2c7",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

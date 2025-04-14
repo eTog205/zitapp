@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.87.0#1-92402790-9120-4af9-9175-4139dad51e90",
-  "name": "boost-lexical-cast:x64-windows@1.87.0#1 fdd96d2ea4b800d4cb5c44817ecfaf5d94255a51ba765f25a1588a76ead69717",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.87.0#1-792107dd-b7ec-42e4-858d-7ed8a9b9fb38",
+  "name": "boost-lexical-cast:x64-windows@1.87.0#1 4c1c94f993cfc4dabba1cea8fa3a7fd93240282b3089d4f6d13210cc3d881b8e",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:18Z"
+    "created": "2025-04-10T23:55:42Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-lexical-cast:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "fdd96d2ea4b800d4cb5c44817ecfaf5d94255a51ba765f25a1588a76ead69717",
+      "versionInfo": "4c1c94f993cfc4dabba1cea8fa3a7fd93240282b3089d4f6d13210cc3d881b8e",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

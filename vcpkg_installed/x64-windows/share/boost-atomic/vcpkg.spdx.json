@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-atomic-x64-windows-1.87.0#1-34319383-3327-46ee-9878-9d3d9118a57b",
-  "name": "boost-atomic:x64-windows@1.87.0#1 f062f4f8b30d94cc8945decfd09772be2cdf843745114a47897d8e5da71741a6",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-atomic-x64-windows-1.87.0#1-4ac4646c-8e52-4290-aad5-d8b550a10e12",
+  "name": "boost-atomic:x64-windows@1.87.0#1 26f473aeb3f61988e83239ff6ab02726bd47fce3c2e5b6554fa9b3fc9b29191a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:40Z"
+    "created": "2025-04-10T23:56:04Z"
   },
   "relationships": [
     {
@@ -69,7 +69,7 @@
     {
       "name": "boost-atomic:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "f062f4f8b30d94cc8945decfd09772be2cdf843745114a47897d8e5da71741a6",
+      "versionInfo": "26f473aeb3f61988e83239ff6ab02726bd47fce3c2e5b6554fa9b3fc9b29191a",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

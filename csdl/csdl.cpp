@@ -1,4 +1,4 @@
-//csdl.cpp
+// csdl.cpp
 #include "csdl.h"
 #include "dv_csdl.h"
 #include "log_nhalam.h"
@@ -7,7 +7,6 @@
 #include <boost/beast/core/detail/base64.hpp>
 #include <boost/json.hpp>
 #include <fstream>
-
 
 namespace bj = boost::json;
 sqlite3* db = nullptr;
@@ -45,7 +44,7 @@ std::string send_http_request(const std::string& host, const std::string& target
 
 		http::write(stream, req);
 
-		// Nhận phản hồi, cần tìm cách tăng giới hạn body
+		// Nhận phản hồi
 		beast::flat_buffer buffer;
 		http::response_parser<http::dynamic_body> parser;
 		parser.body_limit(std::numeric_limits<std::uint64_t>::max());
@@ -113,7 +112,8 @@ void save_to_file(const std::string& filename, const std::string& data)
 	{
 		outFile.write(data.data(), static_cast<std::streamsize>(data.size()));
 		outFile.close();
-	} else
+	}
+	else
 		td_log(loai_log::loi, "ghi file:" + std::string(filename));
 }
 
@@ -128,7 +128,6 @@ void luu_tepsha(const std::string& sha_file, const std::string& owner, const std
 	}
 
 	std::string metadata_response = fetch_github_file_metadata(owner, repo, file_path);
-
 
 	if (metadata_response.empty())
 	{
@@ -236,7 +235,8 @@ void capnhat_data(const csdl& c)
 		luu_tepsha(c.sha_file, c.owner, c.repo, c.file_path);
 
 		td_log(loai_log::thong_bao, "Đã cập nhật dữ liệu và lưu SHA mới.");
-	} else
+	}
+	else
 	{
 		td_log(loai_log::loi, "Không tải được dữ liệu `" + c.file_path + "`");
 	}
@@ -273,7 +273,8 @@ int get_row_count(const char* table_name, int* row_count)
 	if (rc == SQLITE_ROW)
 	{
 		*row_count = sqlite3_column_int(stmt, 0);
-	} else
+	}
+	else
 	{
 		td_log(loai_log::loi, "Failed to execute statement:" + std::string(sqlite3_errmsg(db)));
 	}
@@ -300,11 +301,10 @@ int execute_sql(const char* sql)
 // Tạo bảng nếu chưa có
 int create_table()
 {
-	const auto sql =
-		"CREATE TABLE IF NOT EXISTS Items ("
-		"ID TEXT PRIMARY KEY, "
-		"Name TEXT NOT NULL, "
-		"Category TEXT);";
+	const auto sql = "CREATE TABLE IF NOT EXISTS Items ("
+					 "ID TEXT PRIMARY KEY, "
+					 "Name TEXT NOT NULL, "
+					 "Category TEXT);";
 
 	return execute_sql(sql);
 }
@@ -319,5 +319,3 @@ void khoidong_sql()
 	open_database_read_only("sql.db");
 	nap_du_lieu();
 }
-
-

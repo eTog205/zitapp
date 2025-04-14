@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-beast-x64-windows-1.87.0-3655e225-43c1-4ddc-aab1-e93e3cb5c50b",
-  "name": "boost-beast:x64-windows@1.87.0 456584058af584f2f67036e84a22be41d45e39e5f7bf3bec7c87240003432deb",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-beast-x64-windows-1.87.0-d8ed765d-3f5d-40d9-ae1f-47067e1c562c",
+  "name": "boost-beast:x64-windows@1.87.0 f45baa01f21e0410c5792389218540e1a0d21be1a9c0918556f1e845c2460b33",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:33Z"
+    "created": "2025-04-10T23:55:58Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-beast:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "456584058af584f2f67036e84a22be41d45e39e5f7bf3bec7c87240003432deb",
+      "versionInfo": "f45baa01f21e0410c5792389218540e1a0d21be1a9c0918556f1e845c2460b33",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

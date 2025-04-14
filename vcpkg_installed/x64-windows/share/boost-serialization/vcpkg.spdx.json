@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-serialization-x64-windows-1.87.0-4f7bbb0d-e108-4b30-86dd-3ef6e466e58d",
-  "name": "boost-serialization:x64-windows@1.87.0 84eb8b87da5af4d2d65b1654724df619a518d051c1ca79a403f0728cc0f2602c",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-serialization-x64-windows-1.87.0-bed01a81-d492-4db1-8e83-a3961bf86a1a",
+  "name": "boost-serialization:x64-windows@1.87.0 3d7eb0f00d2960502fa7a0faee957fd67d7b374cb30dcc552a2a6c0a3da4e013",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:35:22Z"
+    "created": "2025-04-10T23:56:48Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-serialization:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "84eb8b87da5af4d2d65b1654724df619a518d051c1ca79a403f0728cc0f2602c",
+      "versionInfo": "3d7eb0f00d2960502fa7a0faee957fd67d7b374cb30dcc552a2a6c0a3da4e013",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

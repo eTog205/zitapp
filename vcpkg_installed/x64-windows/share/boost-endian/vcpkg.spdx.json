@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-endian-x64-windows-1.87.0-86a6f2ee-0ed4-4da3-90b8-0506d65b3d18",
-  "name": "boost-endian:x64-windows@1.87.0 e3b6a86f5b45800a6ffd2322f62df2d4b2014c91972f98d477106ab61085db51",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-endian-x64-windows-1.87.0-7a31f160-3135-4792-b877-c167ea396641",
+  "name": "boost-endian:x64-windows@1.87.0 60caa9872871c84fca157f17bbea17e3f05efc4b57557f2d06585435f8642fcc",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:31Z"
+    "created": "2025-04-10T23:55:57Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-endian:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "e3b6a86f5b45800a6ffd2322f62df2d4b2014c91972f98d477106ab61085db51",
+      "versionInfo": "60caa9872871c84fca157f17bbea17e3f05efc4b57557f2d06585435f8642fcc",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

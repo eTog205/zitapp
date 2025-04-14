@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.87.0#1-b6b422e2-6bb5-4174-bd0a-8e3ea5aca643",
-  "name": "boost-asio:x64-windows@1.87.0#1 6c722542c55297492ea2c7d9714afcbd376ae8525e6f92df4cd98135174f877f",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.87.0#1-5db8c80c-5fd3-4eda-9692-5c92a0ceaa6a",
+  "name": "boost-asio:x64-windows@1.87.0#1 94ce21b917f43719792f05db574de3924a4cb56c7a857c96bb347d35c00dfb78",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-04T03:34:28Z"
+    "created": "2025-04-10T23:55:50Z"
   },
   "relationships": [
     {
@@ -69,7 +69,7 @@
     {
       "name": "boost-asio:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "6c722542c55297492ea2c7d9714afcbd376ae8525e6f92df4cd98135174f877f",
+      "versionInfo": "94ce21b917f43719792f05db574de3924a4cb56c7a857c96bb347d35c00dfb78",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
