@@ -2,6 +2,7 @@
 #include "csdl.h"
 #include "dv_csdl.h"
 #include "log_nhalam.h"
+#include "net.h"
 
 #include <boost/beast/core.hpp>
 #include <boost/beast/core/detail/base64.hpp>
@@ -11,7 +12,7 @@
 namespace bj = boost::json;
 sqlite3* db = nullptr;
 
-// 🔹 Hàm giải mã Base64 nếu cần
+// !!!loại bỏ trong cập nhật sau
 std::string decode_base64(const std::string& encoded)
 {
 	std::string decoded;
@@ -19,90 +20,6 @@ std::string decode_base64(const std::string& encoded)
 	auto len = beast::detail::base64::decode(decoded.data(), encoded.data(), encoded.size());
 	decoded.resize(len.first);
 	return decoded;
-}
-
-std::string send_http_request(const std::string& host, const std::string& target)
-{
-	try
-	{
-		net::io_context ioc;
-		boost::asio::ssl::context ctx(boost::asio::ssl::context::tlsv12_client);
-		ctx.set_default_verify_paths();
-
-		tcp::resolver resolver(ioc);
-		beast::ssl_stream<tcp::socket> stream(ioc, ctx);
-
-		auto const results = resolver.resolve(host, "443");
-		net::connect(stream.next_layer(), results.begin(), results.end());
-		stream.handshake(boost::asio::ssl::stream_base::client);
-
-		// Tạo request HTTP
-		http::request<http::string_body> req{ http::verb::get, target, 11 };
-		req.set(http::field::host, host);
-		req.set(http::field::user_agent, "Boost.Beast");
-		req.set(http::field::accept, "application/vnd.github.v3.raw");
-
-		http::write(stream, req);
-
-		// Nhận phản hồi
-		beast::flat_buffer buffer;
-		http::response_parser<http::dynamic_body> parser;
-		parser.body_limit(std::numeric_limits<std::uint64_t>::max());
-		read(stream, buffer, parser);
-		auto& res = parser.get();
-
-		// Đóng kết nối
-		beast::error_code ec;
-		stream.shutdown(ec);
-
-		if (ec == net::error::eof)
-			ec = {};
-
-		if (ec)
-			throw beast::system_error(ec);
-
-		if (res.result() != http::status::ok)
-			throw std::runtime_error("HTTP Error: " + std::to_string(static_cast<int>(res.result())));
-
-		return buffers_to_string(res.body().data());
-
-	} catch (const std::exception& e)
-	{
-		td_log(loai_log::loi, "HTTP Request: " + std::string(e.what()));
-		return "";
-	}
-}
-
-// 🔹 Hàm lấy nội dung `sql.db` từ GitHub API
-std::string fetch_github_data(const std::string& owner, const std::string& repo, const std::string& file_path)
-{
-	const std::string host = "api.github.com";
-	const std::string target = "/repos/" + owner + "/" + repo + "/contents/" + file_path;
-
-	std::string response = send_http_request(host, target);
-	if (response.empty())
-	{
-		td_log(loai_log::loi, "Không thể tải dữ liệu từ GitHub");
-		return "";
-	}
-
-	return response;
-}
-
-std::string fetch_github_file_metadata(const std::string& owner, const std::string& repo, const std::string& file_path)
-{
-	const std::string host = "api.github.com";
-	const std::string target = "/repos/" + owner + "/" + repo + "/commits?path=" + file_path;
-
-	std::string response = send_http_request(host, target);
-
-	if (response.empty())
-	{
-		td_log(loai_log::loi, "Không thể lấy metadata của file từ GitHub");
-		return "";
-	}
-
-	return response;
 }
 
 void save_to_file(const std::string& filename, const std::string& data)
@@ -117,9 +34,9 @@ void save_to_file(const std::string& filename, const std::string& data)
 		td_log(loai_log::loi, "ghi file:" + std::string(filename));
 }
 
-void luu_tepsha(const std::string& sha_file, const std::string& owner, const std::string& repo, const std::string& file_path)
+void luu_tepsha(const std::string& thumuc, const std::string& sha_file, const std::string& file_path)
 {
-	std::ofstream sha_file_out(sha_file);
+	std::ofstream sha_file_out(thumuc + sha_file);
 
 	if (!sha_file_out)
 	{
@@ -127,7 +44,7 @@ void luu_tepsha(const std::string& sha_file, const std::string& owner, const std
 		return;
 	}
 
-	std::string metadata_response = fetch_github_file_metadata(owner, repo, file_path);
+	std::string metadata_response = lay_thongtin_tep_github(file_path);
 
 	if (metadata_response.empty())
 	{
@@ -172,7 +89,7 @@ void luu_tepsha(const std::string& sha_file, const std::string& owner, const std
 void capnhat_data(const csdl& c)
 {
 	// Đọc SHA cũ
-	std::ifstream sha_file_in(c.sha_file);
+	std::ifstream sha_file_in(c.thumuc + c.sha_file);
 	std::string old_sha;
 	if (sha_file_in)
 	{
@@ -183,7 +100,7 @@ void capnhat_data(const csdl& c)
 	// Nếu có SHA cũ, so sánh với SHA mới
 	if (!old_sha.empty())
 	{
-		std::string metadata_response = fetch_github_file_metadata(c.owner, c.repo, c.file_path);
+		std::string metadata_response = lay_thongtin_tep_github(c.file_path);
 		if (metadata_response.empty())
 		{
 			td_log(loai_log::loi, "Không thể lấy metadata từ GitHub");
@@ -228,11 +145,11 @@ void capnhat_data(const csdl& c)
 	// Nếu SHA cũ không tồn tại hoặc đã thay đổi => tải file mới
 	td_log(loai_log::thong_bao, "🔄 Dữ liệu mới có phiên bản cập nhật, tiến hành tải...");
 
-	std::string new_data = fetch_github_data(c.owner, c.repo, c.file_path);
+	std::string new_data = lay_thongtin_github(c.file_path);
 	if (!new_data.empty())
 	{
-		save_to_file(c.file_path, new_data);
-		luu_tepsha(c.sha_file, c.owner, c.repo, c.file_path);
+		save_to_file(c.thumuc + c.file_path, new_data);
+		luu_tepsha(c.thumuc, c.sha_file,   c.file_path);
 
 		td_log(loai_log::thong_bao, "Đã cập nhật dữ liệu và lưu SHA mới.");
 	}
@@ -283,7 +200,6 @@ int get_row_count(const char* table_name, int* row_count)
 	return (rc == SQLITE_ROW) ? SQLITE_OK : rc;
 }
 
-// Hàm thực thi SQL với xử lý lỗi
 int execute_sql(const char* sql)
 {
 	char* err_msg = nullptr;
@@ -316,6 +232,6 @@ bool database_exists(const char* db_name)
 
 void khoidong_sql()
 {
-	open_database_read_only("sql.db");
+	open_database_read_only("tainguyen/sql.db");
 	nap_du_lieu();
 }
