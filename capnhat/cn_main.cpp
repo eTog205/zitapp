@@ -12,9 +12,7 @@ int main()
 	kiemtra_capnhat();
 
 	if (mode == 1)
-	{
 		flush_memory_logs_to_file();
-	}
 
 	spdlog::shutdown();
 }

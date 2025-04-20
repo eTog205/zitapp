@@ -214,7 +214,6 @@ int execute_sql(const char* sql)
 	return rc;
 }
 
-// Tạo bảng nếu chưa có
 int create_table()
 {
 	const auto sql = "CREATE TABLE IF NOT EXISTS Items ("

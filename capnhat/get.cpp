@@ -8,9 +8,11 @@
 
 namespace json = boost::json;
 
+std::string tentep;
+
 bool download_file(const std::string& url, const std::string& save_path)
 {
-	const std::string file_content = gui_yeucau_http2(url, true);
+	const std::string file_content = tai_url_http(url, true);
 
 	if (file_content.empty())
 	{
@@ -33,11 +35,10 @@ bool download_file(const std::string& url, const std::string& save_path)
 bool download_latest_release()
 {
 	cauhinh_github gh;
-	std::string tentep;
 
 	const std::string target = "/repos/" + gh.owner + "/" + gh.repo_app + "/releases/latest";
 
-	const std::string response_body = gui_yeucau_http2("https://" + gh.host + target);
+	const std::string response_body = tai_url_http("https://" + gh.host + target);
 	if (response_body.empty())
 	{
 		td_log(loai_log::loi, "[download_latest_release] Không nhận được phản hồi từ GitHub API!");

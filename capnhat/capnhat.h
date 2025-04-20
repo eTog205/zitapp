@@ -2,15 +2,17 @@
 #pragma once
 #include <string>
 
-struct capnhat
+struct thongtin
 {
 	std::string phienban_sosanh;
+	std::string tentep_phienban = "phienban.txt";
+	std::string tentep_appchinh = "zitapp.exe";
 };
 
 std::string get_appcoban_path();
 
-std::string doctep_phienban(const std::string& tentep);
-void ghitep_phienban(const std::string& tentep, const std::string& dl_canghi);
+std::string doctep_phienban(const std::string& tep_phienban);
+void ghitep_phienban(const std::string& tep_phienban, const std::string& dl_canghi);
 
 int loc_dl(const std::string& dauvao);
 std::string dinhdang_dl(int so_phienban);

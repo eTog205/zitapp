@@ -11,8 +11,6 @@ using tcp = net::ip::tcp;
 
 struct csdl
 {
-	// std::string owner = "eTog205";
-	// std::string repo = "ZAppCoBan";
 	std::string thumuc = "tainguyen/";
 	std::string file_path = "sql.db";
 	std::string sha_file = "sql.sha";

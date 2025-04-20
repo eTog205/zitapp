@@ -1,8 +1,9 @@
-//capnhat.cpp
+// capnhat.cpp
 #include "capnhat.h"
 #include "get.h"
 #include "giainen.h"
 #include "log_nhalam.h"
+#include "net.h"
 
 #include <boost/dll.hpp>
 #include <boost/process.hpp>
@@ -12,21 +13,22 @@ namespace bfs = boost::filesystem;
 
 std::string get_appcoban_path()
 {
+	thongtin tt;
 	const bfs::path duongdan_capnhat = boost::dll::program_location();
 	const bfs::path thumuc_capnhat = duongdan_capnhat.parent_path();
 	const bfs::path thumuc_cha = thumuc_capnhat.parent_path();
-	const bfs::path duongdan_appcb = thumuc_cha / "AppCoBan.exe";
+	const bfs::path duongdan_appcb = thumuc_cha / tt.tentep_appchinh;
 	return duongdan_appcb.string();
 }
 
-std::string doctep_phienban(const std::string& tentep)
+std::string doctep_phienban(const std::string& tep_phienban)
 {
-	std::ifstream tep(tentep);
+	std::ifstream tep(tep_phienban);
 	std::string dong;
 
 	if (!tep.is_open())
 	{
-		td_log(loai_log::canh_bao, "Không thể mở tệp để đọc " + std::string(tentep));
+		td_log(loai_log::canh_bao, "Không thể mở tệp để đọc " + std::string(tep_phienban));
 		return dong;
 	}
 
@@ -36,13 +38,13 @@ std::string doctep_phienban(const std::string& tentep)
 	return dong;
 }
 
-void ghitep_phienban(const std::string& tentep, const std::string& dl_canghi)
+void ghitep_phienban(const std::string& tep_phienban, const std::string& dl_canghi)
 {
-	std::ofstream tep(tentep);
+	std::ofstream tep(tep_phienban);
 
 	if (!tep.is_open())
 	{
-		td_log(loai_log::canh_bao, "mở tệp để ghi thất bại." + std::string(tentep));
+		td_log(loai_log::canh_bao, "mở tệp để ghi thất bại." + std::string(tep_phienban));
 		return;
 	}
 
@@ -94,14 +96,16 @@ bool sosanh_phienban(const int so_hientai, const int so_layve)
 
 void kiemtra_capnhat()
 {
+	thongtin tt;
 	const std::string latest_tag = get_release_tag();
 	if (latest_tag.empty())
 	{
-		td_log(loai_log::loi, "Không thể lấy phiên bản mới nhất!");
+		td_log(loai_log::canh_bao, "Không thể lấy phiên bản mới nhất!");
+		chay_app_co_ban();
 		return;
 	}
 
-	const std::string dl_doc = doctep_phienban("phienban.txt");
+	const std::string dl_doc = doctep_phienban(tt.tentep_phienban);
 	const int so_hientai_daloc = loc_dl(dl_doc);
 	const int so_layve_daloc = loc_dl(latest_tag);
 
@@ -112,18 +116,19 @@ void kiemtra_capnhat()
 		if (download_latest_release())
 		{
 			const std::string dl_doi_dinhdang = dinhdang_dl(so_layve_daloc);
-			ghitep_phienban("phienban.txt", dl_doi_dinhdang);
+			ghitep_phienban(tt.tentep_phienban, dl_doi_dinhdang);
 
 			capnhat();
 			td_log(loai_log::thong_bao, "Hoàn tất cập nhật phiên bản mới " + dl_doi_dinhdang);
-
-			td_log(loai_log::thong_bao, "Chạy AppCoBan.exe " + dl_doi_dinhdang);
+			//td_log(loai_log::thong_bao, "Chạy " + tt.tentep_appchinh + " " + dl_doi_dinhdang);	//debug
 			chay_app_co_ban();
-		} else
+		}
+		else
 			td_log(loai_log::loi, "Không thể tải xuống bản cập nhật!");
-	} else
+	}
+	else
 	{
-		td_log(loai_log::thong_bao, "Phiên bản hiện tại (" + dinhdang_dl(so_hientai_daloc) + ") đã mới nhất.");
+		// td_log(loai_log::thong_bao, "Phiên bản hiện tại (" + dinhdang_dl(so_hientai_daloc) + ") đã mới nhất.");	//debug
 		chay_app_co_ban();
 	}
 }
@@ -138,8 +143,9 @@ void capnhat()
 
 	if (chay_winrar(duongdan_winrar, duongdan_thumuc_giainen))
 	{
-		td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");
-	} else
+		//td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");	//debug
+	}
+	else
 	{
 		td_log(loai_log::loi, "Chạy tiến trình Winrar thất bại");
 	}
@@ -152,16 +158,11 @@ void chay_app_co_ban()
 		const std::string app_path = get_appcoban_path();
 
 		const bfs::path app_dir = bfs::path(app_path).parent_path();
-		boost::process::child process(
-			app_path,
-			boost::process::start_dir = app_dir.string() // đặt working directory là thư mục chính
-		);
+		boost::process::child process(app_path, boost::process::start_dir = app_dir.string());
 
 		process.wait();
 	} catch (const std::exception& e)
 	{
-		td_log(loai_log::loi, "chạy AppCoBan.exe:" + std::string(e.what()));
+		td_log(loai_log::loi, "Không chạy được zitapp.exe:" + std::string(e.what()));
 	}
 }
-
-
