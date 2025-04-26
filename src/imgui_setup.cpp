@@ -80,6 +80,15 @@ void ApplyWindows11Style()
 	colors[ImGuiCol_TabActive] = ImVec4(0.65f, 0.80f, 1.00f, 1.00f);
 	colors[ImGuiCol_TabUnfocused] = ImVec4(0.94f, 0.94f, 0.94f, 1.00f);
 	colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.85f, 0.90f, 1.00f, 1.00f);
+
+	// ==== MÀU CHO TABLE ====
+	colors[ImGuiCol_TableHeaderBg] = ImVec4(0.85f, 0.90f, 1.00f, 1.00f); // tiêu đề bảng
+	//colors[ImGuiCol_TableBorderStrong] = ImVec4(0.75f, 0.75f, 0.75f, 1.00f); // viền chính
+	//colors[ImGuiCol_TableBorderLight] = ImVec4(0.90f, 0.90f, 0.90f, 1.00f); // viền phụ
+	colors[ImGuiCol_TableBorderStrong] = ImVec4(0, 0, 0, 0); // tắt viền chính
+	colors[ImGuiCol_TableBorderLight] = ImVec4(0, 0, 0, 0); // tắt viền phụ
+	colors[ImGuiCol_TableRowBg] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f); // dòng nền chính
+	colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.98f, 0.98f, 0.98f, 1.00f); // dòng xen kẽ
 }
 
 

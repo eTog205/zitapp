@@ -57,7 +57,6 @@ void combo_box(const char* nhãn, const char* options[], int options_count, int&
 
 void capnhat_bang_phanmem();
 
-// void giaodien_anhien_cot();
 void giaodien_thanhcongcu(int chieurong_manhinh, int chieucao_manhinh);
 void giaodien_menuben(int chieucao_manhinh);
 void giaodien_caidat(int chieurong_manhinh, int chieucao_manhinh);
@@ -70,3 +69,5 @@ void giaodien_tinhnang_xuatnap_cauhinh();
 void giaodien_cuasotuychinh_menunho();
 
 void kiemtra_tinhnang();
+extern std::string tab_hientai;
+void hienthi_bangsuachua();

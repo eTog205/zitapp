@@ -1,10 +1,9 @@
-//chay_luongphu.cpp
+// chay_luongphu.cpp
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
 #include "csdl.h"
 #include "logic_giaodien.h"
 #include "thread_pool.h"
-
 
 void lp_chay_capnhat()
 {
@@ -17,9 +16,21 @@ void lp_chay_lenhwinget(const std::string& id)
 	pool.enqueue(chaylenh, id);
 }
 
-void lp_chay_lenhwindow()
+void lp_suachua_nhieu(bool dism, bool sfc, bool chk)
 {
-	pool.enqueue(chaylenh_suawindow);
+	pool.enqueue(
+			[dism, sfc, chk]
+			{
+				std::vector<std::string> cmds;
+				if (dism)
+					cmds.emplace_back("dism /Online /Cleanup-Image /RestoreHealth");
+				if (sfc)
+					cmds.emplace_back("sfc /scannow");
+				if (chk)
+					chkdsk(cmds);
+				if (!cmds.empty())
+					suachua_nhieu(cmds);
+			});
 }
 
 void lp_nap_cauhinh()

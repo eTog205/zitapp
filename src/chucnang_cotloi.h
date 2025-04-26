@@ -1,11 +1,9 @@
-//chucnang_cotloi.h
+// chucnang_cotloi.h
 #pragma once
-#include <boost/process.hpp>
-
-namespace bp = boost::process;
-
-// Hàm thực thi lệnh hệ thống và lấy kết quả
-std::string thucthi_lenh(const std::string& lenh);
+#include <string>
+#include <vector>
 
 void chaylenh(const std::string& id);
-void chaylenh_suawindow();
+void suachua_nhieu(const std::vector<std::string>& commands);
+
+void chkdsk(std::vector<std::string>& cmds);

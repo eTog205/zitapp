@@ -98,11 +98,6 @@ void logic_giaodien::chaylenh_winget(const std::string& lenh_id)
 	lp_chay_lenhwinget(lenh_id);
 }
 
-void logic_giaodien::chaylenh_tienich()
-{
-	lp_chay_lenhwindow();
-}
-
 void tao_thumuc_tainguyen()
 {
 	if (!exists(ch.thumuc_ch))
@@ -211,68 +206,69 @@ void ch_macdinh()
 	fs::remove(ch.tep_dich);
 }
 
-bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan)
-{
-
-	const std::string host = "api.tntstudio.io.vn";
-	const std::string port = "443";
-	const std::string target = "/";
-	constexpr int version = 11;
-
-	net::io_context ioc;
-	boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
-	beast::ssl_stream<tcp::socket> stream(ioc, ctx);
-
-	tcp::resolver resolver(ioc);
-	auto const results = resolver.resolve(host, port);
-
-	net::connect(stream.next_layer(), results);
-
-	if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
-	{
-		boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
-		throw boost::system::system_error{ ec };
-	}
-
-	stream.handshake(boost::asio::ssl::stream_base::client);
-
-	boost::json::object body_obj;
-	body_obj["key"] = key;
-	std::string body_str = serialize(body_obj);
-
-	http::request<http::string_body> req{ http::verb::post, target, version };
-	req.set(http::field::host, host);
-	req.set(http::field::user_agent, "ZitApp/1.0");
-	req.set(http::field::content_type, "application/json");
-	req.body() = body_str;
-	req.prepare_payload();
-
-	http::write(stream, req);
-
-	beast::flat_buffer buffer;
-	http::response<http::string_body> res;
-	http::read(stream, buffer, res);
-
-	// Đóng SSL
-	boost::system::error_code ec;
-	stream.shutdown(ec);
-	if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
-	{
-		// Cloudflare đóng sớm – bỏ qua
-		ec.clear();
-	}
-	else if (ec)
-	{
-		throw boost::system::system_error{ ec };
-	}
-
-	// Phân tích JSON phản hồi
-	auto json_res = boost::json::parse(res.body()).as_object();
-	if (json_res.contains("valid") && json_res.at("valid").as_bool())
-	{
-		ngayhethan = json_res.at("ngayhethan").as_string().c_str();
-		return true;
-	}
-
-	return false;
-}
+// không còn được hỗ trợ - xóa ở cập nhật sau
+//bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan)
+//{
+//
+//	const std::string host = "api.tntstudio.io.vn";
+//	const std::string port = "443";
+//	const std::string target = "/";
+//	constexpr int version = 11;
+//
+//	net::io_context ioc;
+//	boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
+//	beast::ssl_stream<tcp::socket> stream(ioc, ctx);
+//
+//	tcp::resolver resolver(ioc);
+//	auto const results = resolver.resolve(host, port);
+//
+//	net::connect(stream.next_layer(), results);
+//
+//	if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
+//	{
+//		boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
+//		throw boost::system::system_error{ ec };
+//	}
+//
+//	stream.handshake(boost::asio::ssl::stream_base::client);
+//
+//	boost::json::object body_obj;
+//	body_obj["key"] = key;
+//	std::string body_str = serialize(body_obj);
+//
+//	http::request<http::string_body> req{ http::verb::post, target, version };
+//	req.set(http::field::host, host);
+//	req.set(http::field::user_agent, "ZitApp/1.0");
+//	req.set(http::field::content_type, "application/json");
+//	req.body() = body_str;
+//	req.prepare_payload();
+//
+//	http::write(stream, req);
+//
+//	beast::flat_buffer buffer;
+//	http::response<http::string_body> res;
+//	http::read(stream, buffer, res);
+//
+//	// Đóng SSL
+//	boost::system::error_code ec;
+//	stream.shutdown(ec);
+//	if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
+//	{
+//		// Cloudflare đóng sớm – bỏ qua
+//		ec.clear();
+//	}
+//	else if (ec)
+//	{
+//		throw boost::system::system_error{ ec };
+//	}
+//
+//	// Phân tích JSON phản hồi
+//	auto json_res = boost::json::parse(res.body()).as_object();
+//	if (json_res.contains("valid") && json_res.at("valid").as_bool())
+//	{
+//		ngayhethan = json_res.at("ngayhethan").as_string().c_str();
+//		return true;
+//	}
+//
+//	return false;
+//}

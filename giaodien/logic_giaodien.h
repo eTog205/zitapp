@@ -79,7 +79,6 @@ struct logic_giaodien
 	void khoidong_bang_dl();
 
 	static void chaylenh_winget(const std::string& lenh_id);
-	static void chaylenh_tienich();
 };
 
 extern logic_giaodien lg_gd;
@@ -134,5 +133,3 @@ void capnhat_cauhinh(const boost::property_tree::ptree& pt, const std::string& k
 }
 
 void ch_macdinh();
-
-bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan);
