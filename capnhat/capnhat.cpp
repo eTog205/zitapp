@@ -1,4 +1,7 @@
 // capnhat.cpp
+#define WIN32_LEAN_AND_MEAN
+#define WINSOCKAPI
+
 #include "capnhat.h"
 #include "get.h"
 #include "giainen.h"
@@ -9,15 +12,16 @@
 #include <boost/process.hpp>
 
 using namespace std::chrono;
-namespace bfs = boost::filesystem;
+namespace bp = boost::process;
+namespace fs = std::filesystem;
 
 std::string get_appcoban_path()
 {
 	thongtin tt;
-	const bfs::path duongdan_capnhat = boost::dll::program_location();
-	const bfs::path thumuc_capnhat = duongdan_capnhat.parent_path();
-	const bfs::path thumuc_cha = thumuc_capnhat.parent_path();
-	const bfs::path duongdan_appcb = thumuc_cha / tt.tentep_appchinh;
+	const fs::path duongdan_capnhat = fs::path(boost::dll::program_location().string());
+	const fs::path thumuc_capnhat = duongdan_capnhat.parent_path();
+	const fs::path thumuc_cha = thumuc_capnhat.parent_path();
+	const fs::path duongdan_appcb = thumuc_cha / tt.tentep_appchinh;
 	return duongdan_appcb.string();
 }
 
@@ -120,7 +124,7 @@ void kiemtra_capnhat()
 
 			capnhat();
 			td_log(loai_log::thong_bao, "Hoàn tất cập nhật phiên bản mới " + dl_doi_dinhdang);
-			//td_log(loai_log::thong_bao, "Chạy " + tt.tentep_appchinh + " " + dl_doi_dinhdang);	//debug
+			// td_log(loai_log::thong_bao, "Chạy " + tt.tentep_appchinh + " " + dl_doi_dinhdang);	//debug
 			chay_app_co_ban();
 		}
 		else
@@ -137,13 +141,13 @@ void capnhat()
 {
 	const std::string duongdan_winrar = lau_duongdan_winrar();
 	const std::string app_path = get_appcoban_path();
-	const bfs::path dest_path(app_path);
+	const fs::path dest_path(app_path);
 
 	const std::string duongdan_thumuc_giainen = dest_path.parent_path().string();
 
 	if (chay_winrar(duongdan_winrar, duongdan_thumuc_giainen))
 	{
-		//td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");	//debug
+		// td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");	//debug
 	}
 	else
 	{
@@ -156,11 +160,10 @@ void chay_app_co_ban()
 	try
 	{
 		const std::string app_path = get_appcoban_path();
-
-		const bfs::path app_dir = bfs::path(app_path).parent_path();
-		boost::process::child process(app_path, boost::process::start_dir = app_dir.string());
-
-		process.wait();
+		std::filesystem::path app_dir = std::filesystem::path(app_path).parent_path();
+		boost::asio::io_context ctx;
+		bp::process proc(ctx, app_path, {}, bp::process_start_dir(app_dir));
+		proc.wait();
 	} catch (const std::exception& e)
 	{
 		td_log(loai_log::loi, "Không chạy được zitapp.exe:" + std::string(e.what()));

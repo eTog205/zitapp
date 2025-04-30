@@ -60,7 +60,7 @@ add_library(Boost::beast INTERFACE IMPORTED)
 set_target_properties(Boost::beast PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_11"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "Boost::asio;Boost::assert;Boost::bind;Boost::config;Boost::container;Boost::core;Boost::endian;Boost::intrusive;Boost::logic;Boost::mp11;Boost::optional;Boost::smart_ptr;Boost::static_assert;Boost::static_string;Boost::system;Boost::throw_exception;Boost::type_traits;Boost::utility;Boost::winapi"
+  INTERFACE_LINK_LIBRARIES "Boost::asio;Boost::assert;Boost::bind;Boost::config;Boost::container;Boost::container_hash;Boost::core;Boost::endian;Boost::intrusive;Boost::logic;Boost::mp11;Boost::optional;Boost::preprocessor;Boost::smart_ptr;Boost::static_assert;Boost::static_string;Boost::system;Boost::throw_exception;Boost::type_index;Boost::type_traits;Boost::winapi"
 )
 
 # Load information for each installed configuration.

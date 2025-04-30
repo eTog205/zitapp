@@ -1,5 +1,6 @@
 //giainen.h
 #pragma once
+#include <string>
 
 void xoa_tapnen(const std::string& file_path);
 std::string lau_duongdan_winrar();

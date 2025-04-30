@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.87.0#1-792107dd-b7ec-42e4-858d-7ed8a9b9fb38",
-  "name": "boost-lexical-cast:x64-windows@1.87.0#1 4c1c94f993cfc4dabba1cea8fa3a7fd93240282b3089d4f6d13210cc3d881b8e",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-lexical-cast-x64-windows-1.88.0-b2a81683-78a3-4a34-aaf9-03bcb6ffcb9c",
+  "name": "boost-lexical-cast:x64-windows@1.88.0 9476126946f08a611aebb532951df165786114420f1ecbda892461268b14815a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:55:42Z"
+    "created": "2025-04-30T08:37:47Z"
   },
   "relationships": [
     {
@@ -47,8 +47,8 @@
     {
       "name": "boost-lexical-cast",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.87.0#1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1",
+      "versionInfo": "1.88.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@c3631cacb2113b407eaa8be643a96dae14464f79",
       "homepage": "https://www.boost.org/libs/lexical_cast",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-lexical-cast:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "4c1c94f993cfc4dabba1cea8fa3a7fd93240282b3089d4f6d13210cc3d881b8e",
+      "versionInfo": "9476126946f08a611aebb532951df165786114420f1ecbda892461268b14815a",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,38 +69,38 @@
     {
       "SPDXID": "SPDXRef-resource-0",
       "name": "boostorg/lexical_cast",
-      "downloadLocation": "git+https://github.com/boostorg/lexical_cast@boost-1.87.0",
+      "downloadLocation": "git+https://github.com/boostorg/lexical_cast@boost-1.88.0",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "ff5ca9f69a8fea9354cccc652baa59477542e94b9b02bb7f7b5e65ec67a9374a97c67d2a87e78e0603382be88079b4a4697c647f8d218d5697fccf87c1e0290c"
+          "checksumValue": "71eb6eaaea512d48dbbd69857330c29644c1ca7b4d13ded2379f80ec8bb893c8bc906fb62116b53234f8d4216ead99d516ee5a83156b6ef74e5b125f6184d694"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/c3631cacb2113b407eaa8be643a96dae14464f79/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "7a43211aced867b9a1bfcf3f78b2b3c3b8342a5fcde572b4b69a48aa15f7befd"
+          "checksumValue": "66883662a56b3fbc23014bd5b4089316d1b3ad51b00d25051e9bdc8e7d0a2cd8"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/6bd8ac437eb3b4a61ce0c8b0c3397c16d1cc1ee1/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-lexical-cast/c3631cacb2113b407eaa8be643a96dae14464f79/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "e304a2c8290f6ab9fd8ecb17822ee2a79c8ffc208b5b7fe74a538c934e69267e"
+          "checksumValue": "aa5801a25e2ff50274945b91ad629cd91fdf33be3a3af4a5c4c454b5aa94704e"
         }
       ],
       "licenseConcluded": "NOASSERTION",

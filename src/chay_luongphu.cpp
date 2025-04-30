@@ -27,7 +27,8 @@ void lp_suachua_nhieu(bool dism, bool sfc, bool chk)
 				if (sfc)
 					cmds.emplace_back("sfc /scannow");
 				if (chk)
-					chkdsk(cmds);
+					cmds.emplace_back("chkdsk C: /scan");
+					//chkdsk(cmds); - lỗi - chưa có kế hoạch sửa
 				if (!cmds.empty())
 					suachua_nhieu(cmds);
 			});

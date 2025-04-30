@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.87.0#1-5db8c80c-5fd3-4eda-9692-5c92a0ceaa6a",
-  "name": "boost-asio:x64-windows@1.87.0#1 94ce21b917f43719792f05db574de3924a4cb56c7a857c96bb347d35c00dfb78",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-asio-x64-windows-1.88.0-0aa588c4-39ea-471c-abbc-c73834d483f7",
+  "name": "boost-asio:x64-windows@1.88.0 b151f212c343191002ad9cabf84348997920afc575cacfcbe79eb07840425fed",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:55:50Z"
+    "created": "2025-04-30T08:37:56Z"
   },
   "relationships": [
     {
@@ -57,8 +57,8 @@
     {
       "name": "boost-asio",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.87.0#1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@05c6ddb5e69d7b3397822f72d7b582757e0f8dd7",
+      "versionInfo": "1.88.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@923e111ca4b1138efb1b58499edf5f04797de72f",
       "homepage": "https://www.boost.org/libs/asio",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-asio:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "94ce21b917f43719792f05db574de3924a4cb56c7a857c96bb347d35c00dfb78",
+      "versionInfo": "b151f212c343191002ad9cabf84348997920afc575cacfcbe79eb07840425fed",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -79,21 +79,21 @@
     {
       "SPDXID": "SPDXRef-resource-0",
       "name": "boostorg/asio",
-      "downloadLocation": "git+https://github.com/boostorg/asio@boost-1.87.0",
+      "downloadLocation": "git+https://github.com/boostorg/asio@boost-1.88.0",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "5bd17f3667f85c65f7ac25665231743e64f4060b358d7756a3eddab30c22cf7fcfb774cd65a863fd957ed735249b028dd7d43adba928c7722e4da99bca1306a0"
+          "checksumValue": "5b6adb3d4500ed0173911e9be2b774d186838e3cb13273078e1f00b8f5fb79fd7f52fbbe9fe326c96d3062e4a1c047ad795118d8834d431dcec8734b7dac2711"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/opt-dep.diff",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/923e111ca4b1138efb1b58499edf5f04797de72f/opt-dep.diff",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -105,24 +105,24 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/923e111ca4b1138efb1b58499edf5f04797de72f/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "2b32d1d229db61b2a4c1026ef40eb00c208eb2e42fe2660591c05b99be10a89e"
+          "checksumValue": "b90cb03106fe37cea41baecb3e4452df99e00639df7f77c5877f67dd3a8424d1"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/05c6ddb5e69d7b3397822f72d7b582757e0f8dd7/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-asio/923e111ca4b1138efb1b58499edf5f04797de72f/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "e87241c3eadbda3cdf6496c022b5afcd199563c02e4cc939c1636d3447da68d0"
+          "checksumValue": "ace14bac4dd4a4b7f4ccee7d42a2e731ffd501deeb08e76105debb81e4a54e9a"
         }
       ],
       "licenseConcluded": "NOASSERTION",

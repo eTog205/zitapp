@@ -48,12 +48,12 @@ struct thongtin_cuaso_imgui
 	ImVec2 vitri;
 	ImVec2 kichthuoc;
 };
+
 extern bool hien_cuaso_key;
+
 thongtin_cuaso_imgui tinh_thongtin_cuaso(int chieurong_manhinh, int chieucao_manhinh);
 
 ImVec4 adjust_color_brightness(const ImVec4& color, float factor);
-
-void combo_box(const char* nhãn, const char* options[], int options_count, int& current_selection, float gt_botron);
 
 void capnhat_bang_phanmem();
 
@@ -62,12 +62,13 @@ void giaodien_menuben(int chieucao_manhinh);
 void giaodien_caidat(int chieurong_manhinh, int chieucao_manhinh);
 void giaodien_bangdl(int chieurong_manhinh, int chieucao_manhinh);
 void giaodien_tienich(int chieurong_manhinh, int chieucao_manhinh);
+void giaodien_hotro(const int chieurong_manhinh, const int chieucao_manhinh);
+
 void hienthi_nhapkey();
 
 void hienthi_loi(const std::string& loi, demtg::time_point tg_loi, int tg_tb_mat = 3);
 void giaodien_tinhnang_xuatnap_cauhinh();
 void giaodien_cuasotuychinh_menunho();
 
-void kiemtra_tinhnang();
 extern std::string tab_hientai;
 void hienthi_bangsuachua();

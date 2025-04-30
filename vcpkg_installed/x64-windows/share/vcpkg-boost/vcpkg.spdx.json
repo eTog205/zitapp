@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-boost-x64-windows-2024-05-15-309b0353-9a6f-4759-9b38-6cd48df7c209",
-  "name": "vcpkg-boost:x64-windows@2024-05-15 596ab377a2b801082b8d94cfaaa10f8dbae81cd31e670d1689ef58b2b56e05cf",
+  "documentNamespace": "https://spdx.org/spdxdocs/vcpkg-boost-x64-windows-2025-03-29-f8322b73-2dae-4343-941d-d8a5ba17480e",
+  "name": "vcpkg-boost:x64-windows@2025-03-29 d858783e382cd12addd5e017a375e0b989ac90b7fecdcc2286b32020e5f96297",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:55:00Z"
+    "created": "2025-04-30T08:37:07Z"
   },
   "relationships": [
     {
@@ -77,8 +77,8 @@
     {
       "name": "vcpkg-boost",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "2024-05-15",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@aca8ab6ec76d120c4482a629de23cad5ad7e4643",
+      "versionInfo": "2025-03-29",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@858b0333b773b5650c3f19ef271e3205542d7ceb",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
@@ -87,7 +87,7 @@
     {
       "name": "vcpkg-boost:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "596ab377a2b801082b8d94cfaaa10f8dbae81cd31e670d1689ef58b2b56e05cf",
+      "versionInfo": "d858783e382cd12addd5e017a375e0b989ac90b7fecdcc2286b32020e5f96297",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -97,19 +97,19 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/boost-install.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/858b0333b773b5650c3f19ef271e3205542d7ceb/boost-install.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "19f0f619f254311a6b55bee022a584ae1ff040d3bdb0728e646833e62c9e6dc9"
+          "checksumValue": "0c599d5d40e74633d5eaeea2bcd46eaa3dd33adefdde7632d925a08b6c3b3bc3"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/858b0333b773b5650c3f19ef271e3205542d7ceb/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -121,7 +121,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/usage.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/858b0333b773b5650c3f19ef271e3205542d7ceb/usage.in",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -133,7 +133,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/vcpkg-port-config.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/858b0333b773b5650c3f19ef271e3205542d7ceb/vcpkg-port-config.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
@@ -145,12 +145,12 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/aca8ab6ec76d120c4482a629de23cad5ad7e4643/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/vcpkg-boost/858b0333b773b5650c3f19ef271e3205542d7ceb/vcpkg.json",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "1a5c536c91efe25c64bf85acbb031ee37f79a0ab5ed3ff1dd64bdb317174b888"
+          "checksumValue": "7bb3aae0ede1197506e5da61ef14da715593bb0de7d03686b85030166ed4cd58"
         }
       ],
       "licenseConcluded": "NOASSERTION",

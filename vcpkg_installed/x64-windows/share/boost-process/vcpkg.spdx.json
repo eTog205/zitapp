@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-process-x64-windows-1.87.0#1-446f218d-9abf-4b00-a893-e83cff443ad7",
-  "name": "boost-process:x64-windows@1.87.0#1 33b279b59cc6f62afc9ba2ea324da6d1bb5fad86c648c1d6e63e029e088c6739",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-process-x64-windows-1.88.0-c62a60a4-c0bf-4a1e-9541-1b0d0487d7f7",
+  "name": "boost-process:x64-windows@1.88.0 14da0c7ab057c924b1cae801fe2561c27d820fb64bee52ab5dab6ed3fe34ad3b",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:56:41Z"
+    "created": "2025-04-30T08:38:27Z"
   },
   "relationships": [
     {
@@ -57,8 +57,8 @@
     {
       "name": "boost-process",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.87.0#1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@d81dd97109ef3e859af1af132dff2cff2d254437",
+      "versionInfo": "1.88.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@fbcbda5da7eaafd0201ebfaefab9f0606cbc889c",
       "homepage": "https://www.boost.org/libs/process",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "boost-process:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "33b279b59cc6f62afc9ba2ea324da6d1bb5fad86c648c1d6e63e029e088c6739",
+      "versionInfo": "14da0c7ab057c924b1cae801fe2561c27d820fb64bee52ab5dab6ed3fe34ad3b",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -79,50 +79,50 @@
     {
       "SPDXID": "SPDXRef-resource-0",
       "name": "boostorg/process",
-      "downloadLocation": "git+https://github.com/boostorg/process@boost-1.87.0",
+      "downloadLocation": "git+https://github.com/boostorg/process@boost-1.88.0",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "c81c5cb40731e5b5fad6c26b59d55ff073010f1f62dc0c1b34ec5f1ed50fbcf944b3e80aa647575255be277e14cdbc38753109ce480c70f91a59a18540f3a0a3"
+          "checksumValue": "78cf46c86ba59a92cec4427c2ef0937bf682d1294c15a5d4a9bd9015cba4cc2b92e97a4b8b448bb279eedf70a48038bd8ff2f1dda1ccad0c9107bdb93e37c877"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/d81dd97109ef3e859af1af132dff2cff2d254437/opt-filesystem.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/fbcbda5da7eaafd0201ebfaefab9f0606cbc889c/opt-filesystem.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "e3673b57ad87e649bf1cd2e249bb01f90d9fce7907a0f1ec62a8c66944131711"
+          "checksumValue": "a71e90fde8c3ff000b49cbe0c6c0b2545c75a2acfd52bd4af848c6cef428fd62"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/d81dd97109ef3e859af1af132dff2cff2d254437/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/fbcbda5da7eaafd0201ebfaefab9f0606cbc889c/portfile.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "982142eb6fb3303c3b7c6170c22fb07447d3c4b9779c6120079deadb813361d4"
+          "checksumValue": "ad0aa3ecc94f5e589fc3e7ace0e9b6bb889af29a31230da2b311fb8624872d5b"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/d81dd97109ef3e859af1af132dff2cff2d254437/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-process/fbcbda5da7eaafd0201ebfaefab9f0606cbc889c/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "e6fe67c44d5ea259365131145bc98860601c109d8d603268294876c8c39b743d"
+          "checksumValue": "d4bf36901b615c2e6c6a8b8b24a243f7a8b35b0336db491a99a024b4199e298d"
         }
       ],
       "licenseConcluded": "NOASSERTION",

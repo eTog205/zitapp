@@ -71,40 +71,6 @@ ImVec4 adjust_color_brightness(const ImVec4& color, const float factor)
 	};
 }
 
-void combo_box(const char* nhãn, const char* options[], const int options_count, int& current_selection, const float gt_botron)
-{
-	// Nếu chưa chọn gì (currentSelection == 0), hiển thị chuỗi rỗng ""
-	const char* preview = (current_selection == 0) ? "" : options[current_selection];
-
-	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, gt_botron);
-	ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f)); // Giữ nguyên màu nền
-	ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
-	ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
-	ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.2f, 0.2f, 0.2f, 1.0f)); // Không đổi màu khi di chuột vào
-	ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.0f, 0.0f, 0.0f, 0.0f)); // Đen nhưng hoàn toàn trong suốt
-	ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(0.0f, 0.0f, 0.0f, 0.0f));
-	ImGui::PushStyleColor(ImGuiCol_PopupBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f)); // Đặt màu nền danh sách hạ xuống
-
-	if (ImGui::BeginCombo(nhãn, preview, ImGuiComboFlags_NoArrowButton))
-	{
-		for (int i = 1; i < options_count; ++i) // Bỏ qua option đầu tiên (rỗng)
-		{
-			if (i != current_selection && ImGui::Selectable(options[i])) // Bỏ qua cái đã chọn
-				current_selection = i;
-		}
-		ImGui::EndCombo();
-	}
-
-	ImGui::PopStyleColor(7);
-	ImGui::PopStyleVar();
-
-	ImGui::SameLine();
-	const std::string btn_label = std::string("X##") + nhãn;
-
-	if (ImGui::Button(btn_label.c_str()))
-		current_selection = 0; // làm mới về trạng thái không hiển thị gì
-}
-
 void capnhat_bang_phanmem()
 {
 	std::vector<column_config> visible_columns;
@@ -348,7 +314,7 @@ void giaodien_menuben(const int chieucao_manhinh)
 	// ==== Nút thu gọn ====
 	ImGui::SetCursorPosX(le_nut);
 	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
-	ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.5f, 0.5f)); // giữa ngang + giữa dọc
+	ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.5f, 0.5f)); // trung tâm
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.92f, 0.92f, 0.92f, 1.0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.78f, 0.88f, 1.0f, 1.0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.65f, 0.85f, 1.0f, 1.0f));
@@ -363,7 +329,7 @@ void giaodien_menuben(const int chieucao_manhinh)
 	ImGui::PopStyleVar(); // pop FrameRounding
 
 	// ==== Các nút menu chính ====
-	static const std::vector<MenuItem> menu_items = { { L"Bảng dữ liệu", "bangdl" }, { L"Tiện ích", "tienich" }, { L"Cài đặt", "caidat" } };
+	static const std::vector<MenuItem> menu_items = { { L"Bảng dữ liệu", "bangdl" }, { L"Tiện ích", "tienich" }, { L"Cài đặt", "caidat" }, { L"Hỗ trợ", "hotro" } };
 
 	for (auto& item : menu_items)
 	{
@@ -392,7 +358,7 @@ void giaodien_menuben(const int chieucao_manhinh)
 		// ==== Vẽ indicator khi selected ====
 		if (selected)
 		{
-			ImDrawList* dl = ImGui::GetWindowDrawList();
+			ImDrawList* drawlist = ImGui::GetWindowDrawList();
 			ImVec2 pmin = ImGui::GetItemRectMin();
 
 			// Thông số indicator
@@ -426,27 +392,27 @@ void giaodien_menuben(const int chieucao_manhinh)
 					float wcol = (col == 0 ? seg0 : (col == 1 ? seg1 : seg2));
 					float alpha = fct[head[row][col]];
 					ImU32 colu = ImGui::GetColorU32(ImVec4(base.x, base.y, base.z, alpha));
-					dl->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
+					drawlist->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
 				}
 			}
 
 			// — Vẽ giữa (full màu) —
 			{
 				ImU32 colu = ImGui::GetColorU32(base);
-				dl->AddRectFilled(ImVec2(pmin.x, bodyY0), ImVec2(pmin.x + w, bodyY1), colu);
+				drawlist->AddRectFilled(ImVec2(pmin.x, bodyY0), ImVec2(pmin.x + w, bodyY1), colu);
 			}
 
 			// — Vẽ đuôi (2px) —
 			for (int row = 0; row < 2; row++)
 			{
-				float y = bodyY1 + float(row);
+				float y = bodyY1 + static_cast<float>(row);
 				for (int col = 0; col < 3; col++)
 				{
 					float x0 = pmin.x + (col == 0 ? 0.0f : (col == 1 ? seg0 : seg0 + seg1));
 					float wcol = (col == 0 ? seg0 : (col == 1 ? seg1 : seg2));
 					float alpha = fct[tail[row][col]];
 					ImU32 colu = ImGui::GetColorU32(ImVec4(base.x, base.y, base.z, alpha));
-					dl->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
+					drawlist->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
 				}
 			}
 		}
@@ -479,11 +445,7 @@ void giaodien_tienich(const int chieurong_manhinh, const int chieucao_manhinh)
 	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
 	ImGui::Begin("tienich", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
 
-	// tính năng không còn hỗ trợ - sẽ bị xóa ở cập nhật sau
-	/*if (ImGui::Button("Sửa Window"))
-		logic_giaodien::chaylenh_tienich();*/
-
-	hienthi_bangsuachua(); // tính năng mới thay cho phiên bản sửa window hiện tại
+	hienthi_bangsuachua();
 	ImGui::End();
 }
 
@@ -496,14 +458,23 @@ void giaodien_caidat(const int chieurong_manhinh, const int chieucao_manhinh)
 	ImGui::Begin("caidat", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
 
 	giaodien_tinhnang_xuatnap_cauhinh();
-	/*const char* options[] = { "Option 1", "Option 2", "Option 3" };
-	int current_selection = 0;
-	combo_box("a", options, 3, current_selection, 4.0f);*/
 
 	ImGui::Separator();
 	hienthi_nhapkey();
 
 	ImGui::End();
+}
+
+void giaodien_hotro(const int chieurong_manhinh, const int chieucao_manhinh)
+{
+    thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
+
+    ImGui::SetNextWindowPos(ImVec2(tt.vitri));
+    ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
+    ImGui::Begin("hotro", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
+    ImGui::Text("cảm ơn đã sử dụng sản phẩm");
+    ImGui::Image(reinterpret_cast<ImTextureID>("imgid"), ImVec2(64,64));
+    ImGui::End();
 }
 
 void giaodien_tinhnang_xuatnap_cauhinh()
@@ -663,45 +634,44 @@ void hienthi_nhapkey()
 		ImGui::TextWrapped("%s", ketqua.c_str());
 }
 
-// tính năng cần được xem lại có cần thiết hay không
-// cần làm thiết kế hiệu ứng chuyển đổi trong giao diện để cho cảm giác dễ chịu khi sử dụng
-void kiemtra_tinhnang()
-{
-	static const char* cac_tuychon[] = { "hiệu ứng mờ", "hiệu ứng trượt", "hiệu ứng bật lên" };
-	static int tuychon_hientai = 0;
-
-	if (ImGui::Begin("kiểm tra tính năng"))
-	{
-		if (ImGui::BeginCombo("tùy chọn hiệu ứng", cac_tuychon[tuychon_hientai]))
-		{
-			for (int i = 0; i < IM_ARRAYSIZE(cac_tuychon); ++i)
-			{
-				bool dangduoc_chon = (tuychon_hientai == i);
-				if (ImGui::Selectable(cac_tuychon[i], dangduoc_chon))
-					tuychon_hientai = i;
-
-				if (dangduoc_chon)
-					ImGui::SetItemDefaultFocus();
-			}
-			ImGui::EndCombo();
-		}
-
-		if (ImGui::Button("chạy"))
-		{
-			if (tuychon_hientai == 0)
-			{
-				// gọi hiệu ứng mờ
-			}
-			else if (tuychon_hientai == 1)
-			{
-				// gọi hiệu ứng trượt
-			}
-			else if (tuychon_hientai == 2)
-			{
-				// gọi hiệu ứng bật lên
-			}
-		}
-
-		ImGui::End();
-	}
-}
+//cần được thay thế hoặc phát triển theo hướng khác - chưa có kế hoạch làm - tính năng chưa hoàn thiện
+//void kiemtra_tinhnang()
+//{
+//	static const char* cac_tuychon[] = { "hiệu ứng mờ", "hiệu ứng trượt", "hiệu ứng bật lên" };
+//	static int tuychon_hientai = 0;
+//
+//	if (ImGui::Begin("kiểm tra tính năng"))
+//	{
+//		if (ImGui::BeginCombo("tùy chọn hiệu ứng", cac_tuychon[tuychon_hientai]))
+//		{
+//			for (int i = 0; i < IM_ARRAYSIZE(cac_tuychon); ++i)
+//			{
+//				bool dangduoc_chon = (tuychon_hientai == i);
+//				if (ImGui::Selectable(cac_tuychon[i], dangduoc_chon))
+//					tuychon_hientai = i;
+//
+//				if (dangduoc_chon)
+//					ImGui::SetItemDefaultFocus();
+//			}
+//			ImGui::EndCombo();
+//		}
+//
+//		if (ImGui::Button("chạy"))
+//		{
+//			if (tuychon_hientai == 0)
+//			{
+//				// gọi hiệu ứng mờ
+//			}
+//			else if (tuychon_hientai == 1)
+//			{
+//				// gọi hiệu ứng trượt
+//			}
+//			else if (tuychon_hientai == 2)
+//			{
+//				// gọi hiệu ứng bật lên
+//			}
+//		}
+//
+//		ImGui::End();
+//	}
+//}

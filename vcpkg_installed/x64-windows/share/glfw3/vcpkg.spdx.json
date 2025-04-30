@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/glfw3-x64-windows-3.4#1-c238739c-649f-4122-9ebb-5739be4f088a",
-  "name": "glfw3:x64-windows@3.4#1 c3e281114322224fdc03b7caeaee7a7e434461792299bdaac74df8af5ac32a69",
+  "documentNamespace": "https://spdx.org/spdxdocs/glfw3-x64-windows-3.4#1-1d91d83d-a7c8-4f1a-82c3-19fb17d129e8",
+  "name": "glfw3:x64-windows@3.4#1 d410b31ad49dee87326490f00a3d808a2846c92bf2546ad55bb79f8eb2732ca1",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:56:55Z"
+    "created": "2025-04-30T08:16:13Z"
   },
   "relationships": [
     {
@@ -69,7 +69,7 @@
     {
       "name": "glfw3:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "c3e281114322224fdc03b7caeaee7a7e434461792299bdaac74df8af5ac32a69",
+      "versionInfo": "d410b31ad49dee87326490f00a3d808a2846c92bf2546ad55bb79f8eb2732ca1",
       "downloadLocation": "NONE",
       "licenseConcluded": "Zlib",
       "licenseDeclared": "NOASSERTION",

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-uninstall-x64-windows-1.87.0-45f7a21b-62bb-437e-b6c7-57a6b49f0559",
-  "name": "boost-uninstall:x64-windows@1.87.0 50186b6ca7683bdd29bcf75f31e0849847bed449545f0ca925683fdb22a15e92",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-uninstall-x64-windows-1.88.0-b2a7da33-db7d-41a8-8f37-f7e7de6ed17e",
+  "name": "boost-uninstall:x64-windows@1.88.0 e4026b1ca9b4d5ba36ffff9a7b2a05ed0bff480610e51569f9d482253c2b1e85",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:55:00Z"
+    "created": "2025-04-30T08:37:07Z"
   },
   "relationships": [
     {
@@ -57,8 +57,8 @@
     {
       "name": "boost-uninstall",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.87.0",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@59deb8f474b417f62e4dea071edc08cfa61048f1",
+      "versionInfo": "1.88.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@3b2f9f82076f2d15124a4e449700848c25bcadcc",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
@@ -68,7 +68,7 @@
     {
       "name": "boost-uninstall:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "50186b6ca7683bdd29bcf75f31e0849847bed449545f0ca925683fdb22a15e92",
+      "versionInfo": "e4026b1ca9b4d5ba36ffff9a7b2a05ed0bff480610e51569f9d482253c2b1e85",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -78,7 +78,7 @@
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/59deb8f474b417f62e4dea071edc08cfa61048f1/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/3b2f9f82076f2d15124a4e449700848c25bcadcc/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -90,7 +90,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/59deb8f474b417f62e4dea071edc08cfa61048f1/vcpkg-cmake-wrapper.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/3b2f9f82076f2d15124a4e449700848c25bcadcc/vcpkg-cmake-wrapper.cmake",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -102,12 +102,12 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/59deb8f474b417f62e4dea071edc08cfa61048f1/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-uninstall/3b2f9f82076f2d15124a4e449700848c25bcadcc/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "28351aa0c6c18179f7bcd8f389926318bacfaa2bd1d4b12791c38fb6a3726fcb"
+          "checksumValue": "cb60547ce55b6277f01686131d7fc1950648575ed405721d568970bae06798b2"
         }
       ],
       "licenseConcluded": "NOASSERTION",

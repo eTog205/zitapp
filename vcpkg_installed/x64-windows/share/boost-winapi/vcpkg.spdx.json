@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-winapi-x64-windows-1.87.0-cc5d1c73-0ebd-4d11-8d82-53fdcdd72afc",
-  "name": "boost-winapi:x64-windows@1.87.0 73ba7e8c158dd95ab7927b25b45ac46fb3a2bcf843acf05b2c2997b8609d09c8",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-winapi-x64-windows-1.88.0-c88d1e8a-5ed5-4e21-8db9-944e0fa616e6",
+  "name": "boost-winapi:x64-windows@1.88.0 efef09ab01496782a1422c405c105d0826c0a1d88c34d28c6226e12c983f9ccd",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-10T23:55:09Z"
+    "created": "2025-04-30T08:37:12Z"
   },
   "relationships": [
     {
@@ -47,8 +47,8 @@
     {
       "name": "boost-winapi",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.87.0",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@9c479ba00f4e2401e518595446748e4394cd9568",
+      "versionInfo": "1.88.0",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@8b3ab1e64c2ac905bd598e30fba1101c5b8a2e72",
       "homepage": "https://www.boost.org/libs/winapi",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "boost-winapi:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "73ba7e8c158dd95ab7927b25b45ac46fb3a2bcf843acf05b2c2997b8609d09c8",
+      "versionInfo": "efef09ab01496782a1422c405c105d0826c0a1d88c34d28c6226e12c983f9ccd",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
@@ -69,38 +69,38 @@
     {
       "SPDXID": "SPDXRef-resource-0",
       "name": "boostorg/winapi",
-      "downloadLocation": "git+https://github.com/boostorg/winapi@boost-1.87.0",
+      "downloadLocation": "git+https://github.com/boostorg/winapi@boost-1.88.0",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "95a2f7770444a12add8fe5ce575a80f7af7446f92fbf971017dac6285e2bca1a4947cf9bcdf3e750647ebe004cec43f173c3f05f7bf5cf8badc4d75802ce2eb6"
+          "checksumValue": "009af2cc6b4b679ee40ad2298e0c63c4a1a71aedc31d5230d86a802ea40c73d48c47277dd7cba997eddffe836d7355f30003521a38601846d037ea77748d7a5a"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/9c479ba00f4e2401e518595446748e4394cd9568/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/8b3ab1e64c2ac905bd598e30fba1101c5b8a2e72/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "1207453bf486126f0ba97a815b450100caee49e209c21d63d9e71c92983c24a4"
+          "checksumValue": "4109771bb45fa24c3e47b558eb995fee67a9df789653a8d6da59400ceb3c30b4"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/9c479ba00f4e2401e518595446748e4394cd9568/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/boost-winapi/8b3ab1e64c2ac905bd598e30fba1101c5b8a2e72/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "350be70bcec9c0e621f7a1a0c0bbcaffeb004106402be9091a8639c80ad26ebf"
+          "checksumValue": "e29c60fdbbe9ec2f208db0504a18678862084cd61284efcbf2713ff20f248515"
         }
       ],
       "licenseConcluded": "NOASSERTION",

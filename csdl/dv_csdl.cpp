@@ -1,6 +1,6 @@
 // dv_csdl.cpp
-#include "csdl.h"
 #include "dv_csdl.h"
+#include "csdl.h"
 #include "giaodien.h"
 #include "log_nhalam.h"
 #include "logic_giaodien.h"
@@ -44,8 +44,7 @@ void ve_giaodien(const int chieurong_manhinh, const int chieucao_manhinh)
 	giaodien_menuben(chieucao_manhinh);
 	giaodien_tienich(chieurong_manhinh, chieucao_manhinh);
 	giaodien_caidat(chieurong_manhinh, chieucao_manhinh);
+	giaodien_hotro(chieurong_manhinh, chieucao_manhinh);
 	giaodien_bangdl(chieurong_manhinh, chieucao_manhinh);
-
 	// ImGui::ShowDemoWindow();
-	// kiemtra_tinhnang();
 }

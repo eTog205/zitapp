@@ -2,36 +2,53 @@
 #include "chucnang_cotloi.h"
 #include "log_nhalam.h"
 
+#include <boost/asio/buffer.hpp>
 #include <boost/process.hpp>
-#include <boost/process/v1/windows.hpp>
+#include <boost/process/windows/show_window.hpp>
+#include <boost/system/error_code.hpp>
+#include <sstream>
 
-namespace bp = boost::process;
+namespace asio = boost::asio;
+namespace bp2 = boost::process::v2;
 
 namespace
 {
 	std::string thucthi_lenh(const std::string& lenh)
 	{
-		std::ostringstream output;
+		asio::io_context ctx;
+		std::string output;
+		bool sha256_mismatch = false;
+		bool kotimthaygoi = false;
+
 		try
 		{
-			bool sha256_mismatch = false;
-			bp::ipstream pipe_stream;
-			bp::child process(lenh, bp::std_out > pipe_stream);
-			std::string line;
-			bool kotimthaygoi = false;
+			auto shell = bp2::environment::find_executable("cmd", bp2::environment::current());
+			auto exec = ctx.get_executor();
 
-			while (pipe_stream && getline(pipe_stream, line))
+			bp2::popen proc(exec, shell, { "/C", lenh });
+
+			boost::system::error_code ec;
+
+			char buf[4096];
+			while (true)
 			{
-				output << line << "\n";
+				std::size_t n = proc.read_some(asio::buffer(buf), ec);
+				if (n > 0)
+					output.append(buf, buf + n);
+				if (ec) // eof hoặc lỗi
+					break;
+			}
+			proc.wait();
 
+			std::istringstream iss(output);
+			std::string line;
+			while (std::getline(iss, line))
+			{
 				if (line.find("No package found matching input criteria") != std::string::npos)
 					kotimthaygoi = true;
-
 				if (line.find("Installer hash does not match") != std::string::npos)
 					sha256_mismatch = true;
 			}
-
-			process.wait();
 
 			if (kotimthaygoi)
 			{
@@ -43,27 +60,31 @@ namespace
 				td_log(loai_log::canh_bao, "phần mềm được chọn gặp lỗi (sha256_mismatch) cần đợi một thời gian mới có thể cài đặt)");
 			}
 
-			if (process.exit_code() != 0)
+			if (proc.exit_code() != 0)
 			{
-				throw std::runtime_error("Lenh loi voi ma thoat: " + std::to_string(process.exit_code()));
+				throw std::runtime_error("Lenh loi voi ma thoat: " + std::to_string(proc.exit_code()));
 			}
 		} catch (const std::exception& ex)
 		{
 			td_log(loai_log::loi, "Lỗi xảy ra: " + std::string(ex.what()));
 		}
 
-		return output.str();
+		return output;
 	}
 
 	void chay_trong_ps_giu_cua_so(const std::string& lenh)
 	{
 		try
 		{
-			bp::child proc(bp::search_path("powershell"), bp::args({ "-NoExit", "-Command", lenh }), bp::windows::show);
+			asio::io_context ctx;
+			auto ps = bp2::environment::find_executable("powershell.exe", bp2::environment::current());
+
+			bp2::process proc(ctx.get_executor(), ps, { "-NoProfile", "-NoExit", "-Command", lenh }, bp2::windows::show_window_normal);
+
 			proc.detach();
 		} catch (const std::exception& ex)
 		{
-			td_log(loai_log::loi, "PowerShell wrapper: " + std::string(ex.what()));
+			td_log(loai_log::loi, "PowerShell wrapper error: " + std::string(ex.what()));
 		}
 	}
 
@@ -77,31 +98,64 @@ void chaylenh(const std::string& id)
 	thucthi_lenh(lenh);
 }
 
+// cần tìm hiểu cách api hoạt động vì có vẻ là lệnh lấy danh sách ổ đĩa không hoạt động
 void chkdsk(std::vector<std::string>& cmds)
 {
 	try
 	{
-		bp::ipstream pipe;
+		td_log(loai_log::thong_bao, "Bắt đầu hàm chkdsk.");
 
-		auto ps = bp::search_path("powershell");
-		bp::child c(ps, bp::args({ "-NoProfile", "-Command", "Get-Volume | Where-Object { $_.FileSystem -eq 'NTFS' } | Select-Object -ExpandProperty DriveLetter" }), bp::std_out > pipe,
-					bp::windows::hide);
+		asio::io_context ctx;
+		auto ps = bp2::environment::find_executable("powershell", bp2::environment::current());
 
-		std::string line;
-		while (pipe && std::getline(pipe, line))
+		std::string pw_cmd = "Get-Volume | Where-Object { $_.FileSystem -eq 'NTFS' } | Select-Object -ExpandProperty DriveLetter";
+
+		td_log(loai_log::thong_bao, "Chạy lệnh PowerShell lấy danh sách ổ đĩa NTFS.");
+
+		bp2::popen proc(ctx, ps, { "-NoProfile", "-Command", pw_cmd });
+
+		boost::system::error_code ec;
+		std::string out;
+		char buf[4096];
+
+		while (true)
+		{
+			std::size_t n = proc.read_some(asio::buffer(buf), ec);
+			if (n > 0)
+				out.append(buf, buf + n);
+			if (ec)
+				break;
+		}
+
+		td_log(loai_log::thong_bao, "Kết quả từ PowerShell:\n" + out);
+
+		std::istringstream iss(out);
+		for (std::string line; std::getline(iss, line);)
 		{
 			auto f = line.find_first_not_of(" \t\r\n");
-			auto l = line.find_last_not_of(" \t\r\n");
 			if (f == std::string::npos)
 				continue;
-			std::string d = line.substr(f, l - f + 1);
-			if (!d.empty())
-				cmds.push_back("chkdsk " + d + ": /scan");
+
+			auto l = line.find_last_not_of(" \t\r\n");
+			std::string drive = line.substr(f, l - f + 1);
+
+			std::string cmd = "chkdsk " + drive + ": /scan";
+			td_log(loai_log::thong_bao, "Tạo lệnh: " + cmd);
+
+			cmds.push_back(cmd);
 		}
-		c.wait();
+
+		proc.wait();
+
+		if (proc.exit_code() != 0)
+		{
+			td_log(loai_log::loi, "PowerShell thoát với mã lỗi: " + std::to_string(proc.exit_code()));
+		}
+
+		td_log(loai_log::thong_bao, "Kết thúc hàm chkdsk.");
 	} catch (const std::exception& ex)
 	{
-		td_log(loai_log::loi, "lấy danh sách ổ đĩa cho chkdsk: " + std::string(ex.what()));
+		td_log(loai_log::loi, "lỗi hàm chkdsk: " + std::string(ex.what()));
 	}
 }
 

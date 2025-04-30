@@ -59,7 +59,7 @@ add_library(Boost::dll INTERFACE IMPORTED)
 
 set_target_properties(Boost::dll PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "Boost::assert;Boost::config;Boost::core;Boost::filesystem;Boost::function;Boost::move;Boost::predef;Boost::smart_ptr;Boost::spirit;Boost::system;Boost::throw_exception;Boost::type_index;Boost::type_traits;Boost::winapi"
+  INTERFACE_LINK_LIBRARIES "Boost::assert;Boost::config;Boost::core;Boost::filesystem;Boost::predef;Boost::system;Boost::throw_exception;Boost::type_index;Boost::winapi"
 )
 
 # Load information for each installed configuration.

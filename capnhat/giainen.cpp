@@ -1,14 +1,13 @@
-//giainen.cpp
-#include "get.h"
+// giainen.cpp
 #include "giainen.h"
+#include "get.h"
 #include "log_nhalam.h"
 
 #include <boost/dll.hpp>
 #include <boost/process.hpp>
-#include <windows.h>
 
 namespace bp = boost::process;
-namespace bfs = boost::filesystem;
+namespace fs = std::filesystem;
 
 void xoa_tapnen(const std::string& file_path)
 {
@@ -40,16 +39,21 @@ std::string lau_duongdan_winrar()
 
 bool chay_winrar(const std::string& duongdan_winrarexe, const std::string& duongdan_giainen)
 {
-	const bfs::path thumuc_chuongtrinh = boost::dll::program_location().parent_path();
-	const bfs::path thumucnen_tuyetdoi = thumuc_chuongtrinh / tentep;
+	const fs::path thumuc_chuongtrinh = fs::path(boost::dll::program_location().parent_path().string());
+	const fs::path thumucnen_tuyetdoi = thumuc_chuongtrinh / tentep;
 
 	std::string cmd_line = "\"" + duongdan_winrarexe + "\" x -ibck -y \"" + thumucnen_tuyetdoi.string() + "\" \"" + duongdan_giainen + "\"";
 
 	try
 	{
-		bp::child c(cmd_line);
-		c.wait();
-		const int exit_code = c.exit_code();
+		boost::asio::io_context ctx;
+		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+
+		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line });
+
+		//bp::process proc(ctx.get_executor(), ps, cmd_line);
+		proc.wait();
+		const int exit_code = proc.exit_code();
 
 		if (exit_code == 0)
 			xoa_tapnen(tentep);
@@ -61,5 +65,3 @@ bool chay_winrar(const std::string& duongdan_winrarexe, const std::string& duong
 		return false;
 	}
 }
-
-

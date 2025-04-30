@@ -21,7 +21,8 @@
     "boost-filesystem",
     "sqlite3",
     "openssl",
-    "spdlog"
+    "spdlog",
+    "stb"
   ],
-  "builtin-baseline": "64f3d3d6201d9cea01d15ea6e793daf0bbcd47c7"
+  "builtin-baseline": "e9d0d6fe71ec440a6a7906f92f941a181b937556"
 }
