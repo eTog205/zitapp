@@ -17,7 +17,6 @@ struct thamso_http
 	int so_lan_redirect = 0;
 };
 
-
 // 🔹 Cấu hình cho GitHub
 struct cauhinh_github
 {

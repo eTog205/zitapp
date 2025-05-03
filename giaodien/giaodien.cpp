@@ -2,7 +2,6 @@
 #include "giaodien.h"
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
-#include "hieuung.h"
 #include "logic_giaodien.h"
 #include "net.h"
 
@@ -60,15 +59,6 @@ thongtin_cuaso_imgui tinh_thongtin_cuaso(const int chieurong_manhinh, const int 
 	tt.kichthuoc.y = static_cast<float>(chieucao_manhinh) - gd.letren_bang;
 
 	return tt;
-}
-
-// Hàm hỗ trợ để tự động sửa đổi màu
-ImVec4 adjust_color_brightness(const ImVec4& color, const float factor)
-{
-	return {
-		std::min(color.x * factor, 1.0f), std::min(color.y * factor, 1.0f), std::min(color.z * factor, 1.0f),
-		color.w // Giữ nguyên độ trong suốt (alpha)
-	};
 }
 
 void capnhat_bang_phanmem()
@@ -467,14 +457,14 @@ void giaodien_caidat(const int chieurong_manhinh, const int chieucao_manhinh)
 
 void giaodien_hotro(const int chieurong_manhinh, const int chieucao_manhinh)
 {
-    thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
+	thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
 
-    ImGui::SetNextWindowPos(ImVec2(tt.vitri));
-    ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
-    ImGui::Begin("hotro", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
-    ImGui::Text("cảm ơn đã sử dụng sản phẩm");
-    ImGui::Image(reinterpret_cast<ImTextureID>("imgid"), ImVec2(64,64));
-    ImGui::End();
+	ImGui::SetNextWindowPos(ImVec2(tt.vitri));
+	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
+	ImGui::Begin("hotro", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
+	ImGui::Text("cảm ơn đã sử dụng sản phẩm");
+	ImGui::Image(reinterpret_cast<ImTextureID>("imgid"), ImVec2(64, 64));
+	ImGui::End();
 }
 
 void giaodien_tinhnang_xuatnap_cauhinh()
@@ -634,44 +624,3 @@ void hienthi_nhapkey()
 		ImGui::TextWrapped("%s", ketqua.c_str());
 }
 
-//cần được thay thế hoặc phát triển theo hướng khác - chưa có kế hoạch làm - tính năng chưa hoàn thiện
-//void kiemtra_tinhnang()
-//{
-//	static const char* cac_tuychon[] = { "hiệu ứng mờ", "hiệu ứng trượt", "hiệu ứng bật lên" };
-//	static int tuychon_hientai = 0;
-//
-//	if (ImGui::Begin("kiểm tra tính năng"))
-//	{
-//		if (ImGui::BeginCombo("tùy chọn hiệu ứng", cac_tuychon[tuychon_hientai]))
-//		{
-//			for (int i = 0; i < IM_ARRAYSIZE(cac_tuychon); ++i)
-//			{
-//				bool dangduoc_chon = (tuychon_hientai == i);
-//				if (ImGui::Selectable(cac_tuychon[i], dangduoc_chon))
-//					tuychon_hientai = i;
-//
-//				if (dangduoc_chon)
-//					ImGui::SetItemDefaultFocus();
-//			}
-//			ImGui::EndCombo();
-//		}
-//
-//		if (ImGui::Button("chạy"))
-//		{
-//			if (tuychon_hientai == 0)
-//			{
-//				// gọi hiệu ứng mờ
-//			}
-//			else if (tuychon_hientai == 1)
-//			{
-//				// gọi hiệu ứng trượt
-//			}
-//			else if (tuychon_hientai == 2)
-//			{
-//				// gọi hiệu ứng bật lên
-//			}
-//		}
-//
-//		ImGui::End();
-//	}
-//}

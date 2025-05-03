@@ -1,7 +1,4 @@
 // capnhat.cpp
-#define WIN32_LEAN_AND_MEAN
-#define WINSOCKAPI
-
 #include "capnhat.h"
 #include "get.h"
 #include "giainen.h"
@@ -160,7 +157,7 @@ void chay_app_co_ban()
 	try
 	{
 		const std::string app_path = get_appcoban_path();
-		std::filesystem::path app_dir = std::filesystem::path(app_path).parent_path();
+		fs::path app_dir = fs::path(app_path).parent_path();
 		boost::asio::io_context ctx;
 		bp::process proc(ctx, app_path, {}, bp::process_start_dir(app_dir));
 		proc.wait();

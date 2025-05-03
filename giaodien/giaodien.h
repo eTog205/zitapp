@@ -53,8 +53,6 @@ extern bool hien_cuaso_key;
 
 thongtin_cuaso_imgui tinh_thongtin_cuaso(int chieurong_manhinh, int chieucao_manhinh);
 
-ImVec4 adjust_color_brightness(const ImVec4& color, float factor);
-
 void capnhat_bang_phanmem();
 
 void giaodien_thanhcongcu(int chieurong_manhinh, int chieucao_manhinh);
