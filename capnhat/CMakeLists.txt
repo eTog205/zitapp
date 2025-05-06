@@ -16,7 +16,6 @@ target_link_libraries(capnhat PRIVATE
     Boost::json
     Boost::asio
     Boost::beast
-    Boost::filesystem
     OpenSSL::SSL
     OpenSSL::Crypto
     unofficial::sqlite3::sqlite3

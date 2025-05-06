@@ -2,6 +2,7 @@
 #include "capnhat.h"
 #include "get.h"
 #include "giainen.h"
+#include "kiemtra_ketnoi_mang.h"
 #include "log_nhalam.h"
 #include "net.h"
 
@@ -12,7 +13,7 @@ using namespace std::chrono;
 namespace bp = boost::process;
 namespace fs = std::filesystem;
 
-std::string get_appcoban_path()
+std::string lay_duongdan_zitapp()
 {
 	thongtin tt;
 	const fs::path duongdan_capnhat = fs::path(boost::dll::program_location().string());
@@ -95,14 +96,46 @@ bool sosanh_phienban(const int so_hientai, const int so_layve)
 	return so_hientai < so_layve;
 }
 
+void capnhat()
+{
+	if (chay_winrar())
+	{
+		// td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");	//debug
+	}
+	else
+		td_log(loai_log::loi, "Chạy tiến trình Winrar thất bại");
+}
+
+void chay_zitapp()
+{
+	try
+	{
+		const std::string ap = lay_duongdan_zitapp();
+		fs::path ad = fs::path(ap).parent_path();
+		boost::asio::io_context ctx;
+		bp::process proc(ctx, ap, {}, bp::process_start_dir(ad));
+		proc.wait();
+	} catch (const std::exception& e)
+	{
+		td_log(loai_log::loi, "Không chạy được zitapp.exe:" + std::string(e.what()));
+	}
+}
+
 void kiemtra_capnhat()
 {
+	if (!kiemtra_trangthai_mang())
+	{
+		// td_log(loai_log::canh_bao, "Không có kết nối mạng. Bỏ qua cập nhật");	//debug
+		chay_zitapp();
+		return;
+	}
+
 	thongtin tt;
 	const std::string latest_tag = get_release_tag();
 	if (latest_tag.empty())
 	{
 		td_log(loai_log::canh_bao, "Không thể lấy phiên bản mới nhất!");
-		chay_app_co_ban();
+		chay_zitapp();
 		return;
 	}
 
@@ -121,8 +154,12 @@ void kiemtra_capnhat()
 
 			capnhat();
 			td_log(loai_log::thong_bao, "Hoàn tất cập nhật phiên bản mới " + dl_doi_dinhdang);
+
 			// td_log(loai_log::thong_bao, "Chạy " + tt.tentep_appchinh + " " + dl_doi_dinhdang);	//debug
-			chay_app_co_ban();
+			chay_zitapp();
+
+			if (std::remove(tentep.c_str()) != 0)
+				td_log(loai_log::loi, "Xóa tệp nén thất bại: " + tentep);
 		}
 		else
 			td_log(loai_log::loi, "Không thể tải xuống bản cập nhật!");
@@ -130,39 +167,6 @@ void kiemtra_capnhat()
 	else
 	{
 		// td_log(loai_log::thong_bao, "Phiên bản hiện tại (" + dinhdang_dl(so_hientai_daloc) + ") đã mới nhất.");	//debug
-		chay_app_co_ban();
-	}
-}
-
-void capnhat()
-{
-	const std::string duongdan_winrar = lau_duongdan_winrar();
-	const std::string app_path = get_appcoban_path();
-	const fs::path dest_path(app_path);
-
-	const std::string duongdan_thumuc_giainen = dest_path.parent_path().string();
-
-	if (chay_winrar(duongdan_winrar, duongdan_thumuc_giainen))
-	{
-		// td_log(loai_log::thong_bao, "Chạy tiến trình Winrar thành công");	//debug
-	}
-	else
-	{
-		td_log(loai_log::loi, "Chạy tiến trình Winrar thất bại");
-	}
-}
-
-void chay_app_co_ban()
-{
-	try
-	{
-		const std::string app_path = get_appcoban_path();
-		fs::path app_dir = fs::path(app_path).parent_path();
-		boost::asio::io_context ctx;
-		bp::process proc(ctx, app_path, {}, bp::process_start_dir(app_dir));
-		proc.wait();
-	} catch (const std::exception& e)
-	{
-		td_log(loai_log::loi, "Không chạy được zitapp.exe:" + std::string(e.what()));
+		chay_zitapp();
 	}
 }

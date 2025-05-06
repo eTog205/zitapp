@@ -1,4 +1,4 @@
-//cn.main.cpp
+// cn.main.cpp
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 
 #include "capnhat.h"

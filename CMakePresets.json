@@ -17,7 +17,7 @@
     {
       "name": "x64-debug",
       "inherits": "base",
-      //"hidden": true,
+      "hidden": true,
       "description": "Build debug bằng Ninja + MSVC",
       "displayName": "x64 Debug",
       "architecture": {

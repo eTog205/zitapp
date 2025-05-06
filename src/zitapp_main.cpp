@@ -1,11 +1,13 @@
 ﻿// CL_PhanMem.cpp
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 
+#include <boost/interprocess/sync/named_mutex.hpp>
+#include <windows.h>
 #include "app.h"
 #include "chay_luongphu.h"
 #include "log_nhalam.h"
-#include <boost/interprocess/sync/named_mutex.hpp>
-#include <windows.h>
+
+#include "kiemtra_ketnoi_mang.h"
 
 int main()
 {
@@ -21,7 +23,8 @@ int main()
 	constexpr int mode = 1;
 	g_logger = chuyendoi(mode);
 
-	lp_chay_capnhat();
+	if (kiemtra_trangthai_mang())
+		lp_chay_capnhat();
 
 	std::this_thread::sleep_for(std::chrono::seconds(4));
 

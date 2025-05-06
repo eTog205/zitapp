@@ -1,11 +1,11 @@
 // csdl.h
 #pragma once
-#include <boost/beast/http.hpp>
+//#include <boost/beast/http.hpp>
 #include <boost/beast/ssl.hpp>
 #include <sqlite3.h>
 
 namespace beast = boost::beast;
-namespace http = beast::http;
+//namespace http = beast::http;
 namespace net = boost::asio;
 using tcp = net::ip::tcp;
 
@@ -15,9 +15,6 @@ struct csdl
 	std::string file_path = "sql.db";
 	std::string sha_file = "sql.sha";
 };
-
-// !!!loại bỏ trong cập nhật sau
-std::string decode_base64(const std::string& encoded);
 
 void save_to_file(const std::string& filename, const std::string& data);
 

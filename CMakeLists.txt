@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 cmake_policy(SET CMP0167 NEW)
 
-add_compile_definitions(_WIN32_WINNT=0x0A00)
+add_compile_definitions(_WIN32_WINNT=0x0A00 BOOST_ALL_NO_DEPRECATED)
 
 if(EXISTS "E:/dev/vcpkg/vcpkg.exe")
   message(STATUS "[vcpkg] ✅ Đã tìm thấy vcpkg, đang cập nhật baseline và cài gói...")
@@ -49,7 +49,6 @@ find_package(boost_process CONFIG REQUIRED)
 find_package(boost_dll CONFIG REQUIRED)
 find_package(boost_interprocess CONFIG REQUIRED)
 find_package(boost_property_tree CONFIG REQUIRED)
-find_package(boost_filesystem CONFIG REQUIRED)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
@@ -89,7 +88,6 @@ target_link_libraries(chung PUBLIC
     Boost::dll
     Boost::interprocess
     Boost::property_tree
-    Boost::filesystem
     OpenSSL::SSL
     OpenSSL::Crypto
     unofficial::sqlite3::sqlite3

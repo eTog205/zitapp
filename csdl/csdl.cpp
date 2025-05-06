@@ -4,23 +4,14 @@
 #include "log_nhalam.h"
 #include "net.h"
 
-#include <boost/beast/core.hpp>
-#include <boost/beast/core/detail/base64.hpp>
+//#include <boost/beast/core.hpp>
+//#include <boost/beast/core/detail/base64.hpp>
 #include <boost/json.hpp>
 #include <fstream>
 
 namespace bj = boost::json;
 sqlite3* db = nullptr;
 
-// !!!loại bỏ trong cập nhật sau
-std::string decode_base64(const std::string& encoded)
-{
-	std::string decoded;
-	decoded.resize(beast::detail::base64::decoded_size(encoded.size()));
-	auto len = beast::detail::base64::decode(decoded.data(), encoded.data(), encoded.size());
-	decoded.resize(len.first);
-	return decoded;
-}
 
 void save_to_file(const std::string& filename, const std::string& data)
 {
@@ -88,7 +79,6 @@ void luu_tepsha(const std::string& thumuc, const std::string& sha_file, const st
 
 void capnhat_data(const csdl& c)
 {
-	// Đọc SHA cũ
 	std::ifstream sha_file_in(c.thumuc + c.sha_file);
 	std::string old_sha;
 	if (sha_file_in)
@@ -97,7 +87,6 @@ void capnhat_data(const csdl& c)
 		sha_file_in.close();
 	}
 
-	// Nếu có SHA cũ, so sánh với SHA mới
 	if (!old_sha.empty())
 	{
 		std::string metadata_response = lay_thongtin_tep_github(c.file_path);
@@ -137,7 +126,6 @@ void capnhat_data(const csdl& c)
 		}
 
 		auto new_sha = bj::value_to<std::string>(it->value());
-		// Nếu SHA không thay đổi, dừng
 		if (old_sha == new_sha)
 			return;
 	}

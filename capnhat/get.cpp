@@ -66,16 +66,20 @@ bool download_latest_release()
 		return false;
 	}
 
-	const auto download_url = json::value_to<std::string>(asset["browser_download_url"]);
-
-	if (asset.contains("name"))
+	for (auto& a : assets)
 	{
-		tentep = json::value_to<std::string>(asset["name"]);
-	}
-	else // cần làm: xem lại có cần thiết không
-	{
-		tentep = "AppZit.rar";
+		if (a.as_object().contains("name") && a.as_object()["name"].as_string().ends_with(".rar"))
+		{
+			auto obj = a.as_object();
+			auto ten_teptai = json::value_to<std::string>(obj["name"]);
+			auto download_url = json::value_to<std::string>(obj["browser_download_url"]);
+
+			tentep = ten_teptai;
+			td_log(loai_log::thong_bao, "tên tệp: " + ten_teptai);
+			return download_file(download_url, tentep);
+		}
 	}
 
-	return download_file(download_url, tentep);
+	td_log(loai_log::canh_bao, "Không tìm thấy file .rar trong danh sách assets.");
+	return false;
 }
