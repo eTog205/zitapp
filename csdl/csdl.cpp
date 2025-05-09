@@ -4,14 +4,11 @@
 #include "log_nhalam.h"
 #include "net.h"
 
-//#include <boost/beast/core.hpp>
-//#include <boost/beast/core/detail/base64.hpp>
 #include <boost/json.hpp>
 #include <fstream>
 
 namespace bj = boost::json;
 sqlite3* db = nullptr;
-
 
 void save_to_file(const std::string& filename, const std::string& data)
 {
@@ -137,7 +134,7 @@ void capnhat_data(const csdl& c)
 	if (!new_data.empty())
 	{
 		save_to_file(c.thumuc + c.file_path, new_data);
-		luu_tepsha(c.thumuc, c.sha_file,   c.file_path);
+		luu_tepsha(c.thumuc, c.sha_file, c.file_path);
 
 		td_log(loai_log::thong_bao, "Đã cập nhật dữ liệu và lưu SHA mới.");
 	}
@@ -212,6 +209,7 @@ int create_table()
 	return execute_sql(sql);
 }
 
+// [kiểm tra] - cái này đang không dùng
 bool database_exists(const char* db_name)
 {
 	return std::filesystem::exists(db_name);

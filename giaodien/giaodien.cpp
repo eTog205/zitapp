@@ -2,13 +2,23 @@
 #include "giaodien.h"
 #include "chay_luongphu.h"
 #include "chucnang_cotloi.h"
+#include "imgui_setup.h"
 #include "logic_giaodien.h"
-#include "net.h"
 
+#include <algorithm>
 #include <imgui_stdlib.h>
+#include <variant>
 
 std::string tab_hientai = "bangdl";
 giaodien gd;
+
+enum co_chen_anh : std::uint8_t
+{
+	khong_can = 0,
+	can_giua_ca_2 = 1 << 0,
+	can_giua_ngang = 1 << 1,
+	can_giua_doc = 1 << 2,
+};
 
 namespace
 {
@@ -20,33 +30,103 @@ namespace
 		if (ss.fail())
 			return false;
 
-		// Chuyển sang time_t
 		std::time_t ngay_key = std::mktime(&tm);
 		if (ngay_key == -1)
 			return false;
 
-		// Lấy thời gian hiện tại
 		auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
-		// So sánh
 		return now <= ngay_key;
 	}
+
+	void chen_anh(const char* duongdan, std::variant<ImVec2, float> kichthuoc_scale = ImVec2(0, 0), int co = khong_can, ImU32 mau_nen = ImGui::GetColorU32(ImGuiCol_Header))
+	{
+		TextureInfo info = tai_texture_tu_tep(duongdan);
+		ImDrawList* draw = ImGui::GetWindowDrawList();
+		ImVec2 pos = ImGui::GetCursorScreenPos();
+
+		ImVec2 img = ImVec2(static_cast<float>(info.width), static_cast<float>(info.height));
+		ImVec2 frame = img;
+
+		// Xử lý kích thước đầu vào
+		if (std::holds_alternative<ImVec2>(kichthuoc_scale))
+		{
+			ImVec2 kh = std::get<ImVec2>(kichthuoc_scale);
+			if (kh.x > 0 && kh.y > 0)
+			{
+				frame = kh;
+				img = kh;
+			}
+			else
+			{
+				frame = ImGui::GetContentRegionAvail();
+			}
+		}
+		else
+		{
+			float scale = std::get<float>(kichthuoc_scale);
+			if (scale > 0.0f)
+			{
+				img.x *= scale;
+				img.y *= scale;
+			}
+			else if (scale < 0.0f)
+			{
+				const float max_w = 256.0f, max_h = 256.0f;
+				if (img.x > max_w || img.y > max_h)
+				{
+					float ty_le = std::min(max_w / img.x, max_h / img.y);
+					img.x *= ty_le;
+					img.y *= ty_le;
+				}
+			}
+			frame = img;
+		}
+
+		auto gan_nhau = [](float a, float b) { return fabsf(a - b) < 0.01f; };
+
+		if ((co & (can_giua_ca_2 | can_giua_ngang | can_giua_doc)) && gan_nhau(frame.x, img.x) && gan_nhau(frame.y, img.y))
+		{
+			ImVec2 avail = ImGui::GetContentRegionAvail();
+			frame.x = std::max(avail.x, frame.x);
+			frame.y = std::max(avail.y, frame.y);
+		}
+
+		ImVec2 p_min = pos;
+		if (co & can_giua_ca_2 || co & can_giua_ngang)
+			p_min.x += (frame.x - img.x) * 0.5f;
+		if (co & can_giua_ca_2 || co & can_giua_doc)
+			p_min.y += (frame.y - img.y) * 0.5f;
+
+		ImVec2 p_max = ImVec2(p_min.x + img.x, p_min.y + img.y);
+
+		/*if (mau_nen == 0)
+			mau_nen = ImGui::GetColorU32(ImGuiCol_Header);*/
+
+		if (!info.texture_id)
+		{
+			ImU32 hongnhat = ImGui::GetColorU32(ImVec4(1.0f, 0.75f, 0.9f, 1.0f));
+			draw->AddRectFilled(pos, ImVec2(pos.x + frame.x, pos.y + frame.y), hongnhat, 6.0f);
+
+			ImVec2 text_size = ImGui::CalcTextSize("?");
+			ImVec2 text_pos;
+			text_pos.x = p_min.x + (img.x - text_size.x) * 0.5f;
+			text_pos.y = p_min.y + (img.y - text_size.y) * 0.5f;
+
+			ImGui::SetCursorScreenPos(text_pos);
+			ImGui::TextUnformatted("?");
+			ImGui::Dummy(frame);
+			return;
+		}
+
+		draw->AddRectFilled(pos, ImVec2(pos.x + frame.x, pos.y + frame.y), mau_nen, 6.0f);
+		draw->AddImage(static_cast<ImTextureID>(static_cast<intptr_t>(info.texture_id)), p_min, p_max);
+		ImGui::Dummy(frame);
+	}
+
 } // namespace
 
-void hienthi_loi(const std::string& loi, const demtg::time_point tg_loi, const int tg_tb_mat)
-{
-	if (!loi.empty())
-	{
-		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(demtg::now() - tg_loi).count();
-		if (elapsed < tg_tb_mat)
-		{
-			ImGui::TextColored(ImVec4(1, 0, 0, 1), "%s", loi.c_str());
-		}
-	}
-}
-
-// Hàm tính toán vị trí, kích thước, tên cửa sổ và cờ cho một cửa sổ con
-thongtin_cuaso_imgui tinh_thongtin_cuaso(const int chieurong_manhinh, const int chieucao_manhinh)
+thongtin_cuaso_imgui tinh_thongtin_cuaso(int chieurong_manhinh, int chieucao_manhinh)
 {
 	thongtin_cuaso_imgui tt;
 
@@ -59,6 +139,16 @@ thongtin_cuaso_imgui tinh_thongtin_cuaso(const int chieurong_manhinh, const int 
 	tt.kichthuoc.y = static_cast<float>(chieucao_manhinh) - gd.letren_bang;
 
 	return tt;
+}
+
+void hienthi_loi(const std::string& loi, const demtg::time_point tg_loi, const int tg_tb_mat)
+{
+	if (!loi.empty())
+	{
+		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(demtg::now() - tg_loi).count();
+		if (elapsed < tg_tb_mat)
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "%s", loi.c_str());
+	}
 }
 
 void capnhat_bang_phanmem()
@@ -216,7 +306,7 @@ void giaodien_thanhcongcu(const int chieurong_manhinh, const int chieucao_manhin
 		for (auto& item : lg_gd.selected_map)
 		{
 			if (item.second)
-				logic_giaodien::chaylenh_winget(item.first);
+				lp_chay_lenhwinget(item.first);
 		}
 	}
 
@@ -415,34 +505,28 @@ void giaodien_menuben(const int chieucao_manhinh)
 	ImGui::End();
 }
 
-void giaodien_bangdl(const int chieurong_manhinh, const int chieucao_manhinh)
+void giaodien_bangdl(thongtin_cuaso_imgui& tt)
 {
-	thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
-
-	ImGui::SetNextWindowPos(ImVec2(tt.vitri));
-	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
+	ImGui::SetNextWindowPos(tt.vitri);
+	ImGui::SetNextWindowSize(tt.kichthuoc);
 	ImGui::Begin("bangdl", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
 
 	capnhat_bang_phanmem();
 	ImGui::End();
 }
 
-void giaodien_tienich(const int chieurong_manhinh, const int chieucao_manhinh)
+void giaodien_tienich(thongtin_cuaso_imgui& tt)
 {
-	thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
-
-	ImGui::SetNextWindowPos(ImVec2(tt.vitri));
-	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
+	ImGui::SetNextWindowPos(tt.vitri);
+	ImGui::SetNextWindowSize(tt.kichthuoc);
 	ImGui::Begin("tienich", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
 
 	hienthi_bangsuachua();
 	ImGui::End();
 }
 
-void giaodien_caidat(const int chieurong_manhinh, const int chieucao_manhinh)
+void giaodien_caidat(thongtin_cuaso_imgui& tt)
 {
-	const thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
-
 	ImGui::SetNextWindowPos(tt.vitri);
 	ImGui::SetNextWindowSize(tt.kichthuoc);
 	ImGui::Begin("caidat", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
@@ -455,32 +539,30 @@ void giaodien_caidat(const int chieurong_manhinh, const int chieucao_manhinh)
 	ImGui::End();
 }
 
-void giaodien_hotro(const int chieurong_manhinh, const int chieucao_manhinh)
+void giaodien_hotro(thongtin_cuaso_imgui& tt)
 {
-	thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
-
-	ImGui::SetNextWindowPos(ImVec2(tt.vitri));
-	ImGui::SetNextWindowSize(ImVec2(tt.kichthuoc));
+	ImGui::SetNextWindowPos(tt.vitri);
+	ImGui::SetNextWindowSize(tt.kichthuoc);
 	ImGui::Begin("hotro", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
-	ImGui::Text("cảm ơn đã sử dụng sản phẩm");
-	ImGui::Image(reinterpret_cast<ImTextureID>("imgid"), ImVec2(64, 64));
+
+	ImGui::SetCursorPos(ImVec2(5, 5));
+	ImGui::TextWrapped("😊 Cảm ơn anh/chị đã tin dùng sản phẩm!\nNếu muốn đóng góp và hỗ trợ phát triển, anh/chị có thể quét mã QR để chuyển khoản nhé 💖");
+
+	chen_anh("tainguyen/qr_hotro.jpg", 0.65f, can_giua_ca_2);
+
 	ImGui::End();
 }
 
 void giaodien_tinhnang_xuatnap_cauhinh()
 {
 	if (ImGui::InputText("Đường dẫn thư mục", &dl.dd_xuat))
-	{
 		dl.loi_xuat_tepch.clear();
-	}
 
 	ImGui::BeginGroup();
 	if (ImGui::Button("Xuất tệp"))
 	{
 		if (kiemtraduongdan_thumuc())
-		{
 			lp_xuat_cauhinh("cauhinh.ini");
-		}
 	}
 
 	ImGui::SameLine();
@@ -491,9 +573,7 @@ void giaodien_tinhnang_xuatnap_cauhinh()
 	ImGui::Separator();
 
 	if (ImGui::InputText("Đường dẫn tệp tin", &dl.dd_nap))
-	{
 		dl.loi_nap_tepch.clear();
-	}
 
 	ImGui::BeginGroup();
 	if (ImGui::Button("Nạp cấu hình"))
@@ -512,103 +592,185 @@ void giaodien_tinhnang_xuatnap_cauhinh()
 	ImGui::EndGroup();
 
 	if (ImGui::Button("Mặc định"))
-	{
 		lp_nap_cauhinh_macdinh();
-	}
 }
 
 void hienthi_bangsuachua()
 {
-	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
-	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12, 8));
+	constexpr float HEADER_NOI_DUNG_INDENT = 37.0f; // mặc định: 11, thêm vào: 37, tổng là 48
 
-	bool mo = ImGui::CollapsingHeader("🔧  Sửa chữa\nKhuyên dùng khi bị treo máy, lỗi xanh màn hình, cập nhật thất bại, v.v...",
-									  ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_NoTreePushOnOpen);
-
-	ImGui::PopStyleVar(2);
-
-	if (mo)
+	auto mo_header = [](const char* label, const char* icon_duongdan = nullptr, bool la_dautien = false) -> bool
 	{
-		ImGui::Spacing();
+		// mặc định: 5, thêm vào: 19, tổng là 24
+		if (la_dautien)
+			ImGui::Dummy(ImVec2(1.0f, 5.0f));
 
-		ImGuiStyle& style = ImGui::GetStyle();
-		float regionMaxX = ImGui::GetContentRegionAvail().x + ImGui::GetCursorPosX();
-		float iconSize = 20.0f;
-		float topY = ImGui::GetCursorPosY();
+		ImGui::Indent(19.0f);
 
-		ImGui::SetCursorPosY(topY);
-		ImGui::SameLine(regionMaxX - iconSize - style.FramePadding.x);
-		ImGui::TextDisabled("?");
+		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
+		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12, 8));
 
-		if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal))
+		std::string full_label = label;
+		if (std::ranges::count(full_label, '\n') < 1)
+			full_label += "\n ";
+
+		bool mo = ImGui::CollapsingHeader(full_label.c_str(), ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_NoTreePushOnOpen | ImGuiTreeNodeFlags_Bullet);
+
+		ImGui::PopStyleVar(2);
+
+		if (icon_duongdan)
 		{
-			ImVec2 iconPos = ImGui::GetItemRectMin();
-			float padding = 20.0f;
+			ImVec2 pos = ImGui::GetItemRectMin();
 
-			// Nội dung tooltip
-			const char* noidung = "DISM: kiểm tra và sửa chữa ảnh Windows cục bộ được dùng để thay thế các tệp hệ thống hoặc thành phần bị hỏng, "
-								  "dựa trên bản sao sạch được tải về. (cần kết nối Internet)\n\n"
-								  "SFC: quét tất cả các tệp hệ thống được bảo vệ và thay thế những tệp bị hỏng bằng bản sao đã được DISM cung cấp.\n\n"
-								  "CHKDSK: kiểm tra và sửa chữa thiết bị lưu trữ của bạn (bad sector, lỗi đọc/ghi, lỗi hệ thống tệp). "
-								  "Do phân vùng C đang được sử dụng bởi Windows, quá trình sẽ được lên lịch thực hiện sau khi khởi động lại.\n\n"
-								  "Nếu không công cụ nào trong số này khắc phục được sự cố hiện tại, nên cài đặt lại Windows từ đầu.";
-
-			float wrap_width = ImGui::GetFontSize() * 20.0f;
-			ImVec2 size = ImGui::CalcTextSize(noidung, nullptr, true, wrap_width);
-			ImVec2 tooltipPos(iconPos.x - size.x - padding, iconPos.y);
-
-			ImGui::SetNextWindowPos(tooltipPos, ImGuiCond_Always);
-			ImGui::BeginTooltip();
-			ImGui::PushTextWrapPos(wrap_width);
-			ImGui::TextUnformatted(noidung);
-			ImGui::PopTextWrapPos();
-			ImGui::EndTooltip();
+			pos.x += 4.0f;
+			// ImGui::SetCursorScreenPos(pos);
+			// chen_anh(icon_duongdan, ImVec2(26, 26));
 		}
 
-		static bool chonDISM = false;
-		static bool chonSFC = false;
-		static bool chonCHKDSK = false;
+		ImGui::Unindent(19.0f);
 
-		ImGui::SetCursorPosY(topY);
-		ImGui::Indent(16.0f);
+		if (mo)
+			ImGui::Indent(HEADER_NOI_DUNG_INDENT);
+
+		return mo;
+	};
+
+	auto ketthuc_header = [] { ImGui::Unindent(HEADER_NOI_DUNG_INDENT); };
+
+	auto o_giong_header = [](const char* label, const std::function<void()>& noi_dung, bool la_dautien = false)
+	{
+		// mặc định: 11, thêm vào: 13, tổng là 24
+		if (la_dautien)
+			ImGui::Dummy(ImVec2(1.0f, 13.0f));
+
+		ImGui::Indent(13.0f);
+
+		ImVec2 pos = ImGui::GetCursorScreenPos();
+		ImVec2 kichthuoc_noidung = ImGui::GetContentRegionAvail();
+		kichthuoc_noidung.x -= 13.0f;
+
+		float offsetX = ImGui::GetCursorPosX();
+		constexpr float chieucao = 52.0f;
+
+		ImDrawList* draw = ImGui::GetWindowDrawList();
+		ImU32 bg = ImGui::GetColorU32(ImGui::GetStyleColorVec4(ImGuiCol_Header));
+		ImU32 border = ImGui::GetColorU32(ImGui::GetStyleColorVec4(ImGuiCol_Border));
+
+		draw->AddRectFilled(pos, ImVec2(pos.x + kichthuoc_noidung.x, pos.y + chieucao), bg, 6.0f);
+		draw->AddRect(pos, ImVec2(pos.x + kichthuoc_noidung.x, pos.y + chieucao), border, 6.0f);
+
+		ImGui::SetCursorScreenPos(ImVec2(pos.x + offsetX, pos.y + 6));
+		ImGui::TextUnformatted(label);
+
+		float nut_rong = 120.0f, nut_cao = 24.0f;
+		float nut_x = pos.x + kichthuoc_noidung.x - nut_rong - 12.0f;
+		float nut_y = pos.y + chieucao - nut_cao - 6.0f;
+
+		ImGui::SetCursorScreenPos(ImVec2(nut_x, nut_y));
+		noi_dung();
+
+		ImGui::SetCursorScreenPos(ImVec2(pos.x, pos.y + chieucao));
+		ImGui::Dummy(ImVec2(1.0f, 0.0f));
+
+		ImGui::Unindent(13.0f);
+	};
+
+	if (mo_header("🔧  Sửa chữa\nKhuyên dùng khi bị treo máy, lỗi xanh màn hình, cập nhật thất bại, v.v...", "tainguyen/cole.png", true))
+	{
+		static bool chonDISM = false, chonSFC = false, chonCHKDSK = false;
+
 		if (!chonDISM && !chonSFC && !chonCHKDSK)
 		{
 			ImGui::TextColored(ImVec4(0.80f, 0.25f, 0.25f, 1.0f), "Vui lòng chọn ít nhất một công cụ");
+
+			ImGui::SameLine(ImGui::GetWindowContentRegionMax().x - 20.0f); // đẩy qua phải
+			ImGui::TextDisabled("?");
+
+			if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal))
+			{
+				ImVec2 iconPos = ImGui::GetItemRectMin();
+				float padding = 20.0f;
+				const char* noidung = "DISM: kiểm tra và sửa chữa ảnh Windows...\nSFC: quét hệ thống...\nCHKDSK: kiểm tra ổ đĩa...";
+				float wrap_width = ImGui::GetFontSize() * 20.0f;
+				ImVec2 size = ImGui::CalcTextSize(noidung, nullptr, true, wrap_width);
+				ImVec2 tooltipPos(iconPos.x - size.x - padding, iconPos.y);
+
+				ImGui::SetNextWindowPos(tooltipPos, ImGuiCond_Always);
+				ImGui::BeginTooltip();
+				ImGui::PushTextWrapPos(wrap_width);
+				ImGui::TextUnformatted(noidung);
+				ImGui::PopTextWrapPos();
+				ImGui::EndTooltip();
+			}
 		}
 		else
-		{
-			ImVec2 size = ImGui::CalcTextSize("Vui lòng chọn ít nhất một công cụ");
-			ImGui::Dummy(size);
-		}
+			ImGui::Dummy(ImGui::CalcTextSize("Vui lòng chọn ít nhất một công cụ"));
 
 		ImGui::Checkbox("SFC   (Trình kiểm tra tập tin hệ thống)", &chonSFC);
 		ImGui::Checkbox("DISM (Quản lý hình ảnh triển khai)", &chonDISM);
 		ImGui::Checkbox("CHKDSK (Kiểm tra ổ đĩa)", &chonCHKDSK);
 
-		ImGui::Unindent(16.0f);
 		ImGui::Spacing();
-
-		bool daChon = chonDISM || chonSFC || chonCHKDSK;
-		ImGui::Indent(16.0f);
-		ImGui::BeginDisabled(!daChon);
+		ImGui::BeginDisabled(!(chonDISM || chonSFC || chonCHKDSK));
 		if (ImGui::Button(" Sửa chữa", ImVec2(100, 0)))
 			lp_suachua_nhieu(chonDISM, chonSFC, chonCHKDSK);
-
 		ImGui::EndDisabled();
-		ImGui::Unindent(16.0f);
+
+		ketthuc_header();
 	}
+
+	if (mo_header("📁  Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác."))
+	{
+		ImGui::Text("Chức năng này sẽ xoá các file rác trong.");
+		ImGui::Spacing();
+		if (ImGui::Button("Dọn rác", ImVec2(100, 0)))
+		{
+			// xử lý dọn rác
+		}
+		ketthuc_header();
+	}
+
+	if (mo_header("🧼  Reset mạng\nLàm trống ổ đĩa và dọn rác."))
+	{
+		ImGui::Text("Thiết lập lại driver mạng, DNS, proxy...");
+		ImGui::Spacing();
+		if (ImGui::Button("Reset mạng", ImVec2(100, 0)))
+		{
+			// xử lý reset mạng
+		}
+		ketthuc_header();
+	}
+
+	o_giong_header("💡  Tối ưu ổ đĩa\nGiúp máy chạy mượt hơn",
+				   []
+				   {
+					   if (ImGui::Button("Mở Optimize Drives", ImVec2(120, 24)))
+					   {
+						   mo_cuasodia();
+					   }
+				   });
 }
 
 void hienthi_nhapkey()
 {
 	static char key_nhap[64] = "";
 	static std::string ketqua;
-
+	static std::future<std::optional<ketqua_key>> fut_key;
+	static bool dang_kiemtra = false;
 	ImGui::InputText("Nhập key bản quyền", key_nhap, sizeof(key_nhap));
 
 	if (ImGui::Button("Kiểm tra"))
 	{
-		auto kq_key = kiemtra_key_online(key_nhap);
+		ketqua.clear();
+		dang_kiemtra = true;
+		fut_key = lq_kiemtra_key_async(key_nhap);
+	}
+
+	if (dang_kiemtra && fut_key.valid() && fut_key.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+	{
+		auto kq_key = fut_key.get();
+		dang_kiemtra = false;
+
 		if (kq_key.has_value())
 		{
 			if (sosanh_ngay(kq_key->ngayhethan))
@@ -620,7 +782,8 @@ void hienthi_nhapkey()
 			ketqua = "không hợp lệ";
 	}
 
-	if (!ketqua.empty())
+	if (dang_kiemtra)
+		ImGui::Text("Đang kiểm tra key...");
+	else if (!ketqua.empty())
 		ImGui::TextWrapped("%s", ketqua.c_str());
 }
-

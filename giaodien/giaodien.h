@@ -57,10 +57,10 @@ void capnhat_bang_phanmem();
 
 void giaodien_thanhcongcu(int chieurong_manhinh, int chieucao_manhinh);
 void giaodien_menuben(int chieucao_manhinh);
-void giaodien_caidat(int chieurong_manhinh, int chieucao_manhinh);
-void giaodien_bangdl(int chieurong_manhinh, int chieucao_manhinh);
-void giaodien_tienich(int chieurong_manhinh, int chieucao_manhinh);
-void giaodien_hotro(const int chieurong_manhinh, const int chieucao_manhinh);
+void giaodien_caidat(thongtin_cuaso_imgui& tt);
+void giaodien_bangdl(thongtin_cuaso_imgui& tt);
+void giaodien_tienich(thongtin_cuaso_imgui& tt);
+void giaodien_hotro(thongtin_cuaso_imgui& tt);
 
 void hienthi_nhapkey();
 

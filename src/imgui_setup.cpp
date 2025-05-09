@@ -1,9 +1,14 @@
 // imgui_setup.cpp
 #include "imgui_setup.h"
+#include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include <map>
+#include <string>
 
-#include "imgui.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include <ranges>
+#include <stb_image.h>
 
 namespace
 {
@@ -42,7 +47,7 @@ namespace
 		// ==== MÀU SẮC ====
 		colors[ImGuiCol_Text] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f); // đen
 		colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f); // xám nhạt
-		colors[ImGuiCol_WindowBg] = ImVec4(0.97f, 0.97f, 0.97f, 1.00f); // nền trắng xám
+		colors[ImGuiCol_WindowBg] = ImVec4(0.99f, 0.99f, 0.99f, 1.00f); // nền trắng xám
 		colors[ImGuiCol_ChildBg] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 		colors[ImGuiCol_PopupBg] = ImVec4(0.98f, 0.98f, 0.98f, 1.00f);
 		colors[ImGuiCol_Border] = ImVec4(0.80f, 0.80f, 0.80f, 1.00f);
@@ -61,12 +66,12 @@ namespace
 		colors[ImGuiCol_SliderGrab] = ImVec4(0.20f, 0.45f, 0.85f, 1.00f);
 		colors[ImGuiCol_SliderGrabActive] = ImVec4(0.15f, 0.40f, 0.80f, 1.00f);
 		colors[ImGuiCol_Button] = ImVec4(0.92f, 0.92f, 0.92f, 1.00f);
-		colors[ImGuiCol_ButtonHovered] = ImVec4(0.78f, 0.88f, 1.00f, 1.00f);
+		colors[ImGuiCol_ButtonHovered] = ImVec4(0.92f, 0.92f, 0.92f, 1.00f);
 		colors[ImGuiCol_ButtonActive] = ImVec4(0.65f, 0.85f, 1.00f, 1.00f);
 		colors[ImGuiCol_Header] = ImVec4(0.97f, 0.97f, 0.97f, 1.00f);
 		colors[ImGuiCol_HeaderHovered] = ImVec4(0.70f, 0.85f, 1.00f, 1.00f);
 		colors[ImGuiCol_HeaderActive] = ImVec4(0.60f, 0.80f, 1.00f, 1.00f);
-		colors[ImGuiCol_Separator] = ImVec4(0.75f, 0.75f, 0.75f, 1.00f);
+		colors[ImGuiCol_Separator] = ImVec4(0.93f, 0.93f, 0.93f, 1.00f);
 		colors[ImGuiCol_ResizeGrip] = ImVec4(0.80f, 0.80f, 0.80f, 0.60f);
 		colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.60f, 0.60f, 0.60f, 0.80f);
 		colors[ImGuiCol_ResizeGripActive] = ImVec4(0.40f, 0.40f, 0.40f, 1.00f);
@@ -85,6 +90,17 @@ namespace
 		colors[ImGuiCol_TableRowBg] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f); // dòng nền chính
 		colors[ImGuiCol_TableRowBgAlt] = ImVec4(0.98f, 0.98f, 0.98f, 1.00f); // dòng xen kẽ
 	}
+
+	std::map<std::string, TextureInfo> icon_cache;
+
+	void giaiphong_texture_icon()
+	{
+		for (const auto& info : icon_cache | std::views::values)
+			glDeleteTextures(1, &info.texture_id);
+		
+		icon_cache.clear();
+	}
+
 } // namespace
 
 void caidat_font()
@@ -92,6 +108,31 @@ void caidat_font()
 	ImGuiIO& io = ImGui::GetIO();
 	io.Fonts->AddFontFromFileTTF("tainguyen/arial.ttf", 18.0f, nullptr, io.Fonts->GetGlyphRangesVietnamese());
 	// io.MouseDragThreshold = 10.0f;
+}
+
+TextureInfo tai_texture_tu_tep(const char* duongdan)
+{
+	std::string path(duongdan);
+	if (icon_cache.contains(path))
+		return icon_cache[path];
+
+	int width, height, channels;
+	unsigned char* data = stbi_load(duongdan, &width, &height, &channels, 4);
+	if (!data)
+		return { .texture_id = 0, .width = 0, .height = 0 };
+
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	stbi_image_free(data);
+
+	TextureInfo info = { .texture_id = texture, .width = width, .height = height };
+	icon_cache[path] = info;
+	return info;
 }
 
 void khoitao_imgui(GLFWwindow* window)
@@ -113,6 +154,7 @@ void ve_imgui()
 
 void dondep_imgui()
 {
+	giaiphong_texture_icon();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 }

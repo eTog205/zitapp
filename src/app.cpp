@@ -1,4 +1,4 @@
-//app.cpp
+// app.cpp
 #include "app.h"
 #include "chay_luongphu.h"
 #include "csdl.h"
@@ -9,9 +9,8 @@
 #include "resource.h"
 
 #ifdef _WIN32
-#define GLFW_EXPOSE_NATIVE_WIN32
-#include <GLFW/glfw3native.h>
-
+	#define GLFW_EXPOSE_NATIVE_WIN32
+	#include <GLFW/glfw3native.h>
 
 void dat_taskbar_icon(GLFWwindow* cuaso)
 {
@@ -69,7 +68,9 @@ GLFWwindow* khoitao_cuaso(const cauhinh_cuaso& ch_cuaso)
 
 void vonglap_chinh(GLFWwindow* cuaso)
 {
-	lq_khoidong_sql();
+	//hiện tại để chờ, tương lai cải thiện
+	auto f = lq_khoidong_sql();
+	f.wait();
 
 	while (!glfwWindowShouldClose(cuaso))
 	{

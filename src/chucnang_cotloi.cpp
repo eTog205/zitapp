@@ -2,63 +2,69 @@
 #include "chucnang_cotloi.h"
 #include "log_nhalam.h"
 
-#include <boost/asio/buffer.hpp>
+//#include <boost/asio/buffer.hpp>
+//#include <boost/asio/io_context.hpp>
+//#include <boost/asio/read.hpp>
+//#include <boost/asio/readable_pipe.hpp>
 #include <boost/process.hpp>
 #include <boost/process/windows/show_window.hpp>
-#include <boost/system/error_code.hpp>
 #include <sstream>
 
 namespace asio = boost::asio;
-namespace bp2 = boost::process::v2;
+namespace bp = boost::process;
 
 namespace
 {
 	std::string thucthi_lenh(const std::string& lenh)
 	{
 		asio::io_context ctx;
+		asio::readable_pipe rp{ ctx };
+
 		std::string output;
-		bool sha256_mismatch = false;
-		bool kotimthaygoi = false;
+		// bool sha256_mismatch = false;
+		// bool kotimthaygoi = false;
 
 		try
 		{
-			auto shell = bp2::environment::find_executable("cmd", bp2::environment::current());
-			auto exec = ctx.get_executor();
+			auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+			bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-NoExit", "-Command", lenh }, bp::windows::show_window_normal);
+			// bp::process proc(ctx, ps, { "-NoProfile", "-Command", lenh }, bp::process_stdio{ /* stdin */ {}, /* stdout */ std::move(rp), /* stderr */ {} }, bp::windows::show_window_normal);
 
-			bp2::popen proc(exec, shell, { "/C", lenh });
+			// boost::system::error_code ec;
+			// std::array<char, 4096> buf;
 
-			boost::system::error_code ec;
+			// while (true)
+			//{
+			//	std::size_t n = rp.read_some(asio::buffer(buf), ec);
+			//	if (n > 0)
+			//		output.append(buf.data(), n);
+			//	if (ec == asio::error::eof)
+			//		break; // đọc đến EOF thì thoát
+			//	if (ec)
+			//		throw boost::system::system_error(ec);
+			// }
+			proc.detach();
 
-			char buf[4096];
-			while (true)
-			{
-				std::size_t n = proc.read_some(asio::buffer(buf), ec);
-				if (n > 0)
-					output.append(buf, buf + n);
-				if (ec) // eof hoặc lỗi
-					break;
-			}
-			proc.wait();
-
-			std::istringstream iss(output);
+			/*std::istringstream iss(output);
 			std::string line;
+
 			while (std::getline(iss, line))
 			{
 				if (line.find("No package found matching input criteria") != std::string::npos)
 					kotimthaygoi = true;
 				if (line.find("Installer hash does not match") != std::string::npos)
 					sha256_mismatch = true;
-			}
+			}*/
 
-			if (kotimthaygoi)
-			{
-				return "Package not found";
-			}
+			// if (kotimthaygoi)
+			//{
+			//	return "Package not found";
+			// }
 
-			if (sha256_mismatch)
-			{
-				td_log(loai_log::canh_bao, "phần mềm được chọn gặp lỗi (sha256_mismatch) cần đợi một thời gian mới có thể cài đặt)");
-			}
+			// if (sha256_mismatch)
+			//{
+			//	td_log(loai_log::canh_bao, "phần mềm được chọn gặp lỗi (sha256_mismatch) cần đợi một thời gian mới có thể cài đặt)");
+			// }
 
 			if (proc.exit_code() != 0)
 			{
@@ -72,14 +78,14 @@ namespace
 		return output;
 	}
 
-	void chay_trong_ps_giu_cua_so(const std::string& lenh)
+	void chay_trong_ps_giu_cuaso(const std::string& lenh)
 	{
 		try
 		{
 			asio::io_context ctx;
-			auto ps = bp2::environment::find_executable("powershell.exe", bp2::environment::current());
+			auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
 
-			bp2::process proc(ctx.get_executor(), ps, { "-NoProfile", "-NoExit", "-Command", lenh }, bp2::windows::show_window_normal);
+			bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-NoExit", "-Command", lenh }, bp::windows::show_window_normal);
 
 			proc.detach();
 		} catch (const std::exception& ex)
@@ -106,13 +112,13 @@ void chkdsk(std::vector<std::string>& cmds)
 		td_log(loai_log::thong_bao, "Bắt đầu hàm chkdsk.");
 
 		asio::io_context ctx;
-		auto ps = bp2::environment::find_executable("powershell", bp2::environment::current());
+		auto ps = bp::environment::find_executable("powershell", bp::environment::current());
 
 		std::string pw_cmd = "Get-Volume | Where-Object { $_.FileSystem -eq 'NTFS' } | Select-Object -ExpandProperty DriveLetter";
 
 		td_log(loai_log::thong_bao, "Chạy lệnh PowerShell lấy danh sách ổ đĩa NTFS.");
 
-		bp2::popen proc(ctx, ps, { "-NoProfile", "-Command", pw_cmd });
+		bp::popen proc(ctx, ps, { "-NoProfile", "-Command", pw_cmd });
 
 		boost::system::error_code ec;
 		std::string out;
@@ -171,7 +177,7 @@ void suachua_nhieu(const std::vector<std::string>& commands)
 			cmd_line += commands[i];
 		}
 
-		chay_trong_ps_giu_cua_so(cmd_line);
+		chay_trong_ps_giu_cuaso(cmd_line);
 	} catch (const std::exception& ex)
 	{
 		td_log(loai_log::loi, "Multi-command PowerShell error: " + std::string(ex.what()));

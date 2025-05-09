@@ -5,10 +5,15 @@
 #include "logic_giaodien.h"
 #include "thread_pool.h"
 
-void lp_chay_capnhat()
+std::future<void> lp_chay_capnhat()
 {
 	csdl c;
-	pool.enqueue(capnhat_data, c);
+	return pool.enqueue(capnhat_data, c);
+}
+
+std::future<void> lq_khoidong_sql()
+{
+	return pool.enqueue(khoidong_sql);
 }
 
 void lp_chay_lenhwinget(const std::string& id)
@@ -28,7 +33,7 @@ void lp_suachua_nhieu(bool dism, bool sfc, bool chk)
 					cmds.emplace_back("sfc /scannow");
 				if (chk)
 					cmds.emplace_back("chkdsk C: /scan");
-					//chkdsk(cmds); - lỗi - chưa có kế hoạch sửa
+				// chkdsk(cmds); - lỗi - chưa có kế hoạch sửa
 				if (!cmds.empty())
 					suachua_nhieu(cmds);
 			});
@@ -54,7 +59,9 @@ void lp_chay_saochep_ini()
 	pool.enqueue(saochep_ini);
 }
 
-void lq_khoidong_sql()
+
+
+std::future<std::optional<ketqua_key>> lq_kiemtra_key_async(const std::string& key)
 {
-	khoidong_sql();
+	return pool.enqueue(kiemtra_key_online, key);
 }

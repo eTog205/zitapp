@@ -1,7 +1,6 @@
 // logic_giaodien.h
 #pragma once
 #include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/ptree_fwd.hpp>
 #include <filesystem>
 
 namespace fs = std::filesystem;
@@ -77,8 +76,6 @@ struct logic_giaodien
 	int dem_hang;
 
 	void khoidong_bang_dl();
-
-	static void chaylenh_winget(const std::string& lenh_id);
 };
 
 extern logic_giaodien lg_gd;
@@ -133,3 +130,4 @@ void capnhat_cauhinh(const boost::property_tree::ptree& pt, const std::string& k
 }
 
 void ch_macdinh();
+bool mo_cuasodia();

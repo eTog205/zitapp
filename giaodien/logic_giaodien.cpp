@@ -1,30 +1,18 @@
 // logic_giaodien.cpp
 #include "logic_giaodien.h"
-#include "chay_luongphu.h"
-#include "chucnang_cotloi.h"
-#include "giaodien.h"
 #include "log_nhalam.h"
 
-#include <boost/asio/connect.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/ssl/context.hpp>
-#include <boost/asio/ssl/stream_base.hpp>
-#include <boost/beast/core.hpp>
-#include <boost/beast/http.hpp>
-#include <boost/beast/ssl/ssl_stream.hpp>
-#include <boost/beast/version.hpp>
-#include <boost/json.hpp>
+#include <boost/process/windows/show_window.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
+#include "boost/asio/io_context.hpp"
+#include "boost/process.hpp"
+#include "boost/process/environment.hpp"
 
 logic_giaodien lg_gd;
 dulieuduongdan dl;
 cauhinh ch;
 
-namespace beast = boost::beast;
-namespace http = beast::http;
-namespace net = boost::asio;
-using tcp = net::ip::tcp;
+namespace bp = boost::process;
 
 using demtg = std::chrono::steady_clock;
 
@@ -93,17 +81,10 @@ std::string tt_vanbancothenhinthay(const std::wstring& toanbo_vanban, const floa
 	return wstring_to_string(toanbo_vanban.substr(0, max_chars));
 }
 
-void logic_giaodien::chaylenh_winget(const std::string& lenh_id)
-{
-	lp_chay_lenhwinget(lenh_id);
-}
-
 void tao_thumuc_tainguyen()
 {
 	if (!exists(ch.thumuc_ch))
-	{
 		create_directory(ch.thumuc_ch);
-	}
 }
 
 void saochep_ini()
@@ -155,9 +136,8 @@ bool kiemtraduongdan_thumuc()
 {
 	const bool dung = kiemtra_duongdan(dl.dd_xuat, fs::is_directory, "Lỗi: Đường dẫn thư mục không hợp lệ!", true, dl.loi_xuat_tepch);
 	if (!dung)
-	{
 		dl.thoigian_hienthi_loi_xuat = demtg::now();
-	}
+
 	return dung;
 }
 
@@ -175,12 +155,8 @@ void xuat_cauhinh(const std::string& duongdan_xuat)
 {
 	boost::property_tree::ptree pt;
 
-	pt.put("menuben_thugon", gd.menuben_thugon);
-	pt.put("thoigian_thugon", gd.thoigian_thugon);
-	pt.put("letrai_bang", gd.letrai_bang);
-	pt.put("letren_bang", gd.letren_bang);
-	pt.put("chieurong_menuben_thugon", gd.chieurong_menuben_thugon);
-	pt.put("chieurong_menuben_morong", gd.chieurong_menuben_morong);
+	// ví dụ
+	// pt.put("menuben_thugon", gd.menuben_thugon);
 
 	write_ini(duongdan_xuat, pt);
 }
@@ -192,12 +168,8 @@ void nap_cauhinh()
 		boost::property_tree::ptree pt;
 		read_ini(ch.tep_dich.string(), pt);
 
-		capnhat_cauhinh(pt, "menuben_thugon", gd.menuben_thugon);
-		capnhat_cauhinh(pt, "thoigian_thugon", gd.thoigian_thugon);
-		capnhat_cauhinh(pt, "letrai_bang", gd.letrai_bang);
-		capnhat_cauhinh(pt, "letren_bang", gd.letren_bang);
-		capnhat_cauhinh(pt, "chieurong_menuben_thugon", gd.chieurong_menuben_thugon);
-		capnhat_cauhinh(pt, "chieurong_menuben_morong", gd.chieurong_menuben_morong);
+		// ví dụ
+		// capnhat_cauhinh(pt, "menuben_thugon", gd.menuben_thugon);
 	}
 }
 
@@ -206,69 +178,21 @@ void ch_macdinh()
 	fs::remove(ch.tep_dich);
 }
 
-// không còn được hỗ trợ - xóa ở cập nhật sau
-//bool kiemtra_khoapro(const std::string& key, std::string& ngayhethan)
-//{
-//
-//	const std::string host = "api.tntstudio.io.vn";
-//	const std::string port = "443";
-//	const std::string target = "/";
-//	constexpr int version = 11;
-//
-//	net::io_context ioc;
-//	boost::asio::ssl::context ctx(boost::asio::ssl::context::sslv23_client);
-//	beast::ssl_stream<tcp::socket> stream(ioc, ctx);
-//
-//	tcp::resolver resolver(ioc);
-//	auto const results = resolver.resolve(host, port);
-//
-//	net::connect(stream.next_layer(), results);
-//
-//	if (!SSL_set_tlsext_host_name(stream.native_handle(), host.c_str()))
-//	{
-//		boost::system::error_code ec{ static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category() };
-//		throw boost::system::system_error{ ec };
-//	}
-//
-//	stream.handshake(boost::asio::ssl::stream_base::client);
-//
-//	boost::json::object body_obj;
-//	body_obj["key"] = key;
-//	std::string body_str = serialize(body_obj);
-//
-//	http::request<http::string_body> req{ http::verb::post, target, version };
-//	req.set(http::field::host, host);
-//	req.set(http::field::user_agent, "ZitApp/1.0");
-//	req.set(http::field::content_type, "application/json");
-//	req.body() = body_str;
-//	req.prepare_payload();
-//
-//	http::write(stream, req);
-//
-//	beast::flat_buffer buffer;
-//	http::response<http::string_body> res;
-//	http::read(stream, buffer, res);
-//
-//	// Đóng SSL
-//	boost::system::error_code ec;
-//	stream.shutdown(ec);
-//	if (ec == boost::asio::error::eof || ec == boost::asio::ssl::error::stream_truncated)
-//	{
-//		// Cloudflare đóng sớm – bỏ qua
-//		ec.clear();
-//	}
-//	else if (ec)
-//	{
-//		throw boost::system::system_error{ ec };
-//	}
-//
-//	// Phân tích JSON phản hồi
-//	auto json_res = boost::json::parse(res.body()).as_object();
-//	if (json_res.contains("valid") && json_res.at("valid").as_bool())
-//	{
-//		ngayhethan = json_res.at("ngayhethan").as_string().c_str();
-//		return true;
-//	}
-//
-//	return false;
-//}
+bool mo_cuasodia()
+{
+	try
+	{
+		boost::asio::io_context ctx;
+		std::string cmd_line = "Start-Process dfrgui";
+		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
+
+		proc.wait();
+
+		return proc.exit_code();
+	} catch (std::exception ex)
+	{
+		td_log(loai_log::loi, "");
+		return false;
+	}
+}

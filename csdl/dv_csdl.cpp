@@ -40,11 +40,13 @@ void nap_du_lieu()
 
 void ve_giaodien(const int chieurong_manhinh, const int chieucao_manhinh)
 {
+	thongtin_cuaso_imgui tt = tinh_thongtin_cuaso(chieurong_manhinh, chieucao_manhinh);
+
 	giaodien_thanhcongcu(chieurong_manhinh, chieucao_manhinh);
 	giaodien_menuben(chieucao_manhinh);
-	giaodien_tienich(chieurong_manhinh, chieucao_manhinh);
-	giaodien_caidat(chieurong_manhinh, chieucao_manhinh);
-	giaodien_hotro(chieurong_manhinh, chieucao_manhinh);
-	giaodien_bangdl(chieurong_manhinh, chieucao_manhinh);
+	giaodien_tienich(tt);
+	giaodien_caidat(tt);
+	giaodien_hotro(tt);
+	giaodien_bangdl(tt);
 	// ImGui::ShowDemoWindow();
 }

@@ -1,4 +1,4 @@
-//opengl3_setup.cpp
+// opengl3_setup.cpp
 #include "opengl3_setup.h"
 #include <GLFW/glfw3.h>
 #include <imgui_impl_opengl3.h>
@@ -16,7 +16,7 @@ void ve_khunghinh(const int chieurong, const int chieucao)
 {
 	ImGui::Render();
 	glViewport(0, 0, chieurong, chieucao);
-	glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+	glClearColor(0.98f, 0.98f, 0.98f, 1.00f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glFinish();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -26,5 +26,3 @@ void dondep_opengl()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 }
-
-

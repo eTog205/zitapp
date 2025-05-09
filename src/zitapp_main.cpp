@@ -2,12 +2,10 @@
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 
 #include <boost/interprocess/sync/named_mutex.hpp>
-#include <windows.h>
 #include "app.h"
 #include "chay_luongphu.h"
-#include "log_nhalam.h"
-
 #include "kiemtra_ketnoi_mang.h"
+#include "log_nhalam.h"
 
 int main()
 {
@@ -24,9 +22,10 @@ int main()
 	g_logger = chuyendoi(mode);
 
 	if (kiemtra_trangthai_mang())
-		lp_chay_capnhat();
-
-	std::this_thread::sleep_for(std::chrono::seconds(4));
+	{
+		auto f = lp_chay_capnhat();
+		f.wait();
+	}
 
 	GLFWwindow* cuaso = khoitao_cuaso();
 	if (!cuaso)
