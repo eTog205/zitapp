@@ -119,7 +119,13 @@ namespace
 			return;
 		}
 
-		draw->AddRectFilled(pos, ImVec2(pos.x + frame.x, pos.y + frame.y), mau_nen, 6.0f);
+		//draw->AddRectFilled(pos, ImVec2(pos.x + frame.x, pos.y + frame.y), mau_nen, 6.0f);
+		float padding = 5.0f;
+		ImVec2 p_nen_min = ImVec2(p_min.x - padding, p_min.y - padding);
+		ImVec2 p_nen_max = ImVec2(p_max.x + padding, p_max.y + padding);
+
+		draw->AddRectFilled(p_nen_min, p_nen_max, mau_nen, 6.0f);
+
 		draw->AddImage(static_cast<ImTextureID>(static_cast<intptr_t>(info.texture_id)), p_min, p_max);
 		ImGui::Dummy(frame);
 	}
@@ -291,6 +297,9 @@ void capnhat_bang_phanmem()
 		ImGui::EndTable();
 	}
 }
+
+//cần làm: thay các thông số cứng bằng thông số từ style imgui
+//
 
 void giaodien_thanhcongcu(const int chieurong_manhinh, const int chieucao_manhinh)
 {
