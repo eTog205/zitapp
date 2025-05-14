@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-multi-index-x64-windows-1.88.0-02da5538-13c5-4a85-be71-9322be41fa98",
-  "name": "boost-multi-index:x64-windows@1.88.0 2535bc5f8e11da81132a3d830d0a37b5c73f65c245ce698a5c4fb84603862e12",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-multi-index-x64-windows-1.88.0-11a0a47c-c5fb-4164-916e-a6257b6cd641",
+  "name": "boost-multi-index:x64-windows@1.88.0 0ae4d1df0baf0f4ba4fac8f04742aa0994eca76cc0591d16c9e8fc4bb06c0b8a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:38:49Z"
+    "created": "2025-05-13T22:20:52Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-multi-index:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "2535bc5f8e11da81132a3d830d0a37b5c73f65c245ce698a5c4fb84603862e12",
+      "versionInfo": "0ae4d1df0baf0f4ba4fac8f04742aa0994eca76cc0591d16c9e8fc4bb06c0b8a",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-intrusive-x64-windows-1.88.0-ded05fa4-2ba0-446c-a96b-d25df682dcd4",
-  "name": "boost-intrusive:x64-windows@1.88.0 16447c7133012f4ad2e026677bae0cabf9a473fd104a8808dab6b6550407d359",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-intrusive-x64-windows-1.88.0-61aac64c-a847-4f1e-9058-3e2f32b68d5b",
+  "name": "boost-intrusive:x64-windows@1.88.0 06a1e8718caea5bb5720adc596a021c11fc5e13d665267757f419189e6c1e0da",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:37:44Z"
+    "created": "2025-05-13T22:19:45Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-intrusive:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "16447c7133012f4ad2e026677bae0cabf9a473fd104a8808dab6b6550407d359",
+      "versionInfo": "06a1e8718caea5bb5720adc596a021c11fc5e13d665267757f419189e6c1e0da",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

@@ -130,4 +130,5 @@ void capnhat_cauhinh(const boost::property_tree::ptree& pt, const std::string& k
 }
 
 void ch_macdinh();
-bool mo_cuasodia();
+bool mo_phanmanh();
+bool chay_phanmanh();

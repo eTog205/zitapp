@@ -1,6 +1,7 @@
 ﻿// giaodien.h
 #pragma once
 #include <chrono>
+#include <functional>
 #include <imgui.h>
 
 using demtg = std::chrono::steady_clock;
@@ -69,4 +70,10 @@ void giaodien_tinhnang_xuatnap_cauhinh();
 void giaodien_cuasotuychinh_menunho();
 
 extern std::string tab_hientai;
-void hienthi_bangsuachua();
+void hienthi_bangtienich();
+
+struct NutHeader
+{
+	const char* ten;
+	std::function<void()> ham = nullptr;
+};

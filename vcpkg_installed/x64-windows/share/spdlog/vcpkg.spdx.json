@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.15.2-58061883-00cb-440a-942c-091cc8d8da8b",
-  "name": "spdlog:x64-windows@1.15.2 bc1ea2a08401b3e3286b1b57bcecb335a7e5a6f5a1585a1365ce7e38af394d6c",
+  "documentNamespace": "https://spdx.org/spdxdocs/spdlog-x64-windows-1.15.3-f082dba6-91be-4266-baf2-50ab3c67c3fc",
+  "name": "spdlog:x64-windows@1.15.3 a598ddd447e7d46305a63dcc059a0b7fb843977d35871d094098a36aaef82d5d",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:40:33Z"
+    "created": "2025-05-13T22:23:04Z"
   },
   "relationships": [
     {
@@ -57,8 +57,8 @@
     {
       "name": "spdlog",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "1.15.2",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@a79acb592ce2c572c91f6a695fa1e6899d9a1d5f",
+      "versionInfo": "1.15.3",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@c2b47286b0759373acecdfaa3be4219711f6d059",
       "homepage": "https://github.com/gabime/spdlog",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -69,7 +69,7 @@
     {
       "name": "spdlog:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "bc1ea2a08401b3e3286b1b57bcecb335a7e5a6f5a1585a1365ce7e38af394d6c",
+      "versionInfo": "a598ddd447e7d46305a63dcc059a0b7fb843977d35871d094098a36aaef82d5d",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -79,33 +79,33 @@
     {
       "SPDXID": "SPDXRef-resource-0",
       "name": "gabime/spdlog",
-      "downloadLocation": "git+https://github.com/gabime/spdlog@v1.15.2",
+      "downloadLocation": "git+https://github.com/gabime/spdlog@v1.15.3",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "4e86d79dea4f08b9e4755ada7c9395e03246d00cdc11df8951d32b5f5e823fec103091d11154f32b261a29574784b761efb32477ec6385ffdb2069413e2c91a0"
+          "checksumValue": "21c35f4091850ea3a0cd6a24867e06e943df70d76cd5a7ec0b15a33e0e9e0cc3584ed7930e1ac6f347e7e06f0e002d0e759884eaf05310014e24ea0e0419fcc4"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/a79acb592ce2c572c91f6a695fa1e6899d9a1d5f/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/c2b47286b0759373acecdfaa3be4219711f6d059/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "b8a76a606e388cbbbbdd01df202215f51b59363619e3ac8557ec1341d4f9a17e"
+          "checksumValue": "d7f1082de0117b48de6e07088a87dbdd0e7c6433502dc3e6b0b2e754c87db2cb"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/a79acb592ce2c572c91f6a695fa1e6899d9a1d5f/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/c2b47286b0759373acecdfaa3be4219711f6d059/usage",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
@@ -117,12 +117,12 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/a79acb592ce2c572c91f6a695fa1e6899d9a1d5f/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/spdlog/c2b47286b0759373acecdfaa3be4219711f6d059/vcpkg.json",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "90928494fa802e02e38f7ec9351cc45797697b185496b6a8f73d1ccea3b1a4ad"
+          "checksumValue": "e8b1bebee55dafbef8ee43b71fb22d42d1b59daf8da29f17ff1e9dc880c97475"
         }
       ],
       "licenseConcluded": "NOASSERTION",

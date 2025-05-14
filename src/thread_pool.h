@@ -1,4 +1,4 @@
-//thread_pool.h
+// thread_pool.h
 #pragma once
 #include <boost/asio.hpp>
 
@@ -20,9 +20,8 @@ public:
 	~ThreadPool();
 
 	// Hàm enqueue cho phép nạp (submit) các tác vụ với hàm trả về std::future
-	template<typename Func, typename... Args>
-	auto enqueue(Func&& f, Args&&... args)
-		-> std::future<std::invoke_result_t<Func, Args...>>;
+	template <typename Func, typename... Args>
+	auto enqueue(Func&& f, Args&&... args) -> std::future<std::invoke_result_t<Func, Args...>>;
 
 	// Hàm join đợi cho đến khi các tác vụ trong pool hoàn thành
 	void join();
@@ -31,20 +30,15 @@ private:
 	boost::asio::thread_pool pool;
 };
 
-template<typename Func, typename... Args>
+template <typename Func, typename... Args>
 auto ThreadPool::enqueue(Func&& f, Args&&... args) -> std::future<std::invoke_result_t<Func, Args...>>
 {
 	using return_type = std::invoke_result_t<Func, Args...>;
 	// Tạo một packaged_task để bọc hàm và các đối số
-	auto task = std::make_shared<std::packaged_task<return_type()>>(
-		std::bind(std::forward<Func>(f), std::forward<Args>(args)...)
-	);
+	auto task = std::make_shared<std::packaged_task<return_type()>>(std::bind(std::forward<Func>(f), std::forward<Args>(args)...));
 	std::future<return_type> res = task->get_future();
 
-	boost::asio::post(pool, [task]()
-	{
-		(*task)();
-	});
+	boost::asio::post(pool, [task]() { (*task)(); });
 	return res;
 }
 

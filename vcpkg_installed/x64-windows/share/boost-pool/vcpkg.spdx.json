@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-pool-x64-windows-1.88.0-4f5a583f-0d3e-465e-b380-9a92ca390a1d",
-  "name": "boost-pool:x64-windows@1.88.0 90f44489672e7337034e60bc89d09d934afd5f5002c25bf21209a274b0804c37",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-pool-x64-windows-1.88.0-f2dd65d2-82c1-4659-b2b9-ab26cf08255c",
+  "name": "boost-pool:x64-windows@1.88.0 5f2dc11193c1571e8b03e5790fbbec2cd1387b4b1b2983fe0e42a4a2ebfd09c7",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:37:52Z"
+    "created": "2025-05-13T22:19:53Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-pool:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "90f44489672e7337034e60bc89d09d934afd5f5002c25bf21209a274b0804c37",
+      "versionInfo": "5f2dc11193c1571e8b03e5790fbbec2cd1387b4b1b2983fe0e42a4a2ebfd09c7",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

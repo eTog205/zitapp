@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/sqlite3-x64-windows-3.49.1-3f383c19-8708-4440-b9ad-d3052f718d86",
-  "name": "sqlite3:x64-windows@3.49.1 5d49892865f6874f85e2b793ae2adca78627313bd025ee4c24a531be3833f0e0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sqlite3-x64-windows-3.49.2-dc3d2590-0e65-4cf4-a621-73a4d8f64940",
+  "name": "sqlite3:x64-windows@3.49.2 9c186abbc6013749efedddbba57973666665f595281a58850b7ffd60d747765b",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:18:09Z"
+    "created": "2025-05-13T22:23:14Z"
   },
   "relationships": [
     {
@@ -117,8 +117,8 @@
     {
       "name": "sqlite3",
       "SPDXID": "SPDXRef-port",
-      "versionInfo": "3.49.1",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@92c7e25e29daa51849b0f0b82bae84898ebb80d9",
+      "versionInfo": "3.49.2",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@a337f5fe100f83026072765ea63a8776f984f6fd",
       "homepage": "https://sqlite.org/",
       "licenseConcluded": "blessing",
       "licenseDeclared": "NOASSERTION",
@@ -129,7 +129,7 @@
     {
       "name": "sqlite3:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "5d49892865f6874f85e2b793ae2adca78627313bd025ee4c24a531be3833f0e0",
+      "versionInfo": "9c186abbc6013749efedddbba57973666665f595281a58850b7ffd60d747765b",
       "downloadLocation": "NONE",
       "licenseConcluded": "blessing",
       "licenseDeclared": "NOASSERTION",
@@ -147,14 +147,14 @@
       "checksums": [
         {
           "algorithm": "SHA512",
-          "checksumValue": "ace92f20fb13a28a8be0eb3560ebf79e71e882611108179b45abba6e77ec0964d75a96c1e187c0e5f883b83896fd44074ef244e1f589288b6354bc9db85223ca"
+          "checksumValue": "59bbed0f49bcc17abcc3ba180858c7a7128038e43fd0b24a786505f0223340f85eb956e64a2b66e245d0b8d0769daa5e4688ae4686c64fc8ff91c546acce0070"
         }
       ]
     }
   ],
   "files": [
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/add-config-include.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/add-config-include.patch",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -166,19 +166,19 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/CMakeLists.txt",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/CMakeLists.txt",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "9209fdd5aac2351a35cf09562cf36d0d140e785e2639abe6ceab985c15f25b8c"
+          "checksumValue": "fa70d05f2f3adaa72008b9ca453c8f26c3dbb17de44aeca47a3738000f34cbf9"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/fix-arm-uwp.patch",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/fix-arm-uwp.patch",
       "SPDXID": "SPDXRef-file-2",
       "checksums": [
         {
@@ -190,19 +190,19 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/portfile.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/portfile.cmake",
       "SPDXID": "SPDXRef-file-3",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "cc05b4fec07b6563c01f0135bbe12a64529169fd1280ac50bffa90613ee6e2ca"
+          "checksumValue": "7befec6d6baab55d3e769ada5ac817e9f423dd4076ea8e7872bf1110bce718c2"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3-config.in.cmake",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/sqlite3-config.in.cmake",
       "SPDXID": "SPDXRef-file-4",
       "checksums": [
         {
@@ -214,7 +214,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3-vcpkg-config.h.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/sqlite3-vcpkg-config.h.in",
       "SPDXID": "SPDXRef-file-5",
       "checksums": [
         {
@@ -226,7 +226,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/sqlite3.pc.in",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/sqlite3.pc.in",
       "SPDXID": "SPDXRef-file-6",
       "checksums": [
         {
@@ -238,7 +238,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/usage",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/usage",
       "SPDXID": "SPDXRef-file-7",
       "checksums": [
         {
@@ -250,12 +250,12 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/92c7e25e29daa51849b0f0b82bae84898ebb80d9/vcpkg.json",
+      "fileName": "./E:/dev/vcpkg/buildtrees/versioning_/versions/sqlite3/a337f5fe100f83026072765ea63a8776f984f6fd/vcpkg.json",
       "SPDXID": "SPDXRef-file-8",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "ce33e92dd7378ecb75948b29472d124551fe92d581164419e120f8cc248d31cd"
+          "checksumValue": "41e0f0e5d4b4c9db9224d67b3d55dd0fe7b86b27e657d02e1bbb847506bc20b2"
         }
       ],
       "licenseConcluded": "NOASSERTION",

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-proto-x64-windows-1.88.0-0ddbec07-b9f5-48a0-89f9-19f2d90e505d",
-  "name": "boost-proto:x64-windows@1.88.0 075bf0fd9dbe531fb0943393e1510fd3d4865be1a68745b109ae05d8f812f205",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-proto-x64-windows-1.88.0-0cebf024-bc40-439f-b5d9-dcae7c805dd9",
+  "name": "boost-proto:x64-windows@1.88.0 242f0d222471783ebbf1d4dd558664785e904817b684c6c27cb544c138c4a3c3",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:38:37Z"
+    "created": "2025-05-13T22:20:39Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-proto:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "075bf0fd9dbe531fb0943393e1510fd3d4865be1a68745b109ae05d8f812f205",
+      "versionInfo": "242f0d222471783ebbf1d4dd558664785e904817b684c6c27cb544c138c4a3c3",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

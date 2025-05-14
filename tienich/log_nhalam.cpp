@@ -1,6 +1,5 @@
 //log_nhalam.cpp
 #include "log_nhalam.h"
-
 #include <fstream>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>

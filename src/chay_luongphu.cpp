@@ -29,14 +29,34 @@ void lp_suachua_nhieu(bool dism, bool sfc, bool chk)
 				std::vector<std::string> cmds;
 				if (dism)
 					cmds.emplace_back("dism /Online /Cleanup-Image /RestoreHealth");
+
 				if (sfc)
 					cmds.emplace_back("sfc /scannow");
+
 				if (chk)
-					cmds.emplace_back("chkdsk C: /scan");
-				// chkdsk(cmds); - lỗi - chưa có kế hoạch sửa
+				{
+					const auto cmds_chkdsk = tao_lenh_chkdsk();
+					cmds.insert(cmds.end(), cmds_chkdsk.begin(), cmds_chkdsk.end());
+				}
+
 				if (!cmds.empty())
 					suachua_nhieu(cmds);
 			});
+}
+
+void lp_mo_phanmanh()
+{
+	pool.enqueue([] { mo_phanmanh(); });
+}
+
+void lp_chay_phanmanh()
+{
+	pool.enqueue([] { chay_phanmanh(); });
+}
+
+void lp_chay_xoarac()
+{
+	pool.enqueue([] { tienhanh_xoa(); });
 }
 
 void lp_nap_cauhinh()
@@ -58,8 +78,6 @@ void lp_chay_saochep_ini()
 {
 	pool.enqueue(saochep_ini);
 }
-
-
 
 std::future<std::optional<ketqua_key>> lq_kiemtra_key_async(const std::string& key)
 {

@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-fusion-x64-windows-1.88.0-0aa54a41-4ccd-4015-bce7-288595a8c518",
-  "name": "boost-fusion:x64-windows@1.88.0 e82e2b1081a0daab17b0cea67b37a9d9e62495b200f4f288f6379d7844b40955",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-fusion-x64-windows-1.88.0-24939759-1697-44ca-ba64-0d866f8c7f7e",
+  "name": "boost-fusion:x64-windows@1.88.0 cdccb6931c4c29bcfafb1b9f83b17829f2b64d0023914661ec56c22924c504a2",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:37:32Z"
+    "created": "2025-05-13T22:19:33Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-fusion:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "e82e2b1081a0daab17b0cea67b37a9d9e62495b200f4f288f6379d7844b40955",
+      "versionInfo": "cdccb6931c4c29bcfafb1b9f83b17829f2b64d0023914661ec56c22924c504a2",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

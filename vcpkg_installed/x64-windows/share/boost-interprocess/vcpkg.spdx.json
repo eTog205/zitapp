@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-interprocess-x64-windows-1.88.0-7f088c37-c588-4aaf-b615-64edbc4ae761",
-  "name": "boost-interprocess:x64-windows@1.88.0 ed68299a187cd42f2178075e91a2d0d6c592d43280bb19bb3a9bf7dadc1ae8e1",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-interprocess-x64-windows-1.88.0-26b109c4-d994-4cea-9ab2-39a90f9f56e8",
+  "name": "boost-interprocess:x64-windows@1.88.0 752c472f71c276d7923fea8979da673c5f02bfd2c711b5aefb972cf1f68b88a4",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:38:11Z"
+    "created": "2025-05-13T22:20:12Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-interprocess:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ed68299a187cd42f2178075e91a2d0d6c592d43280bb19bb3a9bf7dadc1ae8e1",
+      "versionInfo": "752c472f71c276d7923fea8979da673c5f02bfd2c711b5aefb972cf1f68b88a4",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

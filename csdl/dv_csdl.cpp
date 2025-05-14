@@ -48,5 +48,6 @@ void ve_giaodien(const int chieurong_manhinh, const int chieucao_manhinh)
 	giaodien_caidat(tt);
 	giaodien_hotro(tt);
 	giaodien_bangdl(tt);
+
 	// ImGui::ShowDemoWindow();
 }

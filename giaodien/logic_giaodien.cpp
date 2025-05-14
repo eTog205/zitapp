@@ -178,7 +178,7 @@ void ch_macdinh()
 	fs::remove(ch.tep_dich);
 }
 
-bool mo_cuasodia()
+bool mo_phanmanh()
 {
 	try
 	{
@@ -190,9 +190,28 @@ bool mo_cuasodia()
 		proc.wait();
 
 		return proc.exit_code();
-	} catch (std::exception ex)
+	} catch (const std::exception& ex)
 	{
-		td_log(loai_log::loi, "");
+		td_log(loai_log::loi, ex.what());
+		return false;
+	}
+}
+
+bool chay_phanmanh()
+{
+	try
+	{
+		boost::asio::io_context ctx;
+		std::string cmd_line = "defrag C: -w -v";
+		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
+
+		proc.wait();
+
+		return proc.exit_code();
+	} catch (const std::exception& ex)
+	{
+		td_log(loai_log::loi, ex.what());
 		return false;
 	}
 }

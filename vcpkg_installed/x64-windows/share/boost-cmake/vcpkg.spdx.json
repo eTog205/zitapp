@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-cmake-x64-windows-1.88.0-2bfedfba-2f08-4a26-b942-1db4cf4f5864",
-  "name": "boost-cmake:x64-windows@1.88.0 25064b91e79c00c8dd47a3e17b4346efcee146573576b213d10e27aea8493b16",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-cmake-x64-windows-1.88.0-d10025c7-69f7-446c-a5e0-6131c4d24f8b",
+  "name": "boost-cmake:x64-windows@1.88.0 8758709e2a3ee0758a417f939188fd22e567fe9359ab2c45977d470ab279ef50",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:37:07Z"
+    "created": "2025-05-13T22:19:06Z"
   },
   "relationships": [
     {
@@ -109,7 +109,7 @@
     {
       "name": "boost-cmake:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "25064b91e79c00c8dd47a3e17b4346efcee146573576b213d10e27aea8493b16",
+      "versionInfo": "8758709e2a3ee0758a417f939188fd22e567fe9359ab2c45977d470ab279ef50",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",

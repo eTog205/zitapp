@@ -2,14 +2,14 @@ Package: vcpkg-cmake-config
 Version: 2024-05-23
 Architecture: x64-windows
 Multi-Arch: same
-Abi: cbed00376b2faee93f4a260f26fcffdcb626e80293ad0e368def44d966032d09
+Abi: 185c1fb6d368dfd731f9b4b6d0cc1455d201e344dfd549cd1a877a98ef2228f6
 Status: install ok installed
 
 Package: vcpkg-cmake
 Version: 2024-04-23
 Architecture: x64-windows
 Multi-Arch: same
-Abi: a36eee9dc7453a174ab7c010336c4a9164f940474a11e3d2c56e493e5e57b15c
+Abi: 4708f32648b19b51b0a2d629d78752049a487e3c41e14fa7d2cf1998141b1d86
 Status: install ok installed
 
 Package: vcpkg-boost
@@ -17,14 +17,14 @@ Version: 2025-03-29
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: d858783e382cd12addd5e017a375e0b989ac90b7fecdcc2286b32020e5f96297
+Abi: 79bf87ec6fe1a19c120ac031da0412a5630d37bf0011eb3d599213c0ad631dc1
 Status: install ok installed
 
 Package: boost-uninstall
 Version: 1.88.0
 Architecture: x64-windows
 Multi-Arch: same
-Abi: e4026b1ca9b4d5ba36ffff9a7b2a05ed0bff480610e51569f9d482253c2b1e85
+Abi: 4885066944071d9ab1b920b38e7841d11ca587f57378623b6bcb1c6ae4a37b00
 Description: Internal vcpkg port used to uninstall Boost
 Status: install ok installed
 
@@ -33,7 +33,7 @@ Version: 1.88.0
 Depends: boost-uninstall, vcpkg-boost
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 25064b91e79c00c8dd47a3e17b4346efcee146573576b213d10e27aea8493b16
+Abi: 8758709e2a3ee0758a417f939188fd22e567fe9359ab2c45977d470ab279ef50
 Description: Boost cmake module
 Status: install ok installed
 
@@ -42,7 +42,7 @@ Version: 1.88.0
 Depends: boost-cmake
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 83c366e9f33f2962dba083e9d4c370beb1d248acfd364980e1348bc53ac633f6
+Abi: 34ec42049e4afd0c8b537a4c511f23358357b92c1fc2658f20ed3ebd5f471387
 Description: Boost headers module
 Status: install ok installed
 
@@ -51,7 +51,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 29aaa18fd003f8ead18a94b9c736af27ff70ac81ae901a0c6255a7cd089e114f
+Abi: b0ba02e8fc234f060e68def87659cce1cdde2ce8d382dada18d9df6d61f426a1
 Description: Boost config module
 Status: install ok installed
 
@@ -60,7 +60,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 0aa51affd93436939a3f13f3c492f24b992630a07474697cb96b3ea3f793da24
+Abi: 881247917b16d1c5dc1e8bfd4e831808e612d7eb828de9af6bf86552d45a728b
 Description: Boost assert module
 Status: install ok installed
 
@@ -69,7 +69,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6c29d542e7590cf4ba3861d1dbb086e8876f169e4114da0dee960337fc6c5b01
+Abi: f061780c7f9d5e6d5877b68a12c2851b02089f57884e39ce9951ae4bd255a97f
 Description: Boost throw_exception module
 Status: install ok installed
 
@@ -78,7 +78,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 3436edac59fea7de1a555175afe5c6839c468b5498aa0dd70106f9667fb8e23f
+Abi: c27b19a4a2934fb3a5d0486535e6dccde00c20ace2993686d289402ede915282
 Description: Boost predef module
 Status: install ok installed
 
@@ -87,7 +87,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers, boost-predef
 Architecture: x64-windows
 Multi-Arch: same
-Abi: efef09ab01496782a1422c405c105d0826c0a1d88c34d28c6226e12c983f9ccd
+Abi: 50d7a15d1f066cbf7ba29a2b4a84949ca7e06de4e8201d7cf4df8bfecbe3adf8
 Description: Boost winapi module
 Status: install ok installed
 
@@ -96,7 +96,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 0d613d8f12573e9ad4084654dfa58c28515c0bc1c22767abfa714e59d187f93b
+Abi: 4db7a36384f20756c3f7bf6c7e35321fcbf397a3687441fa7b73cde07643a058
 Description: Boost mp11 module
 Status: install ok installed
 
@@ -105,7 +105,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-mp11
 Architecture: x64-windows
 Multi-Arch: same
-Abi: d888305b7c7eab2f37afa04d501285982f56c50f8b7df6e56830c16ebc2466ae
+Abi: 274e8dd64aab1dd72fa3d87bbce870f6f64c35b5643c1f7ef06300b83bdc2b4c
 Description: Boost variant2 module
 Status: install ok installed
 
@@ -114,7 +114,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-throw-exception, boost-variant2, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 24c6c4cf6474fe311a09ee3a26b8183f75a9d397854763bbf68e986f4efd3606
+Abi: cf4f5566cd2ae3600cb2c3de32c1477e0d0ddfa1d69eba8861fff2db7df413e1
 Description: Boost system module
 Status: install ok installed
 
@@ -123,7 +123,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 0a653e6dd2d02edffdbf27f2d10a84fbbc582810ba260606ae6779cd7382d2aa
+Abi: f0aad141a2ebcef49e6957efe98aab6be5e2c9d23a79ca8c9b543b61c802373f
 Description: Boost static_assert module
 Status: install ok installed
 
@@ -132,7 +132,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers, boost-static-assert
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 7670ec7a619b7c5a699456837b7e71775eba472d62222f07ee84abb8cbb2e2d8
+Abi: eaf157dd496cdcd2ba0a5d2e1492c98117f8baeca96bbbacee584a57a548dcc4
 Description: Boost type_traits module
 Status: install ok installed
 
@@ -141,7 +141,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 0337b338b12789dc03a355e5c9ecc525bb7c4cc288f9b7ed78eae13b921ee6de
+Abi: bd40a163dcea16f902b6382f1bae5305afb2308d804f60d5bef460f6426a5ba8
 Description: Boost preprocessor module
 Status: install ok installed
 
@@ -150,7 +150,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: c451e593e422ae2b18460700972d159cf828b4f9c0db61677d07f5337657e9a4
+Abi: 47ac3118747e47f499ea0c132264fedfa7e7dd8dfcaca2ecf2a835bf2687f5ac
 Description: Boost io module
 Status: install ok installed
 
@@ -159,7 +159,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-static-assert, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 235a3e024bba4ee8a06c5fa6c0c1754d2d25845a60dbe27b3a4cf30f94ef3135
+Abi: 942390f127cf38b1d17950897d9216d78e315fc2aa471052fdbd90ab8a935fd1
 Description: Boost core module
 Status: install ok installed
 
@@ -168,7 +168,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-io, boost-preprocessor, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: cc18a4b832f9d569e6cbe2048a3bbc4041bf8a565bf76dc7b035cf98597c881d
+Abi: 1966f6fcec5dc37049defdef1c4014f4cf27e7fa368c5e59ecada1305635cd40
 Description: Boost utility module
 Status: install ok installed
 
@@ -177,7 +177,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 281e04c595a3008b1954ea4bdaad18b130b8d7aef6951186f56a01f9a4c6dffc
+Abi: c7152ba9b4eac18bfcf92b9d9b584697fea2375df4613ce91dec9bb569779154
 Description: Boost smart_ptr module
 Status: install ok installed
 
@@ -186,7 +186,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 1e434aee77b557840783a9449ee424544798b114ee3ce8e6af7ffa3fc19f57a6
+Abi: 9e87c8b1a9d50f985345ee3e6f9b366addb302031a8cb6b277b4d3838e3ee292
 Description: Boost optional module
 Status: install ok installed
 
@@ -195,7 +195,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-headers, boost-predef, boost-preprocessor, boost-static-assert, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6c913dd27544b917be5a05c13e924074699ec414abef1c4395773de6c526ad4c
+Abi: c3b4bc778818cdb7fecaae1060a51190c6d78f2c0cc8253cbc272387b10f1896
 Description: Boost mpl module
 Status: install ok installed
 
@@ -204,7 +204,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: b4be4519c9d0492c25f9df1f8f781b111830628e481e4dacfa3499bce3a50ade
+Abi: 158273c67980a49f4a35dd73528564b04e99e54955d7808f809d6efd76912d05
 Description: Boost typeof module
 Status: install ok installed
 
@@ -213,7 +213,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-headers, boost-static-assert, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2df44482d1da1c377356360ca20864e2531c481e356ef1db38b94a3a5aba7191
+Abi: 209818deed9dc46a179159f611b6e8b56ad53d6bd301788b46319323c88cee40
 Description: Boost tuple module
 Status: install ok installed
 
@@ -222,7 +222,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-headers, boost-preprocessor, boost-static-assert, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: c6c1a316141c98240d110b5c503b247e3fd7713cfcba66b2305f2a28c6f571a1
+Abi: 7cc53e2c151973405edff30790d4a31fd2a7c55284b3deacb20830351ad93eab
 Description: Boost detail module
 Status: install ok installed
 
@@ -231,7 +231,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-detail, boost-headers, boost-mpl, boost-preprocessor, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6f2e47e6f588ad921285f6eeee358c3636930d186220ccd69a69e9ce1ee76efe
+Abi: a56c044040a7c33d75ff577f7ce904434ef5b5ccc0b6d758ff1feb8a0e2b0517
 Description: Boost function_types module
 Status: install ok installed
 
@@ -240,7 +240,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 462c99fd6749a08166a9c51124f9a085e6338010c84f15fe0092a0022eadfdc1
+Abi: dba4e1ef3a0e411990ff3814dfb35ee415087a7cddfe313d115d2a82beb78f55
 Description: Boost bind module
 Status: install ok installed
 
@@ -249,7 +249,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-bind, boost-cmake, boost-config, boost-core, boost-headers, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2d4c3dff54fdc60fbcd1233f13cabc8f1593fa36be340e6bf3cd4558b87809d6
+Abi: 07e74279c4e2d4ec28d04e0aaaef5187966d8cdd8a83a2f548cf6c3f771d2fac
 Description: Boost function module
 Status: install ok installed
 
@@ -258,7 +258,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-function, boost-function-types, boost-headers, boost-mpl, boost-preprocessor, boost-type-traits, boost-typeof, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: a35373f972953405fba2a5ea9cfae65463ebcff434b95102dbcd69708d6e3d4b
+Abi: 0fcefd19c9726a8808ddb0b4843fc1d44c20b8839bca4dca6b4d26f1a132e99c
 Description: Boost functional module
 Status: install ok installed
 
@@ -267,7 +267,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers, boost-mp11
 Architecture: x64-windows
 Multi-Arch: same
-Abi: a9f2be82a7b0766d5fd346449969fbb763f95a9740dcb381f89aa1bca8220a18
+Abi: 7f766cbce43093bf6537b8f6bd75be8dcd6629eeaf81d569361fc4006877b7a9
 Description: Boost describe module
 Status: install ok installed
 
@@ -276,7 +276,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-describe, boost-headers, boost-mp11
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 4fc04e99147ec514c6f37d1354d51fa8459c8c78e3c75705ac6016ffd33fbea8
+Abi: 53226edbb5b732f67ffc5b89e346b4c95175dcbc975f24563a11bdf193bc4dd6
 Description: Boost container_hash module
 Status: install ok installed
 
@@ -285,7 +285,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-container-hash, boost-core, boost-function-types, boost-functional, boost-headers, boost-mpl, boost-preprocessor, boost-static-assert, boost-tuple, boost-type-traits, boost-typeof, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: e82e2b1081a0daab17b0cea67b37a9d9e62495b200f4f288f6379d7844b40955
+Abi: cdccb6931c4c29bcfafb1b9f83b17829f2b64d0023914661ec56c22924c504a2
 Description: Boost fusion module
 Status: install ok installed
 
@@ -294,7 +294,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers, boost-preprocessor, boost-static-assert, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 0a0e049eeae3e2abb9fd9ca8e8653be4ffd88b928391416bcb6eaaf2786d87a1
+Abi: 63cd67f855a82a2738b8bc014570c364d9178aff0f64535b2a082349f6d273ba
 Description: Boost concept_check module
 Status: install ok installed
 
@@ -303,7 +303,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-concept-check, boost-config, boost-core, boost-detail, boost-fusion, boost-headers, boost-mp11, boost-mpl, boost-optional, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: b60a00ed36226b3ecff4d8649eea1813dffa5f73cd8c9136c63c8b91c3e9bb32
+Abi: 06cc600ad5abdc55db4723b5fa1344df2ebee05b7c292ec60f27433694e4d111
 Description: Boost iterator module
 Status: install ok installed
 
@@ -312,7 +312,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-iterator, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2af72089370a492d51c7067ede1b00e628dfee4b1f81bbdd4d0dc93d37b0ef9a
+Abi: c261ec4cead656ddba327f2cf30907198e6a40346dfdaae58af3df5a55f9714e
 Description: Boost tokenizer module
 Status: install ok installed
 
@@ -321,7 +321,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-static-assert, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2c6f966fdf346460e00effae9564d27e0d59f14fecc52e08ef93f7d2a7e40327
+Abi: 64f4de18482c0a461a6efbf43bdc5ac85f4160614e7c0e5bee3b89a1de1f282f
 Description: Boost integer module
 Status: install ok installed
 
@@ -330,7 +330,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-concept-check, boost-config, boost-container-hash, boost-core, boost-headers, boost-integer, boost-mpl, boost-predef, boost-smart-ptr, boost-static-assert, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: f7ab34059c224d195b2fcb06c86914024d6a7c539344d0b99b54dfa9fd93bea1
+Abi: 6566e8b276f03718b4f648f78a15de3aef627f98684cac73521457ff6c341831
 Description: Boost regex module
 Status: install ok installed
 
@@ -339,7 +339,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-smart-ptr, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 4df74cc7120a648b0fe3c3e58ddcf864206deb31fd90aabfd0adc5ba00b4cbd5
+Abi: 1120649d3dc848b45fd79119b754ff329b9dcc9e20b2c23eed0cc8bab86fa350
 Description: Boost conversion module
 Status: install ok installed
 
@@ -348,7 +348,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-static-assert, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 370fb3ffdc155fab46bf1995423ec6f80ed4af5f2b1fd3d068fa971d4da01116
+Abi: 6b3d618f7a31cd1977869d088a12604584bac3cdd54d8fa08fa2990b8b411ed6
 Description: Boost array module
 Status: install ok installed
 
@@ -357,7 +357,7 @@ Version: 1.88.0
 Depends: boost-array, boost-assert, boost-cmake, boost-concept-check, boost-config, boost-container-hash, boost-conversion, boost-core, boost-detail, boost-headers, boost-iterator, boost-mpl, boost-optional, boost-preprocessor, boost-regex, boost-static-assert, boost-tuple, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 5b534f98efb70ad314a47430c97c721becfec69ff9f574b53575e9d15f16d85d
+Abi: 19540f7d91c9e3512c65ea1727609795b88714ac78226a38a320c58d681b9aba
 Description: Boost range module
 Status: install ok installed
 
@@ -366,7 +366,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-conversion, boost-core, boost-headers, boost-mpl, boost-preprocessor, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 1bb93f1239565debec4c72a523d9249fe943e16a04ca4fd9f9e0d8c5258a9672
+Abi: 93129737cbef528403cac772379ef8457daee45b7ec4b975486ce27faa7073e0
 Description: Boost numeric_conversion module
 Status: install ok installed
 
@@ -375,7 +375,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2927575d00ecccf26937a9fea1f50f77246b5aaa5917b6d801f6bf3105dbe3ed
+Abi: fcd808c86279a1e3115fe4606f496df159e58bbc00f2dd1d06867199a62b0476
 Description: Boost move module
 Status: install ok installed
 
@@ -384,7 +384,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-move
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 16447c7133012f4ad2e026677bae0cabf9a473fd104a8808dab6b6550407d359
+Abi: 06a1e8718caea5bb5720adc596a021c11fc5e13d665267757f419189e6c1e0da
 Description: Boost intrusive module
 Status: install ok installed
 
@@ -393,7 +393,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-intrusive, boost-move
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 04f84d362bac6e14ebae597a4f02f71b06723f7e43341eb05e3ab0fe1ecf5c2d
+Abi: 6d982ad01b27b1d6a5ff38abe3a62bc3d0624ff48fdcd5b2ee4f90e323401b3b
 Description: Boost container module
 Status: install ok installed
 
@@ -402,7 +402,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-container, boost-core, boost-headers, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 9476126946f08a611aebb532951df165786114420f1ecbda892461268b14815a
+Abi: bc530567a274e31efa5eeb9f19555b23672c2b6657e41b97088aad10b2e23bf2
 Description: Boost lexical_cast module
 Status: install ok installed
 
@@ -411,7 +411,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-container-hash, boost-core, boost-headers, boost-mp11, boost-predef, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 503169ae1394ac7d4331fd5d16108eb5a487740db51022441a7265463a8ee4b9
+Abi: 0724556adcdcb08b8d0afa015528aeb6401cbf39c1fa46fe6d7ca696d7bc2b47
 Description: Boost unordered module
 Status: install ok installed
 
@@ -420,7 +420,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-smart-ptr, boost-throw-exception, boost-tuple, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6220f8353e0a6f14425b10785cd64c260eaa36007a9f09bc77be9394077dd02d
+Abi: 5b2f43fdebdabce7f76b1896a317b73af4d99be419c8b6762fe05ad05bc2572c
 Description: Boost exception module
 Status: install ok installed
 
@@ -429,7 +429,7 @@ Version: 1.88.0
 Depends: boost-array, boost-assert, boost-bind, boost-cmake, boost-concept-check, boost-config, boost-core, boost-exception, boost-function, boost-headers, boost-iterator, boost-mpl, boost-range, boost-regex, boost-static-assert, boost-throw-exception, boost-tuple, boost-type-traits, boost-unordered
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 1ca3960e8b5e5063b4d53b1c52296449ddbf6f8cc9fff18fb8e9d256f14af5a7
+Abi: cabecdcbe727a13b6e7b9c0858d81202bf302c3c50c0af43e7a859a2716dca16
 Description: Boost algorithm module
 Status: install ok installed
 
@@ -438,7 +438,7 @@ Version: 1.88.0
 Depends: boost-algorithm, boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-io, boost-lexical-cast, boost-numeric-conversion, boost-range, boost-smart-ptr, boost-static-assert, boost-throw-exception, boost-tokenizer, boost-type-traits, boost-utility, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 15da1a29612c8a1c06404a7d5137da91c3efa4c68909651602931224b0ff67cd
+Abi: ae506a18327ba200ede4640462112f2a9ca483e0c32abb65f52d851f20c69f7b
 Description: Boost date_time module
 Status: install ok installed
 
@@ -447,7 +447,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-integer, boost-throw-exception, boost-type-traits, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 90f44489672e7337034e60bc89d09d934afd5f5002c25bf21209a274b0804c37
+Abi: 5f2dc11193c1571e8b03e5790fbbec2cd1387b4b1b2983fe0e42a4a2ebfd09c7
 Description: Boost pool module
 Status: install ok installed
 
@@ -456,7 +456,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-mp11, boost-pool, boost-predef, boost-smart-ptr
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 7be10b4eb60867816259bc003dc7154c68ec8ee2ef4a8935761b9ea30ec0bd17
+Abi: eaed517feadb3196833d658736a270e58fe41806b1bf2224bcaba69213b83540
 Description: Boost context module
 Status: install ok installed
 
@@ -465,7 +465,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-static-assert
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6e22528d631b6fedeecfd1e9306b65332f221ce71353ea6744c826abe981d03e
+Abi: 5646845f97d9f04bd62bcce7b61340fda7870d070bab0c94bd80507a2de18426
 Description: Boost align module
 Status: install ok installed
 
@@ -474,7 +474,7 @@ Version: 1.88.0
 Depends: boost-align, boost-assert, boost-cmake, boost-config, boost-context, boost-date-time, boost-headers, boost-system, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: b151f212c343191002ad9cabf84348997920afc575cacfcbe79eb07840425fed
+Abi: b17441235b42d59b3359e47f88950a3a4c5ef77a1cda330ecdcf12845b986746
 Description: Boost asio module
 Status: install ok installed
 
@@ -483,7 +483,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-container-hash, boost-core, boost-headers, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 5d3b358849e266ed712f88f78d3cddca179faec899b3f48f430cb3a491a5cca4
+Abi: cf952909155dffdaa713a6b49459eb2e9e1b7457257dc50922997ae82f77bf27
 Description: Boost type_index module
 Status: install ok installed
 
@@ -492,7 +492,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-container-hash, boost-core, boost-headers, boost-static-assert, boost-throw-exception, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 74614abc5cf2e8e625a2049fcd2d0c0b0ff564236cf5eb64377d4948db3b7acf
+Abi: d3e345b16edb53dc445d00aec0596a8c2e8e315078cc81cbe0bd51bffd48e7b9
 Description: Boost static_string module
 Status: install ok installed
 
@@ -501,7 +501,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: e82a3149bf6ad4912a828aca33e54a49622a129a6da60dc6e47f3c8e31a4b444
+Abi: a468c2486df8e402da5744633c12f4ae9ae352767101fa515789f261bdc950ec
 Description: Boost logic module
 Status: install ok installed
 
@@ -510,7 +510,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 4938580c0f6998a4a09e3714555db3ca0b3630bc624c7356819400af6007a965
+Abi: f2932acf233feef968ec17266a5a025633273c9106aa211bcb69ab09e39790b8
 Description: Boost endian module
 Status: install ok installed
 
@@ -519,7 +519,7 @@ Version: 1.88.0
 Depends: boost-asio, boost-assert, boost-bind, boost-cmake, boost-config, boost-container, boost-container-hash, boost-core, boost-endian, boost-headers, boost-intrusive, boost-logic, boost-mp11, boost-optional, boost-preprocessor, boost-smart-ptr, boost-static-assert, boost-static-string, boost-system, boost-throw-exception, boost-type-index, boost-type-traits, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: bc756c3509febff18eed750ce2559f86285adaf810d97969bf51fa99b54724e0
+Abi: 4fe6198e427d495bd84dbe042fa010aa9ccc1c117224cc3888d0a42159ad9900
 Description: Boost beast module
 Status: install ok installed
 
@@ -528,7 +528,7 @@ Version: 1.88.0
 Depends: boost-align, boost-assert, boost-cmake, boost-config, boost-container, boost-container-hash, boost-core, boost-describe, boost-endian, boost-headers, boost-mp11, boost-static-assert, boost-system, boost-throw-exception
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 06b0fb973dc3cb4ca5ba07a6eb10c70b48b92c7dad49cda06ab10a24886fed5d
+Abi: 0e497441fda5c2bb986a64d3ff78b5be2a03474deb7d45b259ab7734f16ebe4f
 Description: Boost json module
 Status: install ok installed
 
@@ -537,7 +537,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: f9dd82cb100b833d2948c91c334921223c769507e6ae583fd292f926d0b3eaba
+Abi: 54f024bcbf0326a16f9f9f7c82950312553a7351eb3d3476a0754e58cc346a44
 Description: Boost scope module
 Status: install ok installed
 
@@ -546,7 +546,7 @@ Version: 1.88.0
 Depends: boost-align, boost-assert, boost-cmake, boost-config, boost-headers, boost-predef, boost-preprocessor, boost-type-traits, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: f9f8942c88936383024b1a5c847fc8fe391fef9fac41f380480bd2e03017347d
+Abi: ffe82659d3f14f3ad6ae057d71d93d2f6fb1bce7a304d70525341e71e54e02b7
 Description: Boost atomic module
 Status: install ok installed
 
@@ -555,7 +555,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-atomic, boost-cmake, boost-config, boost-container-hash, boost-core, boost-detail, boost-headers, boost-io, boost-iterator, boost-predef, boost-scope, boost-smart-ptr, boost-system, boost-type-traits, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 4e36f688b924681d285d05aebaadfef0f8a4deb8713290bdafa9247146147847
+Abi: ccef154701693d3c04c12c2249e40c2b83425062f9dd290fc87ef77d02b4e7c1
 Description: Boost filesystem module
 Status: install ok installed
 
@@ -564,7 +564,7 @@ Version: 1.88.0
 Depends: boost-algorithm, boost-asio, boost-assert, boost-cmake, boost-config, boost-core, boost-filesystem, boost-fusion, boost-headers, boost-io, boost-iterator, boost-move, boost-optional, boost-system, boost-throw-exception, boost-tokenizer, boost-type-index, boost-type-traits, boost-utility, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 14da0c7ab057c924b1cae801fe2561c27d820fb64bee52ab5dab6ed3fe34ad3b
+Abi: 9d5d9c47d3354756205c7c3d1552dab9c3aff715f21d508113291a47da2df16d
 Description: Boost process module
 Status: install ok installed
 
@@ -574,7 +574,7 @@ Port-Version: 1
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: d410b31ad49dee87326490f00a3d808a2846c92bf2546ad55bb79f8eb2732ca1
+Abi: ed35d78b3cda358dbb7b0dab98fa2fd27b51e2fe24db2f8b3c65b105dc7a3b14
 Description: GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.
 Status: install ok installed
 
@@ -583,7 +583,7 @@ Version: 1.91.9
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 148a947f34a69a40d125374fa42f9d7be86d696df35ac847c51d2ffb60dc16d9
+Abi: 1cb2a3477aaba88fc7b1d871fe88c4f34ee2b5ac0970b410342778d416a9a3e8
 Description: Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.
 Status: install ok installed
 
@@ -593,25 +593,25 @@ Port-Version: 1
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 1b18c05b728fef0f11aa61a20fbeeb40dad64dcb0f629a5e1f5edfac9426608f
+Abi: 6ffc286111b3749577487d749bb83de95a36b9e5eaf7d1a0c77273111e59ca0b
 Description: {fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
 Status: install ok installed
 
 Package: spdlog
-Version: 1.15.2
+Version: 1.15.3
 Depends: fmt, vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: bc1ea2a08401b3e3286b1b57bcecb335a7e5a6f5a1585a1365ce7e38af394d6c
+Abi: a598ddd447e7d46305a63dcc059a0b7fb843977d35871d094098a36aaef82d5d
 Description: Very fast, header-only/compiled, C++ logging library.
 Status: install ok installed
 
 Package: sqlite3
-Version: 3.49.1
+Version: 3.49.2
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 5d49892865f6874f85e2b793ae2adca78627313bd025ee4c24a531be3833f0e0
+Abi: 9c186abbc6013749efedddbba57973666665f595281a58850b7ffd60d747765b
 Description: SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
 Default-Features: json1
 Status: install ok installed
@@ -628,7 +628,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-container-hash, boost-core, boost-detail, boost-headers, boost-integer, boost-mpl, boost-preprocessor, boost-static-assert, boost-throw-exception, boost-type-index, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: e66961b955d38362e84f78f66b0a4fd1309d643178d1d64713d986eeeebf2e02
+Abi: 42d15505e46ad63be21d40e994a31d45b4400d4a3e1967efe01798e5b6864277
 Description: Boost variant module
 Status: install ok installed
 
@@ -637,7 +637,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-headers
 Architecture: x64-windows
 Multi-Arch: same
-Abi: ac91a5981774222964b7a93cb986d961cda923ddb0c464a01c5d55e0301e4f08
+Abi: 2d706981da8f8ffea9be20344003246eccb0812d94b4d15444b08307f613c8e7
 Description: Boost ratio module
 Status: install ok installed
 
@@ -646,7 +646,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-headers, boost-integer, boost-move, boost-mpl, boost-predef, boost-ratio, boost-static-assert, boost-system, boost-throw-exception, boost-type-traits, boost-typeof, boost-utility, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2a6bcebc8f9dd8d2f943b16b112782164603931d9139ce024167daf4c04261e1
+Abi: 7657aeba4529b79601ae02eb47c733d5cb16cb0f691fe2f2a12ac42bcc0d0864
 Description: Boost chrono module
 Status: install ok installed
 
@@ -655,7 +655,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-atomic, boost-bind, boost-chrono, boost-cmake, boost-concept-check, boost-config, boost-container, boost-container-hash, boost-core, boost-date-time, boost-exception, boost-function, boost-headers, boost-io, boost-move, boost-optional, boost-predef, boost-preprocessor, boost-smart-ptr, boost-static-assert, boost-system, boost-throw-exception, boost-tuple, boost-type-traits, boost-utility, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 1d13d6af2730e74eaa6ca1ae315999b6b91bcdc4e887365bef8245bf58388503
+Abi: 451b27b3a0b41ac6e5b666c8b54ef070a88e9f9969d10d74acd9c65710526ead
 Description: Boost thread module
 Status: install ok installed
 
@@ -664,7 +664,7 @@ Version: 1.88.0
 Depends: boost-cmake, boost-config, boost-core, boost-fusion, boost-headers, boost-mpl, boost-preprocessor, boost-range, boost-static-assert, boost-type-traits, boost-typeof, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 075bf0fd9dbe531fb0943393e1510fd3d4865be1a68745b109ae05d8f812f205
+Abi: 242f0d222471783ebbf1d4dd558664785e904817b684c6c27cb544c138c4a3c3
 Description: Boost proto module
 Status: install ok installed
 
@@ -673,7 +673,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-bind, boost-cmake, boost-config, boost-core, boost-function, boost-fusion, boost-headers, boost-mpl, boost-predef, boost-preprocessor, boost-proto, boost-range, boost-smart-ptr, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: ee5009aa58766ea07846a434d5674613cee77414f92c5f9490814f1fcbcfc8b7
+Abi: bc6c3c84f657debd35e41fada0b0a8df7c113c0d1cbacd7346ea10b6fe62b1e7
 Description: Boost phoenix module
 Status: install ok installed
 
@@ -682,7 +682,7 @@ Version: 1.88.0
 Depends: boost-array, boost-assert, boost-cmake, boost-config, boost-core, boost-endian, boost-function, boost-function-types, boost-fusion, boost-headers, boost-integer, boost-io, boost-iterator, boost-move, boost-mpl, boost-optional, boost-phoenix, boost-pool, boost-preprocessor, boost-proto, boost-range, boost-regex, boost-smart-ptr, boost-static-assert, boost-thread, boost-throw-exception, boost-type-traits, boost-typeof, boost-unordered, boost-utility, boost-variant
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 58944fe830e262fead596fc6c5075d8668254e151853863e3e1726680b914867
+Abi: c5ffac6d35d682a8a361dd32c9f314bccd77b66af13823a1997ce32e17ed941b
 Description: Boost spirit module
 Status: install ok installed
 
@@ -691,7 +691,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-core, boost-filesystem, boost-headers, boost-predef, boost-smart-ptr, boost-system, boost-throw-exception, boost-type-index, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 6b744f750b94a13432a3b6b5628da8d7b56fc2cf5667e8da9ed105499c0d3efb
+Abi: 45d8cf85f614356fe5e5374f84a0e65e65a3bba63584ab0d3e3a0b90b2c894b4
 Description: Boost dll module
 Status: install ok installed
 
@@ -700,7 +700,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-container, boost-headers, boost-intrusive, boost-move, boost-winapi
 Architecture: x64-windows
 Multi-Arch: same
-Abi: ed68299a187cd42f2178075e91a2d0d6c592d43280bb19bb3a9bf7dadc1ae8e1
+Abi: 752c472f71c276d7923fea8979da673c5f02bfd2c711b5aefb972cf1f68b88a4
 Description: Boost interprocess module
 Status: install ok installed
 
@@ -709,7 +709,7 @@ Version: 1.88.0
 Depends: boost-array, boost-assert, boost-cmake, boost-config, boost-core, boost-detail, boost-function, boost-headers, boost-integer, boost-io, boost-iterator, boost-move, boost-mp11, boost-mpl, boost-optional, boost-predef, boost-preprocessor, boost-smart-ptr, boost-spirit, boost-static-assert, boost-throw-exception, boost-type-traits, boost-utility, boost-variant, boost-variant2
 Architecture: x64-windows
 Multi-Arch: same
-Abi: ef7c062f2619ca277d529e1b9956b85e707d8dddc1d5756aaad5c903a0a7888f
+Abi: 8c064147bf9f07a72dafba2fb2eca11b41c7779e13a07bc63d029f75599cd3ab
 Description: Boost serialization module
 Status: install ok installed
 
@@ -718,7 +718,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-bind, boost-cmake, boost-config, boost-container-hash, boost-core, boost-headers, boost-integer, boost-iterator, boost-move, boost-mpl, boost-preprocessor, boost-smart-ptr, boost-static-assert, boost-throw-exception, boost-tuple, boost-type-traits, boost-utility
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 2535bc5f8e11da81132a3d830d0a37b5c73f65c245ce698a5c4fb84603862e12
+Abi: 0ae4d1df0baf0f4ba4fac8f04742aa0994eca76cc0591d16c9e8fc4bb06c0b8a
 Description: Boost multi_index module
 Status: install ok installed
 
@@ -727,7 +727,7 @@ Version: 1.88.0
 Depends: boost-assert, boost-cmake, boost-config, boost-headers, boost-throw-exception, boost-type-index
 Architecture: x64-windows
 Multi-Arch: same
-Abi: ed6532eda31aeffa282bd531daa2628e92eb0f261a94c291bb12edf13652e536
+Abi: a81e146cfa3ad08f15ba58f20de396cf11881f9355eed4654ea24614dbde919b
 Description: Boost any module
 Status: install ok installed
 
@@ -736,7 +736,7 @@ Version: 1.88.0
 Depends: boost-any, boost-assert, boost-bind, boost-cmake, boost-config, boost-core, boost-headers, boost-iterator, boost-mpl, boost-multi-index, boost-optional, boost-range, boost-serialization, boost-static-assert, boost-throw-exception, boost-type-traits
 Architecture: x64-windows
 Multi-Arch: same
-Abi: cba5d1a871a965728f7610c1b9efdd06c1e0910e599cc5e3a0d81fc3a8ebb2d3
+Abi: a2b5a95c9b0167fcfdaed55fa78f20e48db584b87ecefb50b1023df9df9cb0ea
 Description: Boost property_tree module
 Status: install ok installed
 
@@ -760,7 +760,7 @@ Version: 2024-09-22
 Depends: vcpkg-cmake
 Architecture: x64-windows
 Multi-Arch: same
-Abi: aff58d105336d71bf898eb83192af67d0ba08768dea7a383b0fc0f00af54b485
+Abi: 1af488991b371d1ef8bb36ff17e43aa0c26d6b70b203c5ba99f023508cbfd966
 Status: install ok installed
 
 Package: openssl
@@ -769,7 +769,7 @@ Port-Version: 1
 Depends: vcpkg-cmake, vcpkg-cmake-config, vcpkg-cmake-get-vars
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 605992996f6a94b591b25f408683eb772cf5891ddfd3d616803ed6c9bad51b26
+Abi: da6b0a24568f0e3b612e7dfbc8cfb30e5d8a111a7fd52155805fa24a62a19817
 Description: OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.
 Status: install ok installed
 
@@ -778,7 +778,7 @@ Version: 2024-07-29
 Port-Version: 1
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 923ae28910873329943657ee6e36f9e4384f0ea96a6e15788e5831817a6ab98d
+Abi: 860f82d9a9d5b35ef8d1548d96a632b81d0a040d69ed219649a67355f2db1e28
 Description: public domain header-only libraries
 Status: install ok installed
 

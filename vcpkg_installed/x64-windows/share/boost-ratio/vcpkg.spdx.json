@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/boost-ratio-x64-windows-1.88.0-52fe4d46-3cbb-4e83-8b7a-13d242cc3f09",
-  "name": "boost-ratio:x64-windows@1.88.0 ac91a5981774222964b7a93cb986d961cda923ddb0c464a01c5d55e0301e4f08",
+  "documentNamespace": "https://spdx.org/spdxdocs/boost-ratio-x64-windows-1.88.0-c1da8295-a7aa-47fa-9886-9d000588eb8c",
+  "name": "boost-ratio:x64-windows@1.88.0 2d706981da8f8ffea9be20344003246eccb0812d94b4d15444b08307f613c8e7",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-2025-01-11-0f310537c75015100d200eb71b137f6376aad510"
     ],
-    "created": "2025-04-30T08:38:29Z"
+    "created": "2025-05-13T22:20:31Z"
   },
   "relationships": [
     {
@@ -59,7 +59,7 @@
     {
       "name": "boost-ratio:x64-windows",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "ac91a5981774222964b7a93cb986d961cda923ddb0c464a01c5d55e0301e4f08",
+      "versionInfo": "2d706981da8f8ffea9be20344003246eccb0812d94b4d15444b08307f613c8e7",
       "downloadLocation": "NONE",
       "licenseConcluded": "BSL-1.0",
       "licenseDeclared": "NOASSERTION",
