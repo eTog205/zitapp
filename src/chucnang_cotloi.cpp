@@ -1,12 +1,12 @@
 // chucnang_cotloi.cpp
 #include "chucnang_cotloi.h"
-#include "log_nhalam.h"
 
 #include <boost/process.hpp>
 #include <boost/process/windows/show_window.hpp>
 #include <unordered_set>
 #include <vector>
-#include <windows.h>
+
+#include "log_nhalam.h"
 
 namespace asio = boost::asio;
 namespace bp = boost::process;
@@ -280,4 +280,57 @@ void tienhanh_xoa()
 	cauhinh_xoa cauhinh;
 	auto danhSach = loc_duongdanthucte(lay_nguon_duongdan_macdinh(), cauhinh);
 	tienhanh_xoa(danhSach, chedo::imlang, nullptr);
+}
+
+bool mo_phanmanh()
+{
+	try
+	{
+		asio::io_context ctx;
+		std::string cmd_line = "Start-Process dfrgui";
+		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
+
+		proc.wait();
+
+		return proc.exit_code();
+	} catch (const std::exception& ex)
+	{
+		td_log(loai_log::loi, ex.what());
+		return false;
+	}
+}
+
+bool chay_phanmanh()
+{
+	try
+	{
+		asio::io_context ctx;
+
+		auto ds_o = lay_o_ntfs();
+
+		for (const auto& o : ds_o)
+		{
+			std::string cmd_line = "defrag " + o + ": -w -v";
+			auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
+
+			bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
+
+			proc.wait();
+
+			if (proc.exit_code() != 0)
+			{
+				td_log(loai_log::loi, "Lỗi khi phân mảnh ổ " + o);
+				return false;
+			}
+
+			// td_log(loai_log::thong_bao, "Đã phân mảnh xong ổ " + o);
+		}
+
+		return true;
+	} catch (const std::exception& ex)
+	{
+		td_log(loai_log::loi, ex.what());
+		return false;
+	}
 }

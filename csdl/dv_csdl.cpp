@@ -1,5 +1,6 @@
 // dv_csdl.cpp
 #include "dv_csdl.h"
+
 #include "csdl.h"
 #include "giaodien.h"
 #include "log_nhalam.h"
@@ -44,10 +45,9 @@ void ve_giaodien(const int chieurong_manhinh, const int chieucao_manhinh)
 
 	giaodien_thanhcongcu(chieurong_manhinh, chieucao_manhinh);
 	giaodien_menuben(chieucao_manhinh);
-	giaodien_tienich(tt);
-	giaodien_caidat(tt);
-	giaodien_hotro(tt);
-	giaodien_bangdl(tt);
 
-	// ImGui::ShowDemoWindow();
+	if (tab_index >= 0 && std::cmp_less(tab_index, danhsach_tab.size()))
+		danhsach_tab[tab_index].ham(tt);
+
+	//  ImGui::ShowDemoWindow();
 }

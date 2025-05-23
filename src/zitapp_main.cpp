@@ -9,7 +9,7 @@
 
 int main()
 {
-	const auto ten_tientrinh = "ZitApp";
+	const auto ten_tientrinh = "zitapp";
 	static boost::interprocess::named_mutex mutex(boost::interprocess::open_or_create, ten_tientrinh);
 
 	if (!mutex.try_lock())

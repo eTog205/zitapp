@@ -30,24 +30,23 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
+  AfterObjCDeclaration: false
 BreakBeforeBraces: Custom
 ColumnLimit: 199
 ContinuationIndentWidth: 8
 Cpp11BracedListStyle: false
 IncludeCategories: 
-  - Regex: '^<.*'
+  - Regex: ^<.*
     Priority: 1
-  - Regex: '^".*'
+  - Regex: ^".*
     Priority: 2
-  - Regex: '.*'
+  - Regex: .*
     Priority: 3
-IncludeIsMainRegex: '([-_](test|unittest))?$'
+IncludeIsMainRegex: ([-_](test|unittest))?$
 IndentCaseLabels: true
 IndentPPDirectives: BeforeHash
 IndentWidth: 4
 InsertNewlineAtEOF: true
-MacroBlockBegin: ''
-MacroBlockEnd: ''
 NamespaceIndentation: All
 PointerAlignment: Left
 SpaceInEmptyParentheses: false

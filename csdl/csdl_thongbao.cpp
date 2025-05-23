@@ -1,7 +1,6 @@
 #include "csdl_thongbao.h"
-#include <boost/container/string.hpp>
 
-using namespace boost;
+#include <boost/container/string.hpp>
 
 void DataManager::addID(const int id)
 {
@@ -68,8 +67,6 @@ std::optional<bool> DataManager::getBool(const int id)
 	return std::nullopt;
 }
 
-
-
 void khoitao_giatri()
 {
 	DataManager manager;
@@ -83,8 +80,4 @@ void khoitao_giatri()
 	manager.setString(abc, "Cảnh báo");
 	manager.setInt(abc, 200);
 	manager.setBool(abc, false); // Ẩn nút
-
-
 }
-
-

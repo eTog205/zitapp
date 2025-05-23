@@ -1,18 +1,13 @@
 // logic_giaodien.cpp
 #include "logic_giaodien.h"
-#include "log_nhalam.h"
 
-#include <boost/process/windows/show_window.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-#include "boost/asio/io_context.hpp"
-#include "boost/process.hpp"
-#include "boost/process/environment.hpp"
+
+#include "log_nhalam.h"
 
 logic_giaodien lg_gd;
 dulieuduongdan dl;
 cauhinh ch;
-
-namespace bp = boost::process;
 
 using demtg = std::chrono::steady_clock;
 
@@ -20,8 +15,8 @@ void logic_giaodien::khoidong_bang_dl()
 {
 	ch_b.columns.clear();
 	ch_b.add_column(column_config("chon", "##Chọn", 40.0f, 40.0f, 40.0f, false, true, false));
-	ch_b.add_column(column_config("id", "ID", 80.0f, 50.0f, 200.0f, true, false));
 	ch_b.add_column(column_config("ten", "Tên", 150.0f, 80.0f, 300.0f));
+	ch_b.add_column(column_config("id", "ID", 80.0f, 50.0f, 200.0f, true, false));
 	ch_b.add_column(column_config("phanloai", "Phân loại", 120.0f, 60.0f, 250.0f));
 }
 
@@ -76,6 +71,7 @@ float tt_thugonkichthuoc(bool& da_thugon, bool& yeucau_thugon, const std::chrono
 
 std::string tt_vanbancothenhinthay(const std::wstring& toanbo_vanban, const float chieurong_hientai, const float chieurong_toithieu, const float chieurong_toida)
 {
+	// dùng wstring để khi thu gọn không bị lỗi văn bản hiện dấu "?"
 	const float ratio = std::clamp((chieurong_hientai - chieurong_toithieu) / (chieurong_toida - chieurong_toithieu), 0.0f, 1.0f);
 	const int max_chars = std::clamp(static_cast<int>(ratio * static_cast<float>(toanbo_vanban.size())), 1, static_cast<int>(toanbo_vanban.size()));
 	return wstring_to_string(toanbo_vanban.substr(0, max_chars));
@@ -176,42 +172,4 @@ void nap_cauhinh()
 void ch_macdinh()
 {
 	fs::remove(ch.tep_dich);
-}
-
-bool mo_phanmanh()
-{
-	try
-	{
-		boost::asio::io_context ctx;
-		std::string cmd_line = "Start-Process dfrgui";
-		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
-		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
-
-		proc.wait();
-
-		return proc.exit_code();
-	} catch (const std::exception& ex)
-	{
-		td_log(loai_log::loi, ex.what());
-		return false;
-	}
-}
-
-bool chay_phanmanh()
-{
-	try
-	{
-		boost::asio::io_context ctx;
-		std::string cmd_line = "defrag C: -w -v";
-		auto ps = bp::environment::find_executable("powershell.exe", bp::environment::current());
-		bp::process proc(ctx.get_executor(), ps, { "-NoProfile", "-Command", cmd_line }, bp::windows::show_window_hide);
-
-		proc.wait();
-
-		return proc.exit_code();
-	} catch (const std::exception& ex)
-	{
-		td_log(loai_log::loi, ex.what());
-		return false;
-	}
 }

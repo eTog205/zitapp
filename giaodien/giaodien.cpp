@@ -1,17 +1,18 @@
 ﻿// giaodien.cpp
-#define IMGUI_DEFINE_MATH_OPERATORS
-
 #include "giaodien.h"
+
+#include <imgui_stdlib.h>
+#include <map>
+#include <ranges>
+#include <variant>
+
 #include "chay_luongphu.h"
-#include "chucnang_cotloi.h"
 #include "imgui_setup.h"
 #include "logic_giaodien.h"
 
-#include <imgui_stdlib.h>
-#include <variant>
-
-std::string tab_hientai = "bangdl";
 giaodien gd;
+std::vector<TabItem> danhsach_tab = { { "Bảng dữ liệu", giaodien_bangdl }, { "Tiện ích", giaodien_tienich }, { "Cài đặt", giaodien_caidat }, { "Hỗ trợ", giaodien_hotro } };
+int tab_index = 0;
 
 enum co_chen_anh : std::uint8_t
 {
@@ -23,6 +24,28 @@ enum co_chen_anh : std::uint8_t
 
 namespace
 {
+	bool da_hover_du(ImGuiID id, const float delay)
+	{
+		static std::unordered_map<ImGuiID, float> hover_map;
+
+		if (ImGui::IsItemHovered())
+		{
+			if (!hover_map.contains(id) || hover_map[id] == 0.0f)
+				hover_map[id] = static_cast<float>(ImGui::GetTime());
+		}
+		else
+		{
+			hover_map[id] = 0.0f;
+		}
+
+		return hover_map[id] > 0.0f && (ImGui::GetTime() - hover_map[id] >= delay);
+	}
+
+	bool da_hover_du(const float delay = 0.0f)
+	{
+		return da_hover_du(ImGui::GetItemID(), delay);
+	}
+
 	bool sosanh_ngay(const std::string& ngay_yyyy_mm_dd)
 	{
 		std::tm tm = {};
@@ -47,7 +70,7 @@ namespace
 		ImVec2 pos = ImGui::GetCursorScreenPos();
 
 		ImVec2 img = ImVec2(static_cast<float>(info.width), static_cast<float>(info.height));
-		ImVec2 frame = img;
+		ImVec2 frame;
 
 		// Xử lý kích thước đầu vào
 		if (std::holds_alternative<ImVec2>(kichthuoc_scale))
@@ -132,10 +155,9 @@ namespace
 	}
 
 	constexpr float header_noi_dung_indent = 37.0f;
-	constexpr ImVec2 kichthuoc_nut = ImVec2(36, 36);
-	thread_local std::vector<NutHeader> ds_nut_tren_header;
+	constexpr auto kichthuoc_nut = ImVec2(36, 36);
 
-	bool mo_header(const char* label, const std::vector<NutHeader>& ds_nut = {}, bool la_dautien = false)
+	bool mo_header(const char* label, const std::vector<nut_header>& ds_nut = {}, bool la_dautien = false)
 	{
 		if (la_dautien)
 			ImGui::Dummy(ImVec2(1.0f, 5.0f));
@@ -164,6 +186,20 @@ namespace
 			ImGui::PushID(i);
 			if (ImGui::Button(nut.ten, kichthuoc_nut) && nut.ham)
 				nut.ham();
+
+			if (da_hover_du(0.3f) && !nut.tooltip.empty())
+			{
+				ImVec2 nut_min = ImGui::GetItemRectMin();
+				ImVec2 kt_nut = ImGui::GetItemRectSize();
+
+				ImVec2 tooltip_pos = ImVec2(nut_min.x + kt_nut.x * 0.5f, nut_min.y - 8.0f);
+
+				ImGui::SetNextWindowPos(tooltip_pos, ImGuiCond_Always, ImVec2(0.5f, 1.0f));
+				ImGui::BeginTooltip();
+				ImGui::TextUnformatted(nut.tooltip.c_str());
+				ImGui::EndTooltip();
+			}
+
 			ImGui::PopID();
 			nut_x -= ImGui::GetStyle().ItemSpacing.x;
 		}
@@ -184,7 +220,7 @@ namespace
 		ImGui::Unindent(header_noi_dung_indent);
 	}
 
-	void o_giong_header_flex(const char* label, const std::vector<std::function<void()>>& nut_phai, bool la_dautien = false)
+	void o_giong_header_flex(const char* label, const std::vector<nut_flex>& nut_phai, bool la_dautien = false)
 	{
 		const ImGuiStyle& style = ImGui::GetStyle();
 		if (la_dautien)
@@ -214,7 +250,19 @@ namespace
 			ImGui::PushID(i);
 			ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.5f, 0.5f));
 			ImGui::SetCursorScreenPos(ImVec2(nut_x - kichthuoc_nut.x, nut_y));
-			nut_phai[i]();
+			nut_phai[i].ve();
+
+			if (da_hover_du(0.3f) && !nut_phai[i].tooltip.empty())
+			{
+				ImVec2 nut_min = ImGui::GetItemRectMin();
+				ImVec2 nut_size = ImGui::GetItemRectSize();
+				ImVec2 tooltip_pos = ImVec2(nut_min.x + nut_size.x * 0.5f, nut_min.y - 8.0f);
+				ImGui::SetNextWindowPos(tooltip_pos, ImGuiCond_Always, ImVec2(0.5f, 1.0f));
+				ImGui::BeginTooltip();
+				ImGui::TextUnformatted(nut_phai[i].tooltip.c_str());
+				ImGui::EndTooltip();
+			}
+
 			ImGui::PopStyleVar();
 			ImGui::PopID();
 			nut_x -= kichthuoc_nut.x + style.ItemSpacing.x;
@@ -366,7 +414,6 @@ void capnhat_bang_phanmem()
 						vitri_dulieu = 2;
 					if (vitri_dulieu < static_cast<int>(lg_gd.data[hang].size()))
 					{
-						// ImGui::Text("%s", lg_gd.data[hang][vitri_dulieu].c_str());
 						ImGui::TextUnformatted(lg_gd.data[hang][vitri_dulieu].c_str());
 					}
 				}
@@ -421,17 +468,17 @@ void giaodien_cuasotuychinh_menunho()
 
 	if (ImGui::Button("Mở Menu"))
 	{
-		gd.isMenuOpen = !gd.isMenuOpen;
+		gd.is_menu_open = !gd.is_menu_open;
 	}
 
 	toggleButtonMin = ImGui::GetItemRectMin();
 	toggleButtonMax = ImGui::GetItemRectMax();
 
-	if (gd.isMenuOpen)
+	if (gd.is_menu_open)
 	{
 		ImGui::SetNextWindowSize(ImVec2(250, 200));
 		ImGui::SetNextWindowBgAlpha(0.9f);
-		ImGui::Begin("Menu", &gd.isMenuOpen, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove);
+		ImGui::Begin("Menu", &gd.is_menu_open, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove);
 
 		ImGui::Text("Tùy chỉnh hiển thị cột:");
 		ImGui::Separator();
@@ -463,7 +510,7 @@ void giaodien_cuasotuychinh_menunho()
 				ImVec2 mousePos = ImGui::GetIO().MousePos;
 				if (mousePos.x < menuPos.x || mousePos.x > menuPos.x + menuSize.x || mousePos.y < menuPos.y || mousePos.y > menuPos.y + menuSize.y)
 				{
-					gd.isMenuOpen = false;
+					gd.is_menu_open = false;
 				}
 			}
 		}
@@ -472,29 +519,22 @@ void giaodien_cuasotuychinh_menunho()
 
 void giaodien_menuben(const int chieucao_manhinh)
 {
-	constexpr float le_nut = 10.0f; // indent từ mép content
-	constexpr float chieucao_nut = 30.0f; // chiều cao cố định của nút
+	constexpr float le_nut = 10.0f;
+	constexpr float chieucao_nut = 30.0f;
 
-	// 1) Tính chiều cao + chiều rộng hiện tại của menu
 	gd.chieucao_menuben = static_cast<float>(chieucao_manhinh) - gd.letren_menuben;
 	const float chieurong_hientai = tt_thugonkichthuoc(gd.menuben_thugon, gd.yeucau_thugon, gd.batdau_thugon, gd.chieurong_menuben_morong, gd.chieurong_menuben_thugon, gd.thoigian_thugon);
 	gd.chieurong_menuben = chieurong_hientai;
 
-	// 2) Bắt đầu window
 	ImGui::SetNextWindowPos(ImVec2(gd.letrai_menuben, gd.letren_menuben));
 	ImGui::SetNextWindowSize(ImVec2(chieurong_hientai, gd.chieucao_menuben));
 	ImGui::Begin("Menu bên", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
-	// 3) Khoảng cách nhỏ phía trên
 	ImGui::Dummy(ImVec2(0.0f, 6.0f));
-
-	// 4) Kích thước chung cho tất cả nút
 	ImVec2 buttonSize(chieurong_hientai - 2 * le_nut, chieucao_nut);
 
-	// ==== Nút thu gọn ====
+	// Nút thu gọn
 	ImGui::SetCursorPosX(le_nut);
-	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
-	ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.5f, 0.5f)); // trung tâm
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.92f, 0.92f, 0.92f, 1.0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.78f, 0.88f, 1.0f, 1.0f));
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.65f, 0.85f, 1.0f, 1.0f));
@@ -505,101 +545,82 @@ void giaodien_menuben(const int chieucao_manhinh)
 		gd.batdau_thugon = std::chrono::steady_clock::now();
 	}
 	ImGui::PopStyleColor(4);
-	ImGui::PopStyleVar(); // pop ButtonTextAlign
-	ImGui::PopStyleVar(); // pop FrameRounding
 
-	// ==== Các nút menu chính ====
-	static const std::vector<MenuItem> menu_items = { { L"Bảng dữ liệu", "bangdl" }, { L"Tiện ích", "tienich" }, { L"Cài đặt", "caidat" }, { L"Hỗ trợ", "hotro" } };
-
-	for (auto& item : menu_items)
+	// Các nút menu từ danh_sach_tab
+	for (int i = 0; i < std::ssize(danhsach_tab); ++i)
 	{
-		bool selected = (item.id == tab_hientai);
+		const auto& item = danhsach_tab[i];
+		bool selected = (i == tab_index);
 
 		ImGui::SetCursorPosX(le_nut);
-		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);
-		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.5f)); // trái + giữa dọc
-
+		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.5f));
 		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
 		ImGui::PushStyleColor(ImGuiCol_Button, selected ? ImVec4(0.85f, 0.85f, 0.85f, 1.0f) : ImVec4(0, 0, 0, 0));
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, selected ? ImVec4(0.75f, 0.75f, 0.75f, 1.0f) : ImVec4(0.3f, 0.3f, 0.3f, 0.2f));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, selected ? ImVec4(0.70f, 0.70f, 0.70f, 1.0f) : ImVec4(0.2f, 0.2f, 0.2f, 0.4f));
 
-		// Tạo label hiển thị + ###ID để ImGui giữ ID riêng
-		std::string display = tt_vanbancothenhinthay(item.toanbo_vanban, chieurong_hientai, gd.chieurong_menuben_thugon, gd.chieurong_menuben_morong);
-		std::string label = display + "###" + item.id;
+		std::string display = tt_vanbancothenhinthay(string_to_wstring(item.ten_hienthi), chieurong_hientai, gd.chieurong_menuben_thugon, gd.chieurong_menuben_morong);
 
-		ImGui::SetCursorPosX(le_nut);
+		std::string label = display + "###" + std::to_string(i);
+
 		if (ImGui::Button(label.c_str(), buttonSize))
-		{
-			tab_hientai = item.id;
-			ImGui::SetWindowFocus(item.id.c_str());
-		}
+			tab_index = i;
 
-		// ==== Vẽ indicator khi selected ====
 		if (selected)
 		{
 			ImDrawList* drawlist = ImGui::GetWindowDrawList();
 			ImVec2 pmin = ImGui::GetItemRectMin();
 
-			// Thông số indicator
-			const float w = 4.0f; // độ rộng cố định
-			const float stripeH = 2.0f; // chỉ 2px ở đầu và 2px ở đuôi
-			const float totalH = buttonSize.y / 3 + 2; // cao = 1/3 chiều cao nút
-			// căn giữa dọc:
+			const float w = 4.0f;
+			const float stripeH = 2.0f;
+			const float totalH = buttonSize.y / 3 + 2;
 			const float topY = pmin.y + (buttonSize.y - totalH) * 0.5f;
 			const float bodyY0 = topY + stripeH;
 			const float bodyY1 = topY + totalH - stripeH;
 
-			// chia 3 seg ngang: 1px – (w‑2)px – 1px
-			const float seg0 = 1.0f;
-			const float seg2 = 1.0f;
-			const float seg1 = w - seg0 - seg2;
+			const float seg0 = 1.0f, seg2 = 1.0f, seg1 = w - seg0 - seg2;
+			const float segs[3] = { seg0, seg1, seg2 };
+			const float xOffsets[3] = { 0.0f, seg0, seg0 + seg1 };
 
-			// màu gốc & hệ số sáng:
-			ImVec4 base = ImVec4(0.0f, 0.4f, 0.75f, 1.0f);
+			const ImVec4 baseColor = ImVec4(0.0f, 0.4f, 0.75f, 1.0f);
 			const float fct[5] = { 0.0f, 1.0f, 0.75f, 0.5f, 0.25f };
-			// ma trận đầu và đuôi:
-			const int head[2][3] = { { 4, 2, 4 }, { 3, 1, 3 } };
-			const int tail[2][3] = { { 3, 1, 3 }, { 4, 2, 4 } };
+			const int pattern[2][3][2] = { { { 4, 3 }, { 2, 1 }, { 4, 3 } }, { { 3, 4 }, { 1, 2 }, { 3, 4 } } };
 
-			// — Vẽ đầu (2px) —
+			// Vẽ phần đầu (2 hàng trên)
 			for (int row = 0; row < 2; row++)
 			{
 				float y = topY + static_cast<float>(row);
 				for (int col = 0; col < 3; col++)
 				{
-					float x0 = pmin.x + (col == 0 ? 0.0f : (col == 1 ? seg0 : seg0 + seg1));
-					float wcol = (col == 0 ? seg0 : (col == 1 ? seg1 : seg2));
-					float alpha = fct[head[row][col]];
-					ImU32 colu = ImGui::GetColorU32(ImVec4(base.x, base.y, base.z, alpha));
+					float x0 = pmin.x + xOffsets[col];
+					float wcol = segs[col];
+					float alpha = fct[pattern[0][col][row]];
+					ImU32 colu = ImGui::GetColorU32(ImVec4(baseColor.x, baseColor.y, baseColor.z, alpha));
 					drawlist->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
 				}
 			}
 
-			// — Vẽ giữa (full màu) —
-			{
-				ImU32 colu = ImGui::GetColorU32(base);
-				drawlist->AddRectFilled(ImVec2(pmin.x, bodyY0), ImVec2(pmin.x + w, bodyY1), colu);
-			}
+			// Vẽ thân
+			ImU32 baseU32 = ImGui::GetColorU32(baseColor);
+			drawlist->AddRectFilled(ImVec2(pmin.x, bodyY0), ImVec2(pmin.x + w, bodyY1), baseU32);
 
-			// — Vẽ đuôi (2px) —
+			// Vẽ phần đuôi (2 hàng dưới)
 			for (int row = 0; row < 2; row++)
 			{
 				float y = bodyY1 + static_cast<float>(row);
 				for (int col = 0; col < 3; col++)
 				{
-					float x0 = pmin.x + (col == 0 ? 0.0f : (col == 1 ? seg0 : seg0 + seg1));
-					float wcol = (col == 0 ? seg0 : (col == 1 ? seg1 : seg2));
-					float alpha = fct[tail[row][col]];
-					ImU32 colu = ImGui::GetColorU32(ImVec4(base.x, base.y, base.z, alpha));
+					float x0 = pmin.x + xOffsets[col];
+					float wcol = segs[col];
+					float alpha = fct[pattern[1][col][row]];
+					ImU32 colu = ImGui::GetColorU32(ImVec4(baseColor.x, baseColor.y, baseColor.z, alpha));
 					drawlist->AddRectFilled(ImVec2(x0, y), ImVec2(x0 + wcol, y + 1.0f), colu);
 				}
 			}
 		}
 
 		ImGui::PopStyleColor(4);
-		ImGui::PopStyleVar(); // pop ButtonTextAlign
-		ImGui::PopStyleVar(); // pop FrameRounding
+		ImGui::PopStyleVar();
 	}
 
 	ImGui::End();
@@ -695,11 +716,6 @@ void giaodien_tinhnang_xuatnap_cauhinh()
 		lp_nap_cauhinh_macdinh();
 }
 
-void bat_nut_tren_header(const std::vector<NutHeader>& nut)
-{
-	ds_nut_tren_header = nut;
-}
-
 void hienthi_bangtienich()
 {
 	if (mo_header("Sửa chữa\nKhuyên dùng khi bị treo máy, lỗi xanh màn hình, cập nhật thất bại, v.v...", {}, true))
@@ -746,7 +762,7 @@ void hienthi_bangtienich()
 		ketthuc_header();
 	}
 
-	if (mo_header("Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác.", { { "X", [] { lp_chay_xoarac(); } } }))
+	if (mo_header("Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác.", { { "X", [] { lp_chay_xoarac(); }, "xóa tất cả" } }))
 	{
 		static bool chonDISM = false, chonSFC = false, chonCHKDSK = false;
 
@@ -785,6 +801,7 @@ void hienthi_bangtienich()
 		ImGui::BeginDisabled(!(chonDISM || chonSFC || chonCHKDSK));
 		if (ImGui::Button("dọn rác tùy chọn", ImVec2(100, 0)))
 			lp_chay_xoarac();
+
 		ImGui::EndDisabled();
 		ketthuc_header();
 	}
@@ -801,16 +818,18 @@ void hienthi_bangtienich()
 	}
 
 	o_giong_header_flex("💡  Tối ưu ổ đĩa\nGiúp máy chạy mượt hơn",
-						{ []
-						  {
-							  if (ImGui::Button("M"))
-								  lp_mo_phanmanh();
-						  },
-						  []
-						  {
-							  if (ImGui::Button("C"))
-								  lp_chay_phanmanh();
-						  } });
+						{ { []
+							{
+								if (ImGui::Button("M"))
+									lp_mo_phanmanh();
+							},
+							"Mở công cụ chống phân mảnh" },
+						  { []
+							{
+								if (ImGui::Button("C"))
+									lp_chay_phanmanh();
+							},
+							"Chạy tối ưu ổ đĩa" } });
 }
 
 void hienthi_nhapkey()

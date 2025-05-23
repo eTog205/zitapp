@@ -1,19 +1,20 @@
-//log_nhalam.cpp
+// log_nhalam.cpp
 #include "log_nhalam.h"
+
 #include <fstream>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
-//#include <windows.h>
 
 using namespace std::chrono;
 
 namespace
 {
-	template<typename Mutex>
+	template <typename Mutex>
 	class memory_sink final : public spdlog::sinks::base_sink<Mutex>
 	{
 	public:
 		std::vector<std::string> buffer;
+
 	protected:
 		void sink_it_(const spdlog::details::log_msg& msg) override
 		{
@@ -36,12 +37,7 @@ namespace
 	std::shared_ptr<spdlog::logger> khoitao_logger_memory()
 	{
 		g_memory_sink = std::make_shared<memory_sink_mt>();
-		auto logger = std::make_shared<spdlog::async_logger>(
-			"async_logger",
-			g_memory_sink,
-			spdlog::thread_pool(),
-			spdlog::async_overflow_policy::block
-		);
+		auto logger = std::make_shared<spdlog::async_logger>("async_logger", g_memory_sink, spdlog::thread_pool(), spdlog::async_overflow_policy::block);
 		logger->set_pattern("%Y-%m-%d %H:%M:%S.%e %v");
 		logger->set_level(spdlog::level::trace);
 		register_logger(logger);
@@ -57,12 +53,7 @@ namespace
 		// Quay vòng file log nếu cần.
 		quayvong_log(logDir, currentLog);
 		auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(currentLog.string(), false);
-		auto logger = std::make_shared<spdlog::async_logger>(
-			"async_logger",
-			file_sink,
-			spdlog::thread_pool(),
-			spdlog::async_overflow_policy::block
-		);
+		auto logger = std::make_shared<spdlog::async_logger>("async_logger", file_sink, spdlog::thread_pool(), spdlog::async_overflow_policy::block);
 		logger->set_pattern("%Y-%m-%d %H:%M:%S.%e %v");
 		logger->set_level(spdlog::level::trace);
 		logger->flush_on(spdlog::level::trace);
@@ -70,8 +61,7 @@ namespace
 		register_logger(logger);
 		return logger;
 	}
-}
-
+} // namespace
 
 std::string lay_dinhdang_tg_hientai1()
 {
@@ -150,5 +140,3 @@ void flush_memory_logs_to_file()
 		}
 	}
 }
-
-

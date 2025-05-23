@@ -1,4 +1,4 @@
-//app.h
+// app.h
 #pragma once
 #include <GLFW/glfw3.h>
 
@@ -19,5 +19,3 @@ void glfw_error_callback(int loi, const char* mota);
 GLFWwindow* khoitao_cuaso(const cauhinh_cuaso& ch_cuaso = cauhinh_cuaso::macdinh());
 void vonglap_chinh(GLFWwindow* cuaso);
 void dondep(GLFWwindow* cuaso);
-
-

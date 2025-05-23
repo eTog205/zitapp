@@ -4,10 +4,6 @@
 #include <string>
 #include <unordered_map>
 
-void chaylenh(const std::string& id);
-void suachua_nhieu(const std::vector<std::string>& commands);
-std::vector<std::string> tao_lenh_chkdsk();
-
 namespace fs = std::filesystem;
 
 enum class chedo : std::uint8_t
@@ -44,4 +40,10 @@ struct ThongKe
 	uintmax_t biBoQua = 0;
 };
 
+// chức năng tiện ích
+void chaylenh(const std::string& id);
+void suachua_nhieu(const std::vector<std::string>& commands);
+std::vector<std::string> tao_lenh_chkdsk();
 void tienhanh_xoa();
+bool mo_phanmanh();
+bool chay_phanmanh();

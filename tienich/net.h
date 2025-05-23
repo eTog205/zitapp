@@ -39,7 +39,7 @@ struct cauhinh_api
 };
 
 // 🔹 Cấu hình mặc định
-struct cauhinh_chung //sẽ bị xóa trong cập nhật tới
+struct cauhinh_chung // sẽ bị xóa trong cập nhật tới
 {
 	std::uint64_t gioihan_body = 50ULL * 1024 * 1024;
 };
@@ -61,5 +61,3 @@ std::string lay_thongtin_tep_github(const std::string& file_path);
 std::string get_release_tag();
 
 std::optional<ketqua_key> kiemtra_key_online(const std::string& key);
-
-

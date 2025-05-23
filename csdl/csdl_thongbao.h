@@ -1,10 +1,8 @@
 #pragma once
 #include <boost/unordered_map.hpp>
-#include <cstdint>
 #include <optional>
 
-
-enum thongbao_giaodien :uint8_t
+enum thongbao_giaodien : uint8_t
 {
 	sha256_mismatch,
 	abc

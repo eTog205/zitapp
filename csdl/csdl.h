@@ -1,11 +1,9 @@
 // csdl.h
 #pragma once
-//#include <boost/beast/http.hpp>
 #include <boost/beast/ssl.hpp>
 #include <sqlite3.h>
 
 namespace beast = boost::beast;
-//namespace http = beast::http;
 namespace net = boost::asio;
 using tcp = net::ip::tcp;
 

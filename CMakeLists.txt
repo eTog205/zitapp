@@ -10,30 +10,8 @@ cmake_policy(SET CMP0167 NEW)
 
 add_compile_definitions(_WIN32_WINNT=0x0A00 BOOST_ALL_NO_DEPRECATED)
 
-if(EXISTS "E:/dev/vcpkg/vcpkg.exe")
-  message(STATUS "[vcpkg] ✅ Đã tìm thấy vcpkg, đang cập nhật baseline và cài gói...")
-
-  execute_process(
-    COMMAND "E:/dev/vcpkg/vcpkg.exe" x-update-baseline
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    RESULT_VARIABLE _baseline_result
-  )
-  if(NOT _baseline_result EQUAL 0)
-    message(WARNING "[vcpkg] ⚠ Không cập nhật được baseline. Tiếp tục cài gói...")
-  endif()
-
-  execute_process(
-    COMMAND "E:/dev/vcpkg/vcpkg.exe" install
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    RESULT_VARIABLE _vcpkg_result
-  )
-  if(NOT _vcpkg_result EQUAL 0)
-    message(FATAL_ERROR "[vcpkg] ❌ vcpkg install thất bại với mã ${_vcpkg_result}")
-  else()
-    message(STATUS "[vcpkg] ✅ Cài đặt gói thành công.")
-  endif()
-else()
-  message(WARNING "[vcpkg] ⚠ Không tìm thấy vcpkg ở E:/dev/vcpkg/vcpkg.exe → bỏ qua.")
+if(NOT DEFINED ENV{VCPKG_ROOT})
+  message(FATAL_ERROR "[vcpkg] ❌ VCPKG_ROOT chưa được thiết lập.")
 endif()
 
 find_package(imgui CONFIG REQUIRED)

@@ -1,14 +1,14 @@
 // imgui_setup.cpp
+#define STB_IMAGE_IMPLEMENTATION
 #include "imgui_setup.h"
+
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <map>
-#include <string>
-
-#define STB_IMAGE_IMPLEMENTATION
 #include <ranges>
 #include <stb_image.h>
+#include <string>
 
 namespace
 {
@@ -97,7 +97,7 @@ namespace
 	{
 		for (const auto& info : icon_cache | std::views::values)
 			glDeleteTextures(1, &info.texture_id);
-		
+
 		icon_cache.clear();
 	}
 

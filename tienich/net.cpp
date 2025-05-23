@@ -1,10 +1,10 @@
 #include "net.h"
-#include "log_nhalam.h"
-
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
 #include <boost/beast/ssl.hpp>
 #include <boost/json.hpp>
+
+#include "log_nhalam.h"
 
 namespace beast = boost::beast;
 namespace http = beast::http;
@@ -184,7 +184,7 @@ std::string get_release_tag()
 	}
 	std::string tag = json::value_to<std::string>(jv["tag_name"]);
 
-	//td_log(loai_log::thong_bao, "Phiên bản mới nhất: " + tag);	//debug
+	// td_log(loai_log::thong_bao, "Phiên bản mới nhất: " + tag);	//debug
 	return tag;
 }
 

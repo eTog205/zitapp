@@ -1,13 +1,14 @@
 // capnhat.cpp
 #include "capnhat.h"
+
+#include <boost/dll.hpp>
+#include <boost/process.hpp>
+
 #include "get.h"
 #include "giainen.h"
 #include "kiemtra_ketnoi_mang.h"
 #include "log_nhalam.h"
 #include "net.h"
-
-#include <boost/dll.hpp>
-#include <boost/process.hpp>
 
 using namespace std::chrono;
 namespace bp = boost::process;

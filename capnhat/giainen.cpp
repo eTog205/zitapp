@@ -1,10 +1,11 @@
 // giainen.cpp
 #include "giainen.h"
-#include "get.h"
-#include "log_nhalam.h"
 
 #include <boost/process.hpp>
 #include <boost/process/windows/show_window.hpp>
+
+#include "get.h"
+#include "log_nhalam.h"
 
 namespace fs = std::filesystem;
 namespace bp = boost::process;
@@ -41,11 +42,11 @@ bool chay_winrar()
 		fs::path tep_goc = fs::absolute(tentep);
 		fs::path thumuc_giainen = tep_goc.parent_path().parent_path();
 
-		//td_log(loai_log::thong_bao, "tệp gốc: " + tep_goc.string());	//debug
-		//td_log(loai_log::thong_bao, "thư mục giải nén: " + thumuc_giainen.string());	//debug
+		// td_log(loai_log::thong_bao, "tệp gốc: " + tep_goc.string());	//debug
+		// td_log(loai_log::thong_bao, "thư mục giải nén: " + thumuc_giainen.string());	//debug
 
 		std::string duongdan = lay_duongdan_winrar();
-		//td_log(loai_log::thong_bao, "Đường dẫn WinRAR: " + duongdan);	//debug
+		// td_log(loai_log::thong_bao, "Đường dẫn WinRAR: " + duongdan);	//debug
 
 		std::string cmd_line = "& \"" + duongdan + "\" x -ibck -y \"" + tep_goc.string() + "\" \"" + thumuc_giainen.string() + "\"";
 

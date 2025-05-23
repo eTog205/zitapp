@@ -1,5 +1,6 @@
 // app.cpp
 #include "app.h"
+
 #include "chay_luongphu.h"
 #include "csdl.h"
 #include "dv_csdl.h"
@@ -68,7 +69,7 @@ GLFWwindow* khoitao_cuaso(const cauhinh_cuaso& ch_cuaso)
 
 void vonglap_chinh(GLFWwindow* cuaso)
 {
-	//hiện tại để chờ, tương lai cải thiện
+	// hiện tại để chờ, tương lai cải thiện
 	auto f = lq_khoidong_sql();
 	f.wait();
 
@@ -78,6 +79,7 @@ void vonglap_chinh(GLFWwindow* cuaso)
 
 		if (glfwGetWindowAttrib(cuaso, GLFW_ICONIFIED))
 		{
+			glfwSetWindowShouldClose(cuaso, GLFW_FALSE);
 			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 			continue;
 		}

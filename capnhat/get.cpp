@@ -1,10 +1,11 @@
 // get.cpp
 #include "get.h"
-#include "log_nhalam.h"
-#include "net.h"
 
 #include <boost/json.hpp>
 #include <fstream>
+
+#include "log_nhalam.h"
+#include "net.h"
 
 namespace json = boost::json;
 
