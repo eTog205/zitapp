@@ -384,11 +384,12 @@ void capnhat_bang_phanmem()
 			}
 		}
 
-		float rowHeight = 20.0f;
+		float rowHeight = ImGui::GetTextLineHeightWithSpacing() + (ImGui::GetFrameHeightWithSpacing() - ImGui::GetTextLineHeightWithSpacing()) / 3;
 		// hiển thị dữ liệu cột
 		for (size_t hang = 0; hang < lg_gd.data.size(); ++hang)
 		{
 			ImGui::TableNextRow(ImGuiTableRowFlags_None, rowHeight);
+
 			bool row_overlay_clicked = false;
 
 			for (int vitri_cot = 0; vitri_cot < tong_cot; vitri_cot++)
@@ -414,13 +415,21 @@ void capnhat_bang_phanmem()
 					{
 						ImGui::TextUnformatted(lg_gd.data[hang][vitri_dulieu].c_str());
 					}
+
+					//debug
+					/*bool is_selected = lg_gd.selected_map[lg_gd.data[hang][0]];
+					if (is_selected)
+					{
+						ImVec2 cellMax = ImVec2(cellPos.x + ImGui::GetColumnWidth(), cellPos.y + rowHeight);
+						ImGui::GetWindowDrawList()->AddRectFilled(cellPos, cellMax, ImGui::GetColorU32(ImVec4(1.0f, 0.2f, 0.2f, 0.25f)));
+					}*/
 				}
 				if (cot.id != "chon")
 				{
-					float columnWidth = ImGui::GetColumnWidth();
 					ImGui::SetCursorScreenPos(cellPos);
-
-					if (ImGui::InvisibleButton(("##overlay_" + std::to_string(hang) + "_" + std::to_string(vitri_cot)).c_str(), ImVec2(columnWidth, rowHeight)))
+					ImVec2 cellSize = ImVec2(ImGui::GetColumnWidth(), rowHeight);
+					ImGui::SetCursorScreenPos(cellPos);
+					if (ImGui::InvisibleButton(("##overlay_" + std::to_string(hang) + "_" + std::to_string(vitri_cot)).c_str(), cellSize))
 					{
 						// Nếu bấm vào bất kỳ ô nào (trừ ô checkbox), ta đánh dấu
 						row_overlay_clicked = true;
@@ -762,7 +771,7 @@ void hienthi_bangtienich()
 
 	if (mo_header("Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác.", { { ">", [] { lp_chay_xoarac(); }, "xóa tất cả" } }))
 	{
-		
+
 		ketthuc_header();
 	}
 
