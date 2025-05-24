@@ -278,11 +278,9 @@ thongtin_cuaso_imgui tinh_thongtin_cuaso(int chieurong_manhinh, int chieucao_man
 {
 	thongtin_cuaso_imgui tt;
 
-	// Tính toạ độ
 	tt.vitri.x = gd.chieurong_menuben + gd.letrai_menuben * 2;
 	tt.vitri.y = gd.letren_bang;
 
-	// Tính kích thước
 	tt.kichthuoc.x = static_cast<float>(chieurong_manhinh) - gd.letrai_menuben * 3 - gd.chieurong_menuben;
 	tt.kichthuoc.y = static_cast<float>(chieucao_manhinh) - gd.letren_bang;
 
@@ -762,47 +760,9 @@ void hienthi_bangtienich()
 		ketthuc_header();
 	}
 
-	if (mo_header("Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác.", { { "X", [] { lp_chay_xoarac(); }, "xóa tất cả" } }))
+	if (mo_header("Dọn rác tạm thời.\nLàm trống ổ đĩa và dọn rác.", { { ">", [] { lp_chay_xoarac(); }, "xóa tất cả" } }))
 	{
-		static bool chonDISM = false, chonSFC = false, chonCHKDSK = false;
-
-		if (!chonDISM && !chonSFC && !chonCHKDSK)
-		{
-			ImGui::TextColored(ImVec4(0.80f, 0.25f, 0.25f, 1.0f), "Vui lòng chọn ít nhất một công cụ");
-
-			ImGui::SameLine(ImGui::GetWindowContentRegionMax().x - 20.0f);
-			ImGui::TextDisabled("?");
-
-			if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal))
-			{
-				ImVec2 iconPos = ImGui::GetItemRectMin();
-				float padding = 20.0f;
-				const char* noidung = "DISM: kiểm tra và sửa chữa ảnh Windows...\nSFC: quét hệ thống...\nCHKDSK: kiểm tra ổ đĩa...";
-				float wrap_width = ImGui::GetFontSize() * 20.0f;
-				ImVec2 size = ImGui::CalcTextSize(noidung, nullptr, true, wrap_width);
-				ImVec2 tooltipPos(iconPos.x - size.x - padding, iconPos.y);
-
-				ImGui::SetNextWindowPos(tooltipPos, ImGuiCond_Always);
-				ImGui::BeginTooltip();
-				ImGui::PushTextWrapPos(wrap_width);
-				ImGui::TextUnformatted(noidung);
-				ImGui::PopTextWrapPos();
-				ImGui::EndTooltip();
-			}
-		}
-		else
-			ImGui::Dummy(ImGui::CalcTextSize("Vui lòng chọn ít nhất một công cụ"));
-
-		ImGui::Checkbox("1", &chonSFC);
-		ImGui::Checkbox("2", &chonDISM);
-		ImGui::Checkbox("3", &chonCHKDSK);
-
-		ImGui::Spacing();
-		ImGui::BeginDisabled(!(chonDISM || chonSFC || chonCHKDSK));
-		if (ImGui::Button("dọn rác tùy chọn", ImVec2(100, 0)))
-			lp_chay_xoarac();
-
-		ImGui::EndDisabled();
+		
 		ketthuc_header();
 	}
 

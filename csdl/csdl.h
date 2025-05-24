@@ -22,12 +22,11 @@ void capnhat_data(const csdl& c);
 
 extern sqlite3* db;
 
-int open_database_read_only(const char* db_name);
+int open_database_read_only(const char* ten_db);
 void close_database();
 
 int execute_sql(const char* sql);
 int create_table();
-int get_row_count(const char* table_name, int* row_count);
+int get_row_count(std::string_view ten_bang, int* row_count);
 
-bool database_exists(const char* db_name);
 void khoidong_sql();

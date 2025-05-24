@@ -11,6 +11,30 @@
 namespace bj = boost::json;
 sqlite3* db = nullptr;
 
+namespace
+{
+	std::optional<std::string> trich_sha_tu_metadata(const std::string& response)
+	{
+		try
+		{
+			auto v = bj::parse(response);
+			if (!v.is_array())
+				return std::nullopt;
+			const auto& arr = v.as_array();
+			if (arr.empty() || !arr[0].is_object())
+				return std::nullopt;
+			auto it = arr[0].as_object().find("sha");
+			if (it == arr[0].as_object().end())
+				return std::nullopt;
+			return bj::value_to<std::string>(it->value());
+		} catch (...)
+		{
+			return std::nullopt;
+		}
+	}
+
+} // namespace
+
 void save_to_file(const std::string& filename, const std::string& data)
 {
 	std::ofstream outFile(filename, std::ios::binary);
@@ -41,7 +65,7 @@ void luu_tepsha(const std::string& thumuc, const std::string& sha_file, const st
 		return;
 	}
 
-	try
+	/*try
 	{
 		bj::value metadata_json = bj::parse(metadata_response);
 
@@ -70,7 +94,13 @@ void luu_tepsha(const std::string& thumuc, const std::string& sha_file, const st
 	} catch (const std::exception& e)
 	{
 		td_log(loai_log::loi, "Lỗi parse JSON: " + std::string(e.what()));
-	}
+	}*/
+
+	// kiểm tra
+	if (auto new_sha = trich_sha_tu_metadata(metadata_response))
+		sha_file_out << *new_sha;
+	else
+		td_log(loai_log::loi, "Không lấy được SHA hợp lệ");
 
 	sha_file_out.close();
 }
@@ -94,7 +124,7 @@ void capnhat_data(const csdl& c)
 			return;
 		}
 
-		bj::value metadata_json;
+		/*bj::value metadata_json;
 		try
 		{
 			metadata_json = bj::parse(metadata_response);
@@ -125,7 +155,18 @@ void capnhat_data(const csdl& c)
 
 		auto new_sha = bj::value_to<std::string>(it->value());
 		if (old_sha == new_sha)
+			return;*/
+
+		if (auto new_sha = trich_sha_tu_metadata(metadata_response))
+		{
+			if (old_sha == *new_sha)
+				return;
+		}
+		else
+		{
+			td_log(loai_log::loi, "Không trích được SHA từ metadata");
 			return;
+		}
 	}
 
 	// Nếu SHA cũ không tồn tại hoặc đã thay đổi => tải file mới
@@ -145,9 +186,9 @@ void capnhat_data(const csdl& c)
 	}
 }
 
-int open_database_read_only(const char* db_name)
+int open_database_read_only(const char* ten_db)
 {
-	return sqlite3_open_v2(db_name, &db, SQLITE_OPEN_READONLY, nullptr);
+	return sqlite3_open_v2(ten_db, &db, SQLITE_OPEN_READONLY, nullptr);
 }
 
 void close_database()
@@ -157,33 +198,6 @@ void close_database()
 		sqlite3_close(db);
 		db = nullptr;
 	}
-}
-
-int get_row_count(const char* table_name, int* row_count)
-{
-	*row_count = 0;
-	const std::string sql = "SELECT COUNT(*) FROM " + std::string(table_name) + ";";
-	sqlite3_stmt* stmt;
-
-	int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
-	if (rc != SQLITE_OK)
-	{
-		td_log(loai_log::loi, "Failed to prepare statement" + std::string(sqlite3_errmsg(db)));
-		return rc;
-	}
-
-	rc = sqlite3_step(stmt);
-	if (rc == SQLITE_ROW)
-	{
-		*row_count = sqlite3_column_int(stmt, 0);
-	}
-	else
-	{
-		td_log(loai_log::loi, "Failed to execute statement:" + std::string(sqlite3_errmsg(db)));
-	}
-
-	sqlite3_finalize(stmt);
-	return (rc == SQLITE_ROW) ? SQLITE_OK : rc;
 }
 
 int execute_sql(const char* sql)
@@ -200,6 +214,29 @@ int execute_sql(const char* sql)
 	return rc;
 }
 
+int get_row_count(const std::string_view ten_bang, int* row_count)
+{
+	*row_count = 0;
+	const std::string sql = "SELECT COUNT(*) FROM " + std::string(ten_bang) + ";";
+	sqlite3_stmt* stmt;
+
+	int rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr);
+	if (rc != SQLITE_OK)
+	{
+		td_log(loai_log::loi, "Failed to prepare statement" + std::string(sqlite3_errmsg(db)));
+		return SQLITE_ERROR;
+	}
+
+	rc = sqlite3_step(stmt);
+	if (rc == SQLITE_ROW)
+		*row_count = sqlite3_column_int(stmt, 0);
+	else
+		td_log(loai_log::loi, "Failed to execute statement:" + std::string(sqlite3_errmsg(db)));
+
+	sqlite3_finalize(stmt);
+	return (rc == SQLITE_ROW) ? SQLITE_OK : rc;
+}
+
 int create_table()
 {
 	const auto sql = "CREATE TABLE IF NOT EXISTS Items ("
@@ -210,14 +247,10 @@ int create_table()
 	return execute_sql(sql);
 }
 
-// [kiểm tra] - cái này đang không dùng
-bool database_exists(const char* db_name)
-{
-	return std::filesystem::exists(db_name);
-}
-
 void khoidong_sql()
 {
-	open_database_read_only("tainguyen/sql.db");
-	nap_du_lieu();
+	if (open_database_read_only("tainguyen/sql.db") == SQLITE_OK)
+		nap_du_lieu();
+	else
+		td_log(loai_log::loi, "Không thể mở CSDL");
 }

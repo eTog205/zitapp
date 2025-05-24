@@ -37,8 +37,8 @@ void quayvong_log(const fs::path& thumuc_log, const fs::path& log_hientai);
 extern std::shared_ptr<spdlog::logger> g_logger;
 
 // Hàm chuyển đổi chế độ log:
-// Nếu mode == 1 => sử dụng chế độ mới (memory sink)
-// Nếu mode == 0 => sử dụng chế độ cũ (file sink)
+// Nếu mode == 1 => sử dụng chế độ memory sink
+// Nếu mode == 0 => sử dụng chế độ file sink
 std::shared_ptr<spdlog::logger> chuyendoi(int mode);
 
 // Nếu dùng chế độ mới, dùng hàm này để ghi log từ bộ nhớ ra file trước shutdown.
