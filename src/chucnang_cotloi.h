@@ -40,8 +40,10 @@ struct ThongKe
 	uintmax_t biBoQua = 0;
 };
 
-// chức năng tiện ích
+// chức năng bảng dữ liệu
 void chaylenh(const std::string& id);
+
+// chức năng tiện ích
 void suachua_nhieu(const std::vector<std::string>& commands);
 std::vector<std::string> tao_lenh_chkdsk();
 void tienhanh_xoa();

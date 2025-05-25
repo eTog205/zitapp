@@ -11,8 +11,11 @@
 namespace asio = boost::asio;
 namespace bp = boost::process;
 
+const std::unordered_set<std::wstring> phan_morong_boqua = { L".evtx", L".lock" };
+
 namespace
 {
+	// chức năng tải và cài đặt (winget)
 	std::string thucthi_lenh(const std::string& lenh)
 	{
 		asio::io_context ctx;
@@ -41,7 +44,7 @@ namespace
 			//	if (ec)
 			//		throw boost::system::system_error(ec);
 			// }
-			proc.detach();
+			proc.detach(); // dùng wait
 
 			/*std::istringstream iss(output);
 			std::string line;
@@ -76,6 +79,7 @@ namespace
 		return output;
 	}
 
+	// chức năng sửa
 	void chay_trong_ps_giu_cuaso(const std::string& lenh)
 	{
 		try
@@ -113,8 +117,155 @@ namespace
 		}
 		return danh_sach;
 	}
+
+	// chức năng xóa
+	bool nen_boqua(const fs::path& duongdan)
+	{
+		return phan_morong_boqua.contains(duongdan.extension());
+	}
+
+	void xoa_dulieu_trongthumuc(const fs::path& duongdan, chedo cheDo, ThongKe* thongKe = nullptr)
+	{
+		try
+		{
+			if (!fs::exists(duongdan))
+				return;
+
+			for (const auto& muc : fs::recursive_directory_iterator(duongdan))
+			{
+				try
+				{
+					if (nen_boqua(muc.path()))
+					{
+						if (thongKe)
+						{
+							thongKe->biBoQua++;
+							thongKe->daTimThay++;
+						}
+						continue;
+					}
+
+					uintmax_t kichThuoc = fs::is_regular_file(muc) ? fs::file_size(muc) : 0;
+					uintmax_t kichThuocMB = kichThuoc / (1024 * 1024);
+
+					if (cheDo == chedo::theodoi)
+					{
+						if (thongKe)
+						{
+							thongKe->tongDungLuongDaXoa += kichThuocMB;
+							thongKe->daTimThay++;
+						}
+						continue;
+					}
+
+					std::error_code ec;
+					if (fs::is_directory(muc))
+						fs::remove_all(muc, ec);
+					else
+						fs::remove(muc, ec);
+
+					if (!ec)
+					{
+						if (thongKe)
+						{
+							thongKe->daXoa++;
+							thongKe->tongDungLuongDaXoa += kichThuocMB;
+							thongKe->daTimThay++;
+						}
+					}
+					else
+					{
+						if (thongKe)
+						{
+							thongKe->biBoQua++;
+							thongKe->daTimThay++;
+						}
+					}
+				} catch (...)
+				{
+					if (thongKe)
+					{
+						thongKe->biBoQua++;
+						thongKe->daTimThay++;
+					}
+				}
+			}
+		} catch (...)
+		{
+			// bỏ qua toàn bộ lỗi thư mục gốc
+		}
+	}
+
+	void tienhanh_xoa(const std::vector<fs::path>& danhSach, chedo cheDo, ThongKe* thongKe = nullptr)
+	{
+		for (const auto& duongdan : danhSach)
+		{
+			xoa_dulieu_trongthumuc(duongdan, cheDo, thongKe);
+		}
+	}
+
+	std::wstring lay_bien_moitruong(const std::wstring& tenBien)
+	{
+		std::wstring ketQua;
+		DWORD kichThuoc = GetEnvironmentVariableW(tenBien.c_str(), nullptr, 0);
+		if (kichThuoc == 0)
+			return L"";
+		ketQua.resize(kichThuoc);
+		GetEnvironmentVariableW(tenBien.c_str(), ketQua.data(), kichThuoc);
+		ketQua.resize(kichThuoc - 1);
+		return ketQua;
+	}
+
+	std::vector<mucdich_xoa> lay_nguon_duongdan_macdinh()
+	{
+		std::wstring oHeThong = lay_bien_moitruong(L"SYSTEMDRIVE");
+		std::wstring thuMucWin = lay_bien_moitruong(L"WINDIR");
+		std::wstring appLocal = lay_bien_moitruong(L"LOCALAPPDATA");
+
+		return { { lay_bien_moitruong(L"TEMP"), nhom::khuyennghi },
+				 { thuMucWin + L"\\Temp", nhom::khuyennghi },
+				 { thuMucWin + L"\\Logs\\CBS", nhom::khuyennghi },
+				 { appLocal + L"\\Temp", nhom::khuyennghi },
+				 { appLocal + L"\\Microsoft\\Windows\\Explorer", nhom::khuyennghi },
+
+				 // tùy chỉnh
+				 { oHeThong + L"\\Windows\\Prefetch", nhom::tuychon },
+				 { oHeThong + L"\\Windows\\SoftwareDistribution\\Download", nhom::tuychon },
+				 { thuMucWin + L"\\System32\\LogFiles", nhom::tuychon },
+				 { thuMucWin + L"\\System32\\winevt\\Logs", nhom::tuychon } };
+	}
+
+	std::vector<fs::path> loc_duongdanthucte(const std::vector<mucdich_xoa>& danhSach, const cauhinh_xoa& cauHinh)
+	{
+		std::vector<fs::path> ketQua;
+		for (const auto& muc : danhSach)
+		{
+			if (!cauHinh.batNhom.at(muc.nhom))
+				continue;
+
+			bool trung = false;
+			for (const auto& daCo : ketQua)
+			{
+				try
+				{
+					if (fs::exists(muc.duongdan) && fs::exists(daCo) && fs::equivalent(muc.duongdan, daCo))
+					{
+						trung = true;
+						break;
+					}
+				} catch (...)
+				{}
+			}
+			if (!trung)
+				ketQua.push_back(muc.duongdan);
+		}
+		return ketQua;
+	}
+
 } // namespace
 
+// === BẢNG DỮ LIỆU ===
+// chức năng tải về và cài đặt (winget)
 void chaylenh(const std::string& id)
 {
 	const std::string tuychon_macdinh = " --silent --accept-package-agreements --accept-source-agreements --disable-interactivity";
@@ -123,6 +274,8 @@ void chaylenh(const std::string& id)
 	thucthi_lenh(lenh);
 }
 
+// === TIỆN ÍCH ===
+// chức năng sửa lỗi
 std::vector<std::string> tao_lenh_chkdsk()
 {
 	const auto ds_o = lay_o_ntfs();
@@ -154,127 +307,8 @@ void suachua_nhieu(const std::vector<std::string>& commands)
 	}
 }
 
-const std::unordered_set<std::wstring> phanMoRongBoQua = { L".evtx", L".lock" };
-
-std::wstring lay_bien_moitruong(const std::wstring& tenBien)
-{
-	std::wstring ketQua;
-	DWORD kichThuoc = GetEnvironmentVariableW(tenBien.c_str(), nullptr, 0);
-	if (kichThuoc == 0)
-		return L"";
-	ketQua.resize(kichThuoc);
-	GetEnvironmentVariableW(tenBien.c_str(), ketQua.data(), kichThuoc);
-	ketQua.resize(kichThuoc - 1);
-	return ketQua;
-}
-
-bool nen_boqua(const fs::path& duongdan)
-{
-	return phanMoRongBoQua.contains(duongdan.extension());
-}
-
-std::vector<mucdich_xoa> lay_nguon_duongdan_macdinh()
-{
-	std::wstring oHeThong = lay_bien_moitruong(L"SYSTEMDRIVE");
-	std::wstring thuMucWin = lay_bien_moitruong(L"WINDIR");
-	std::wstring appLocal = lay_bien_moitruong(L"LOCALAPPDATA");
-
-	return { { lay_bien_moitruong(L"TEMP"), nhom::khuyennghi },
-			 { lay_bien_moitruong(L"TMP"), nhom::khuyennghi },
-			 { appLocal + L"\\Temp", nhom::khuyennghi },
-			 { thuMucWin + L"\\Temp", nhom::khuyennghi },
-			 { thuMucWin + L"\\Logs\\CBS", nhom::khuyennghi },
-			 { oHeThong + L"\\Windows\\SoftwareDistribution\\Download", nhom::tuychon },
-			 { oHeThong + L"\\Windows\\Prefetch", nhom::tuychon },
-			 { appLocal + L"\\Microsoft\\Windows\\Explorer", nhom::khuyennghi },
-			 { thuMucWin + L"\\System32\\LogFiles", nhom::tuychon },
-			 { thuMucWin + L"\\System32\\winevt\\Logs", nhom::tuychon } };
-}
-
-std::vector<fs::path> loc_duongdanthucte(const std::vector<mucdich_xoa>& danhSach, const cauhinh_xoa& cauHinh)
-{
-	std::vector<fs::path> ketQua;
-	for (const auto& muc : danhSach)
-	{
-		if (!cauHinh.batNhom.at(muc.nhom))
-			continue;
-
-		bool trung = false;
-		for (const auto& daCo : ketQua)
-		{
-			try
-			{
-				if (fs::exists(muc.duongdan) && fs::exists(daCo) && fs::equivalent(muc.duongdan, daCo))
-				{
-					trung = true;
-					break;
-				}
-			} catch (...)
-			{}
-		}
-		if (!trung)
-			ketQua.push_back(muc.duongdan);
-	}
-	return ketQua;
-}
-
-void xoa_dulieu_trongthumuc(const fs::path& duongdan, chedo cheDo, ThongKe* thongKe = nullptr)
-{
-	try
-	{
-		if (!fs::exists(duongdan))
-			return;
-
-		for (const auto& muc : fs::recursive_directory_iterator(duongdan, fs::directory_options::skip_permission_denied))
-		{
-			try
-			{
-				if (thongKe)
-					thongKe->daTimThay++;
-
-				if (nen_boqua(muc.path()))
-				{
-					if (thongKe)
-						thongKe->biBoQua++;
-					continue;
-				}
-
-				uintmax_t kichThuoc = fs::is_regular_file(muc) ? fs::file_size(muc) : 0;
-				std::error_code ec;
-				fs::remove_all(muc, ec);
-				if (!ec)
-				{
-					if (thongKe)
-					{
-						thongKe->daXoa++;
-						thongKe->tongDungLuongDaXoa += kichThuoc;
-					}
-				}
-				else
-				{
-					if (thongKe)
-						thongKe->biBoQua++;
-				}
-			} catch (...)
-			{
-				if (thongKe)
-					thongKe->biBoQua++;
-			}
-		}
-	} catch (...)
-	{
-		// bỏ qua toàn bộ lỗi thư mục gốc
-	}
-}
-
-void tienhanh_xoa(const std::vector<fs::path>& danhSach, chedo cheDo, ThongKe* thongKe = nullptr)
-{
-	for (const auto& duongdan : danhSach)
-	{
-		xoa_dulieu_trongthumuc(duongdan, cheDo, thongKe);
-	}
-}
-
+// cần sửa: xóa không sạch
+// chức năng xóa rác
 void tienhanh_xoa()
 {
 	cauhinh_xoa cauhinh;
@@ -282,6 +316,7 @@ void tienhanh_xoa()
 	tienhanh_xoa(danhSach, chedo::imlang, nullptr);
 }
 
+// chức năng phân mảng
 bool mo_phanmanh()
 {
 	try
